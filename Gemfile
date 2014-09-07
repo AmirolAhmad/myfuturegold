@@ -26,6 +26,12 @@ gem 'jquery-turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 
+gem 'rails_config'
+gem 'devise'
+gem 'friendly_id' # will use this once we have the order details
+gem 'paranoia' # will use this once we have the order details
+gem 'dalli'
+
 group :doc do
 	gem 'sdoc', require: false
 end
@@ -34,13 +40,10 @@ group :development do
 	gem 'spring'
   gem "mysql2"
   gem 'letter_opener'
+  gem 'quiet_assets'
 end
 
 group :production do
 	gem 'rails_12factor'
   gem "pg"
 end
-
-gem 'rails_config'
-gem 'devise'
-gem 'dalli'
