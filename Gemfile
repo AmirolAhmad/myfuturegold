@@ -33,6 +33,7 @@ end
 group :development do
 	gem 'spring'
   gem "mysql2"
+  gem 'letter_opener'
 end
 
 group :production do
@@ -41,3 +42,5 @@ group :production do
 end
 
 gem 'rails_config'
+gem 'devise'
+gem 'dalli'
