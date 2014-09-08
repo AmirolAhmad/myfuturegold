@@ -1,0 +1,23 @@
+development:
+  adapter: mysql2
+  host: localhost
+  database: myfuturegold
+  username: root
+  password:
+  pool: 5
+  timeout: 5000
+
+test:
+  adapter: postgresql
+  pool: 5
+  database: db/test.sqlite3
+
+production:
+  adapter: postgresql
+  pool: 5
+  host: 
+  encoding: unicode
+  database: 
+  username: 
+  password: 
+  port: 5432
