@@ -5,7 +5,6 @@ class User < ActiveRecord::Base
 
   has_one :profile
 
-	validates_presence_of :profile_id
   validates :login, :uniqueness => { :case_sensitive => false }
 
   scope :admin, -> { where(admin: true) }

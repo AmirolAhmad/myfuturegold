@@ -1,6 +1,7 @@
 class Profile < ActiveRecord::Base
 	belongs_to :user
 
+	validates_presence_of :user_id
 	validates_presence_of :nama_penuh
 	validates_presence_of :tel_num
 	validates_presence_of :facebook_id
