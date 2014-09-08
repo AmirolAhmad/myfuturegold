@@ -13,11 +13,10 @@ test:
   database: db/test.sqlite3
 
 production:
-  adapter: postgresql
+  adapter: mysql2
+  host: localhost
+  database: myfuturegold
+  username: root
+  password:
   pool: 5
-  host: 
-  encoding: unicode
-  database: 
-  username: 
-  password: 
-  port: 5432
+  timeout: 5000
