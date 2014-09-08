@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  nama_penuh: MyString
+  tel_num: MyString
+  facebook_id: MyString
+  nama_waris: MyString
+  hub_waris: MyString
+  tel_num_waris: MyString
+  nama_bank: MyString
+  nama_akaun: MyString
+  no_akaun: MyString
+
+two:
+  user_id: 1
+  nama_penuh: MyString
+  tel_num: MyString
+  facebook_id: MyString
+  nama_waris: MyString
+  hub_waris: MyString
+  tel_num_waris: MyString
+  nama_bank: MyString
+  nama_akaun: MyString
+  no_akaun: MyString

@@ -11,7 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140907172507) do
+ActiveRecord::Schema.define(version: 20140908134134) do
+
+  create_table "profiles", force: true do |t|
+    t.integer  "user_id"
+    t.string   "nama_penuh"
+    t.string   "tel_num"
+    t.string   "facebook_id"
+    t.string   "nama_waris"
+    t.string   "hub_waris"
+    t.string   "tel_num_waris"
+    t.string   "nama_bank"
+    t.string   "nama_akaun"
+    t.string   "no_akaun"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "login",                               null: false
