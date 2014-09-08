@@ -10,7 +10,6 @@ class Admin::AccountsController < ApplicationController
   end
 
   def index
-  	
   end
 
   def edit

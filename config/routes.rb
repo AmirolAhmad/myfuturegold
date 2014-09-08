@@ -7,8 +7,8 @@ Rails.application.routes.draw do
   end
   root 'pages#index'
 
-  namespace :admin, path: '/admin' do
-    get "/" => "accounts#index", as: 'admin'
+  namespace :admin, path: '/master' do
+    get "/" => "accounts#index", as: 'master'
     resources :accounts, only: [:new, :create, :index, :edit, :update, :destroy]
   end
 

@@ -1,1 +1,5 @@
-<h1>Aku ADMIN!</h1>
+<% if current_user.try(:admin?) %>
+	<h1>I am ADMIN!</h1>
+<% else %>
+	<h1>I am not ADMIN!</h1>
+<% end %>
