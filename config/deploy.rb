@@ -1,13 +1,11 @@
 # config valid only for Capistrano 3.1
 lock '3.2.1'
 
-set :application, 'myfuturegold'
 set :repo_url, 'git@github.com:amirolahmad/myfuturegold.git'
 
-set :deploy_to, '/home/deploy/myfuturegold'
-
-set :linked_files, %w{config/database.yml}
-set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
+set :rbenv_custom_path, '/opt/rbenv'
+set :rbenv_type, :system
+set :rbenv_ruby, '2.1.2'
 
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
@@ -28,13 +26,13 @@ set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public
 # set :pty, true
 
 # Default value for :linked_files is []
-# set :linked_files, %w{config/database.yml}
+set :linked_files, %w{config/database.yml}
 
 # Default value for linked_dirs is []
-# set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
+set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 
 # Default value for default_env is {}
-# set :default_env, { path: "/opt/ruby/bin:$PATH" }
+set :default_env, { path: "/opt/rbenv/shims:$PATH" }
 
 # Default value for keep_releases is 5
 # set :keep_releases, 5
