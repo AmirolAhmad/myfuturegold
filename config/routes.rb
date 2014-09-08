@@ -7,6 +7,11 @@ Rails.application.routes.draw do
   end
   root 'pages#index'
 
+  namespace :admin, path: '/admin' do
+    get "/" => "accounts#index", as: 'admin'
+    resources :accounts, only: [:new, :create, :index, :edit, :update, :destroy]
+  end
+
   resource :account, only: [:show]
 
   # The priority is based upon order of creation: first created -> highest priority.
