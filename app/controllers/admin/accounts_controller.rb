@@ -1,27 +1,23 @@
 class Admin::AccountsController < ApplicationController
   before_filter :store_location, only: [:index]
+  before_filter :require_admin
 
   def new
-  	
   end
 
   def create
-  	
   end
 
   def index
   end
 
   def edit
-  	
   end
 
   def update
-  	
   end
 
   def destroy
-  	
   end
 
   private
