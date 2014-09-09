@@ -3,6 +3,8 @@ lock '3.2.1'
 
 set :repo_url, 'git@github.com:amirolahmad/myfuturegold.git'
 
+set :deploy_to, '/home/deploy/myfuturegold'
+
 # set :rbenv_custom_path, '/opt/rbenv'
 set :rbenv_type, :user
 set :rbenv_ruby, '2.1.2'
