@@ -33,7 +33,7 @@
         <% end %>
       </p>
       <p class="navbar-text navbar-right">
-        Hi, <a href="#" class="navbar-link"><%= @user.login %></a>
+        Hi, <a href="#" class="navbar-link"><%= current_user.login %></a>
       </p>
       <% else %>
       <div class="btn-group navbar-right">
