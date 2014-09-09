@@ -4,8 +4,6 @@ ruby "2.1.2"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.5'
 
-gem "mysql2"
-
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 
@@ -40,14 +38,12 @@ end
 
 group :development do
 	gem 'spring'
+  gem "mysql2"
   gem 'letter_opener'
   gem 'quiet_assets'
-  gem 'capistrano', '~> 3.1.0'
-  gem 'capistrano-rails', '~> 1.1.1'
-  gem 'capistrano-rbenv', '~> 2.0'
-  gem 'capistrano-bundler', '~> 1.1.2'
-  # gem 'capistrano-gitflow', git: 'https://github.com/YotpoLtd/capistrano-gitflow'
 end
 
 group :production do
+	gem 'rails_12factor'
+  gem "pg"
 end
