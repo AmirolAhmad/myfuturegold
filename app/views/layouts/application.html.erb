@@ -17,10 +17,11 @@
 </head>
 <body class="<%= body_class %>" data-user="<%= h current_user.try(:to_json) %>">
 	<%= render partial: "header" %>
-	<p class="notice"><%= notice %></p>
-	<p class="alert"><%= alert %></p>
-	<%= yield %>
-	<%= render partial: "footer" %>
+  <div class="container">
+    <%= render 'layouts/messages' %>
+    <%= yield %>
+  </div>
+  <%= render partial: "footer" %>
 
 </body>
 </html>
