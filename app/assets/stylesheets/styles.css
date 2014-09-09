@@ -1,15 +1,36 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto+Slab:400,300,700);
+
+@font-face {
+  font-family: 'freight-text-pro';
+  src: url('../fonts/freighttext-book.eot');
+  src: local('☺'), url('../fonts/freighttext-book.woff') format('woff'), url('../fonts/freighttext-book.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
   position: relative;
   min-height: 100%;
 }
+
 body {
   /* Margin bottom by footer height */
   margin-bottom: 60px;
 }
+
+p {
+  font-family: "freight-text-pro",Georgia,Cambria,"Times New Roman",Times,serif;
+  font-size: 18px;
+  letter-spacing: 0.01rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.9;
+}
+
 .footer {
-  position: absolute;
+  /*position: relative;*/
   bottom: 0;
   width: 100%;
   /* Set the fixed height of the footer here */
@@ -17,14 +38,14 @@ body {
   background-color: #f5f5f5;
 }
 
-
 /* Custom page CSS
 -------------------------------------------------- */
 /* Not required for template or sticky footer method. */
 
 body > .container {
-  padding: 60px 15px 0;
+  padding: 0 15px 0;
 }
+
 .container .text-muted {
   margin: 20px 0;
 }
@@ -37,3 +58,29 @@ body > .container {
 code {
   font-size: 80%;
 }
+
+/* Navbar */
+
+.navbar-header {
+  font-family: 'Roboto Slab', serif;
+}
+
+.dropdown-menu > li > a,
+.navbar-nav > li > a {
+  font-family: 'Roboto Slab', serif;
+}
+
+/* Font */
+
+.text-bg-classes p {
+  font-size: 14px;
+  margin-top: 10px;
+  padding: 15px;
+  line-height: 1;
+}
+
+
+
+
+
+

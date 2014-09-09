@@ -996,7 +996,7 @@ h6,
 .h4,
 .h5,
 .h6 {
-  font-family: inherit;
+  font-family: 'Roboto Slab', serif;
   font-weight: 500;
   line-height: 1.1;
   color: inherit;
@@ -1077,27 +1077,33 @@ h6 .small,
 }
 h1,
 .h1 {
-  font-size: 36px;
+  font-size: 44px;
+  font-weight: 600;
 }
 h2,
 .h2 {
-  font-size: 30px;
+  font-size: 36px;
+  font-weight: 600;
 }
 h3,
 .h3 {
-  font-size: 24px;
+  font-size: 30px;
+  font-weight: 600;
 }
 h4,
 .h4 {
-  font-size: 18px;
+  font-size: 24px;
+  font-weight: 600;
 }
 h5,
 .h5 {
-  font-size: 14px;
+  font-size: 18px;
+  font-weight: 600;
 }
 h6,
 .h6 {
-  font-size: 12px;
+  font-size: 14px;
+  font-weight: 600;
 }
 p {
   margin: 0 0 10px;
@@ -2721,6 +2727,7 @@ select[multiple].input-lg {
   }
 }
 .btn {
+  font-family: 'Roboto Slab', serif;
   display: inline-block;
   padding: 6px 12px;
   margin-bottom: 0;
@@ -4609,6 +4616,7 @@ a.thumbnail.active {
   color: #333;
 }
 .alert {
+  font-family: "freight-text-pro",Georgia,Cambria,"Times New Roman",Times,serif;
   padding: 15px;
   margin-bottom: 20px;
   border: 1px solid transparent;
