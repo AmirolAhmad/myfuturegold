@@ -16,10 +16,11 @@
   <%= csrf_meta_tags %>
 </head>
 <body class="<%= body_class %>" data-user="<%= h current_user.try(:to_json) %>">
-
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
-<%= yield %>
+	<%= render partial: "header" %>
+	<p class="notice"><%= notice %></p>
+	<p class="alert"><%= alert %></p>
+	<%= yield %>
+	<%= render partial: "footer" %>
 
 </body>
 </html>
