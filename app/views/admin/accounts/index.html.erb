@@ -1,1 +1,7 @@
 <h1>I am ADMIN!</h1>
+
+<ul>
+	<% @users.each do |user| %>
+	<li><%= user.email %> - <%= user.login %></li>
+	<% end %>
+</ul>
