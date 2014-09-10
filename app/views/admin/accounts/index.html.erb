@@ -1,7 +1,0 @@
-<h1>I am ADMIN!</h1>
-
-<ul>
-	<% @accounts.each do |user| %>
-	<li><%= user.email %> - <%= user.profile.nama_penuh %> - <%= link_to 'Edit', edit_admin_account_path(user), :class => "btn btn-link" %></li>
-	<% end %>
-</ul>
