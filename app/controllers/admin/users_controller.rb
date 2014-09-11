@@ -1,5 +1,5 @@
 class Admin::UsersController < ApplicationController
-  before_filter :set_user, only: [:edit]
+  before_filter :set_user, only: [:edit, :update]
   before_filter :store_location, only: [:index]
   before_filter :require_admin
 
@@ -17,8 +17,6 @@ class Admin::UsersController < ApplicationController
 
   def update
     # Rails.logger.debug "===> (1)"
-    @user = User.find(params[:id])
-    
     if @user.update(user_params)
       redirect_to admin_users_path, notice: "#{@user.profile.nama_penuh} account has been updated."
     else
