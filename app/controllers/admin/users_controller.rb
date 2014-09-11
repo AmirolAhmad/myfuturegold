@@ -1,5 +1,5 @@
 class Admin::UsersController < ApplicationController
-  before_filter :set_user, only: [:edit, :update]
+  before_filter :set_user, only: [:edit, :update, :destroy]
   before_filter :store_location, only: [:index]
   before_filter :require_admin
 
@@ -25,6 +25,9 @@ class Admin::UsersController < ApplicationController
   end
 
   def destroy
+    @user.destroy
+
+    redirect_to admin_users_path, notice: "Account has been deleted."
   end
 
   private

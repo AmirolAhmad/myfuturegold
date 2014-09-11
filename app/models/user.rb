@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
-  has_one :profile
+  has_one :profile, dependent: :destroy
 	accepts_nested_attributes_for :profile, update_only: true, allow_destroy: true
 
   validates :login, :uniqueness => { :case_sensitive => false }
