@@ -44,3 +44,7 @@ group :development do
   gem 'letter_opener'
   gem 'quiet_assets'
 end
+
+group :production do
+	gem 'rails_12factor'
+end
