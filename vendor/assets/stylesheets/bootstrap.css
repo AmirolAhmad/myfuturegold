@@ -180,6 +180,8 @@ optgroup {
   font-weight: bold;
 }
 table {
+  font-family: 'Roboto Slab', serif;
+  font-weight: 500;
   border-spacing: 0;
   border-collapse: collapse;
 }
@@ -2315,6 +2317,8 @@ legend {
   border-bottom: 1px solid #e5e5e5;
 }
 label {
+  font-family: 'Roboto Slab', serif;
+  font-weight: 500;
   display: inline-block;
   max-width: 100%;
   margin-bottom: 5px;

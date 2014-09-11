@@ -18,7 +18,6 @@ class Admin::UsersController < ApplicationController
   def update
     # Rails.logger.debug "===> (1)"
     @user = User.find(params[:id])
-    # @user = User.find_or_create_by(id: current_user.id)
     
     if @user.update(user_params)
       redirect_to admin_users_path, notice: "#{@user.profile.nama_penuh} account has been updated."
