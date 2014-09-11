@@ -1,5 +1,3 @@
-<h1>I am ADMIN!</h1>
-
 <div class="table-responsive">
 	<table class="table table-bordered table-hover">
 		<thead>
@@ -12,13 +10,11 @@
 		<tbody>
 			<% @users.each do |user| %>
 			<tr>
-				<td><%= user.profile.nama_penuh %></td>
+				<td><%= user.profile.try(:nama_penuh) %></td>
 				<td><%= user.email %></td>
 				<td>
 					<div class="btn-group btn-group-xs">
-					<%= link_to 'View', edit_admin_user_path(user), :class => "btn btn-primary" %>
 					<%= link_to 'Edit', edit_admin_user_path(user), :class => "btn btn-warning" %>
-					<%= link_to 'Delete', edit_admin_user_path(user), :class => "btn btn-danger" %>
 					</div>
 				</td>
 			</tr>
