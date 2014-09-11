@@ -5,4 +5,4 @@ s3:
   region: #ap-southeast-1
 image_host: #https://signature-bravo-production.s3.amazonaws.com
 fb_app_id: #253501611440663
-DATABASE_URL: mysql2://b8e11bdf1ef8ed:3a129f19@us-cdbr-iron-east-01.cleardb.net/heroku_1d3b52b8057954b?reconnect=true
+DATABASE_URL: ENV["DATABASE_URL"]
