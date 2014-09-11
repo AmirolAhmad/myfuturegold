@@ -1,7 +1,28 @@
 <h1>I am ADMIN!</h1>
 
-<ul>
-	<% @users.each do |user| %>
-	<li><%= user.email %> - <%= user.profile.nama_penuh %> - <%= link_to 'Edit', edit_admin_user_path(user), :class => "btn btn-link" %></li>
-	<% end %>
-</ul>
+<div class="table-responsive">
+	<table class="table table-bordered table-hover">
+		<thead>
+			<tr>
+				<th>Client Name</th>
+				<th>Client Email</th>
+				<th class="col-md-2">Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @users.each do |user| %>
+			<tr>
+				<td><%= user.profile.nama_penuh %></td>
+				<td><%= user.email %></td>
+				<td>
+					<div class="btn-group btn-group-xs">
+					<%= link_to 'View', edit_admin_user_path(user), :class => "btn btn-primary" %>
+					<%= link_to 'Edit', edit_admin_user_path(user), :class => "btn btn-warning" %>
+					<%= link_to 'Delete', edit_admin_user_path(user), :class => "btn btn-danger" %>
+					</div>
+				</td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>

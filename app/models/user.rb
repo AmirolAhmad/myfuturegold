@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
 	accepts_nested_attributes_for :profile, update_only: true, allow_destroy: true
 
   validates :login, :uniqueness => { :case_sensitive => false }
+  validates_presence_of :login
+  validates_presence_of :email
 
   scope :admin, -> { where(admin: true) }
 

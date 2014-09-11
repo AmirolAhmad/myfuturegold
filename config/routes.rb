@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   namespace :admin, path: '/master' do
     get "/" => "users#index", as: 'master'
-    resources :users, only: [:new, :create, :index, :edit, :update, :destroy]
+    resources :users, only: [:index, :edit, :update, :destroy]
   end
 
   resource :account, only: [:show]
