@@ -1,5 +1,9 @@
-<h1>I am ADMIN!</h1>
+<div class="alert alert-info" role="alert">
+	<h5>Welcome <%= current_user.login.upcase %> to the admin dashboard.</h5>
+	<p>Here you are able to manage your client details, order details, and track your client payment history. As addition, you can do anything as what you want.</p>
+</div>
 
-<%= link_to "Manage Client", admin_users_path, :class => "btn btn-primary" %>
+<%= link_to "Manage Client", admin_users_path, :class => "btn btn-primary btn-lg" %>
+<%= link_to "Manage Order", admin_users_path, :class => "btn btn-primary btn-lg" %>
 
 <hr>
