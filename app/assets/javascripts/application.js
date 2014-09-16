@@ -17,5 +17,6 @@
 //= require bootstrap
 //= require html5shiv
 //= require respond.min
-//= require typeahead.bundle
+//= require jquery.dataTables
+//= require dataTables.bootstrap
 //= require_tree .

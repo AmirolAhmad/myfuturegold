@@ -3,7 +3,7 @@
 </div>
 
 <div class="table-responsive">
-	<table class="table table-bordered table-hover">
+	<table class="table table-bordered table-hover" id="clientDetails">
 		<thead>
 			<tr>
 				<th>Client Name</th>
@@ -29,53 +29,10 @@
 	</table>
 </div>
 
-<div id="clientSearch">
-	<%= form_tag(admin_user_path(@users), method: "get") do %>
-	  <%= text_field_tag(:q, params[:search], class: 'typeahead', placeholder: 'Search') %>
-	  <input type="submit">
-	<% end %>
-</div>
-
 <script type="text/javascript">
-var substringMatcher = function(strs) {
-  return function findMatches(q, cb) {
-    var matches, substrRegex;
-    matches = [];
-    substrRegex = new RegExp(q, 'i');
- 
-    $.each(strs, function(i, str) {
-      if (substrRegex.test(str)) {
-        matches.push({ value: str });
-      }
-    });
- 
-    cb(matches);
-  };
-};
- 
-var states = [
-	'<% @users.each do |user| %>',
-	'<tr><td>',
-	'<%= user.email %>',
-	'</td></tr>',
-	'<% end %>'
-
-];
- 
-$('#clientSearch .typeahead').typeahead({
-  hint: true,
-  highlight: true,
-  minLength: 1
-},
-{
-  name: 'states',
-  displayKey: 'value',
-  source: substringMatcher(states),
-  templates: {
-    empty: [
-      'Unable to find any Client Email'
-    ]}
-});
+$(document).ready( function () {
+    $('#clientDetails').DataTable();
+} );
 </script>
 
 
