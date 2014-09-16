@@ -17,4 +17,5 @@
 //= require bootstrap
 //= require html5shiv
 //= require respond.min
+//= require typeahead.bundle
 //= require_tree .
