@@ -7,6 +7,7 @@
 		<thead>
 			<tr>
 				<th>Client Name</th>
+				<th>IC Number</th>
 				<th>Client Email</th>
 				<th class="col-md-2">Action</th>
 			</tr>
@@ -15,6 +16,7 @@
 			<% @users.each do |user| %>
 			<tr>
 				<td><%= user.profile.try(:nama_penuh) %></td>
+				<td><%= user.profile.try(:ic_number) %></td>
 				<td><%= user.email %></td>
 				<td>
 					<div class="btn-group btn-group-xs">
