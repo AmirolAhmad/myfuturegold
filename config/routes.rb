@@ -18,6 +18,6 @@ Rails.application.routes.draw do
     resources :orders
   end
 
-  resource :account, only: [:show]
+  resource :account, only: [:show, :edit, :update]
   
 end
