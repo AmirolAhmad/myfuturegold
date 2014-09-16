@@ -1,6 +1,10 @@
 class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
+  extend FriendlyId #https://github.com/norman/friendly_id
+
+  friendly_id :login, use: [:slugged, :finders, :history]
+
   has_one :profile, dependent: :destroy
 	accepts_nested_attributes_for :profile, update_only: true, allow_destroy: true
 
