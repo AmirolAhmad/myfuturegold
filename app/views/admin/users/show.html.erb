@@ -1,1 +1,1 @@
-<%= @user.email %> | <%= @user.profile.nama_penuh %> | <%= @user.profile.tel_num %>
+<%= @user.email %> | <%= @user.profile.try(:nama_penuh) %> | <%= @user.profile.try(:tel_num) %>
