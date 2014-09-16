@@ -7,7 +7,7 @@ class Admin::UsersController < ApplicationController
     @users = User.all.order("created_at DESC")
     respond_to do |format|
       format.html { @users }
-      format.json { render json: @users }
+      format.json { render json: @users.to_json(include: [:profile]) }
     end
   end
 
@@ -22,7 +22,7 @@ class Admin::UsersController < ApplicationController
   def show
     respond_to do |format|
       format.html { @user }
-      format.json { render json: @user }
+      format.json { render json: @user.to_json(include: [:profile]) }
     end
   end
 

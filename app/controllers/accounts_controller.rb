@@ -5,6 +5,11 @@ class AccountsController < ApplicationController
 	def show
 		@users = current_user # grab user details from current User DB Table
 		@user = @users.profile # grab user profile from Profile DB Table
+
+    respond_to do |format|
+      format.html { @user }
+      format.json { render json: @user.to_json(include: [:user]) }
+    end
 	end
 
 	def edit
