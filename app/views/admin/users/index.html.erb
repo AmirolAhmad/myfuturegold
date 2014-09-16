@@ -8,7 +8,6 @@
 			<tr>
 				<th>Client Name</th>
 				<th>Client Email</th>
-				<th>Status</th>
 				<th class="col-md-2">Action</th>
 			</tr>
 		</thead>
@@ -17,13 +16,6 @@
 			<tr>
 				<td><%= user.profile.try(:nama_penuh) %></td>
 				<td><%= user.email %></td>
-				<td>
-					<% if user.deleted_at %>
-					<span class="label label-danger">Inactive</span>
-					<% else %>
-					<span class="label label-primary">Active</span>
-					<% end %>
-				</td>
 				<td>
 					<div class="btn-group btn-group-xs">
 					<%= link_to 'View', admin_user_path(user), :class => "btn btn-primary" %>

@@ -4,7 +4,7 @@ class Admin::UsersController < ApplicationController
   before_filter :require_admin
 
   def index
-    @users = User.all.with_deleted.order("created_at DESC")
+    @users = User.all.order("created_at DESC")
     respond_to do |format|
       format.html { @users }
       format.json { render json: @users.to_json(include: [:profile]) }
@@ -44,7 +44,7 @@ class Admin::UsersController < ApplicationController
   private
 
   def set_user
-    @user = User.with_deleted.find(params[:id])
+    @user = User.find(params[:id])
   end
 
   def user_params
