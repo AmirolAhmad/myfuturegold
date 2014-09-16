@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
+  acts_as_paranoid
+  
   extend FriendlyId #https://github.com/norman/friendly_id
 
   friendly_id :login, use: [:slugged, :finders, :history]
