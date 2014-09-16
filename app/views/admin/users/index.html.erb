@@ -18,6 +18,7 @@
 				<td><%= user.email %></td>
 				<td>
 					<div class="btn-group btn-group-xs">
+					<%= link_to 'View', admin_user_path(user), :class => "btn btn-primary" %>
 					<%= link_to 'Edit', edit_admin_user_path(user), :class => "btn btn-warning" %>
 					<%= link_to 'Delete', admin_user_path(user), method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %>
 					</div>
@@ -29,8 +30,9 @@
 </div>
 
 <div id="clientSearch">
-	<%= form_tag(edit_admin_user_path(@users), method: "get") do %>
-	<input class="typeahead" type="text" placeholder="Search by Client Email">
+	<%= form_tag(admin_user_path(@users), method: "get") do %>
+	  <%= text_field_tag(:q, params[:search], class: 'typeahead', placeholder: 'Search') %>
+	  <input type="submit">
 	<% end %>
 </div>
 

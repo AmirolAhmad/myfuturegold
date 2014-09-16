@@ -1,10 +1,10 @@
 class Admin::UsersController < ApplicationController
-  before_filter :set_user, only: [:edit, :update, :destroy]
+  before_filter :set_user, only: [:show, :edit, :update, :destroy]
   before_filter :store_location, only: [:index]
   before_filter :require_admin
 
   def index
-  	@users = User.all.order("created_at DESC")
+    @users = User.all.order("created_at DESC")
     respond_to do |format|
       format.html { @users }
       format.json { render json: @users }
@@ -16,6 +16,13 @@ class Admin::UsersController < ApplicationController
       render
     else
       redirect_to admin_users_path, notice: "User profile not found."
+    end
+  end
+
+  def show
+    respond_to do |format|
+      format.html { @user }
+      format.json { render json: @user }
     end
   end
 
