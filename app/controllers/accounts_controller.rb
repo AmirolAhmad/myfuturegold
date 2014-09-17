@@ -34,7 +34,4 @@ class AccountsController < ApplicationController
     @user = current_user
   end
 
-  def user_params
-    params.require(:user).permit(:id, :login, :email, profile_attributes: [:id, :user_id, :nama_penuh, :ic_number, :tel_num, :facebook_id, :nama_waris, :hub_waris, :tel_num_waris, :nama_bank, :nama_akaun, :no_akaun])
-  end
 end
