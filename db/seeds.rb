@@ -12,6 +12,41 @@ Status.find_or_create_by(status_name: "Pending")
 Status.find_or_create_by(status_name: "Buyback")
 Status.find_or_create_by(status_name: "Auto Restock")
 
+Package.find_or_create_by(
+	package_name: "KJ01",
+	selling_price: "170",
+	buying_price: "184"
+)
+Package.find_or_create_by(
+	package_name: "KJ02",
+	selling_price: "200",
+	buying_price: "220"
+)
+Package.find_or_create_by(
+	package_name: "KJ03",
+	price: "1230",
+	term_contract: "11"
+)
+Package.find_or_create_by(
+	package_name: "KJ04",
+	price: "5450",
+	term_contract: "5"
+)
+Package.find_or_create_by(
+	package_name: "KJ DELUXE",
+	price: "3000",
+	term_contract: "12"
+)
+
+Discount.find_or_create_by(
+	discount_date: "17",
+	discount_price: "10"
+)
+Discount.find_or_create_by(
+	discount_date: "28",
+	discount_price: "10"
+)
+
 user = User.create! :login => 'administrator',
                     :email => 'admin@demo.com',
                     :password => 'password',
