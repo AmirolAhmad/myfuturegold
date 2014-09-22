@@ -10,16 +10,40 @@
 			<tr>
 				<th>Gram Quantity</th>
 				<th>Price</th>
-				<th>Status</th>
+				<th class="col-md-1">Status</th>
 				<th class="col-md-2">Action</th>
 			</tr>
 		</thead>
 		<tbody>
 			<% @orders.each do |order| %>
 			<tr>
-				<td><%= order.try(:gram_quantity) %></td>
-				<td><%= order.try(:price) %></td>
-				<td><%= order.status.try(:status_name) %></td>
+				<td><%= order.try(:gram_quantity) %>/gram</td>
+				<td>RM<%= order.try(:price) %></td>
+
+				<td>
+					<% if order.status.try(:status_name) == "Active" %>
+						<span class="label label-primary">
+							<%= order.status.try(:status_name) %>
+						</span>
+					<% elsif order.status.try(:status_name) == "Inactive" %>
+						<span class="label label-danger">
+							<%= order.status.try(:status_name) %>
+						</span>
+					<% elsif order.status.try(:status_name) == "Pending" %>
+						<span class="label label-warning">
+							<%= order.status.try(:status_name) %>
+						</span>
+					<% elsif order.status.try(:status_name) == "Buyback" %>
+						<span class="label label-info">
+							<%= order.status.try(:status_name) %>
+						</span>
+					<% else %>
+						<span class="label label-default">
+							<%= order.status.try(:status_name) %>
+						</span>
+					<% end %>
+				</td>
+
 				<td>
 					<div class="btn-group btn-group-xs">
 					<%= link_to 'View', admin_user_order_path(id:order.id), :class => "btn btn-primary" %>
