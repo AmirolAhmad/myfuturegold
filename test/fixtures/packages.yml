@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  package_name: MyString
+  selling_price: MyString
+  buying_price: MyString
+  price: MyString
+  term_contract: MyString
+
+two:
+  package_name: MyString
+  selling_price: MyString
+  buying_price: MyString
+  price: MyString
+  term_contract: MyString

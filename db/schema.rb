@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140916155546) do
+ActiveRecord::Schema.define(version: 20140922143551) do
+
+  create_table "discounts", force: true do |t|
+    t.datetime "discount_date"
+    t.string   "discount_price"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "friendly_id_slugs", force: true do |t|
     t.string   "slug",                      null: false
@@ -25,6 +32,30 @@ ActiveRecord::Schema.define(version: 20140916155546) do
   add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
+
+  create_table "orders", force: true do |t|
+    t.integer  "user_id",       null: false
+    t.integer  "package_id",    null: false
+    t.integer  "discount_id",   null: false
+    t.integer  "status_id",     null: false
+    t.string   "gram_quantity"
+    t.string   "price"
+    t.string   "total_price"
+    t.string   "ref_number"
+    t.datetime "ordered_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "packages", force: true do |t|
+    t.string   "package_name"
+    t.string   "selling_price"
+    t.string   "buying_price"
+    t.string   "price"
+    t.string   "term_contract"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "profiles", force: true do |t|
     t.string   "nama_penuh"
@@ -40,6 +71,12 @@ ActiveRecord::Schema.define(version: 20140916155546) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.string   "ic_number"
+  end
+
+  create_table "statuses", force: true do |t|
+    t.string   "status_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|
