@@ -1,1 +1,3 @@
 <%= @user.email %> | <%= @user.profile.try(:nama_penuh) %> | <%= @user.profile.try(:tel_num) %>
+
+<%= link_to "View All Order", admin_user_orders_path(user_id:@user.login), :class => 'btn btn-primary btn-sm' %>

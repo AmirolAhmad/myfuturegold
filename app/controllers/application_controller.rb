@@ -13,6 +13,22 @@ class ApplicationController < ActionController::Base
   end
 
   def user_params
-    params.require(:user).permit(:id, :login, :email, profile_attributes: [:id, :user_id, :nama_penuh, :ic_number, :tel_num, :facebook_id, :nama_waris, :hub_waris, :tel_num_waris, :nama_bank, :nama_akaun, :no_akaun])
+    params.require(:user).permit(:id, :login, :email,
+      profile_attributes: [
+        :id, :user_id, :nama_penuh, :ic_number, :tel_num, :facebook_id, :nama_waris, :hub_waris, :tel_num_waris, :nama_bank, :nama_akaun, :no_akaun
+      ],
+      order_attributes: [
+        :id, :user_id, :package_id, :discount_id, :status_id, :gram_quantity, :price, :total_price, :ref_number,
+        statuses_attributes: [
+          :id, :status_name
+        ],
+        packages_attributes: [
+          :id, :package_name, :selling_price, :buying_price, :price, :term_contract
+        ],
+        discounts_attributes: [
+          :id, :discount_date, :discount_price
+        ]
+      ]
+      )
   end
 end

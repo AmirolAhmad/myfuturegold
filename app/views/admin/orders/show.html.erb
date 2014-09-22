@@ -1,0 +1,6 @@
+admin/orders/show.html.erb
+
+<p>Client Name: <%= @order.user.profile.nama_penuh %></p>
+<p>Gram Quantity: <%= @order.gram_quantity %></p>
+<p>Price: <%= @order.price %></p>
+<p>Status: <%= @order.status.status_name %></p>

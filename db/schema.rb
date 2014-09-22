@@ -14,7 +14,7 @@
 ActiveRecord::Schema.define(version: 20140922143551) do
 
   create_table "discounts", force: true do |t|
-    t.datetime "discount_date"
+    t.string   "discount_date"
     t.string   "discount_price"
     t.datetime "created_at"
     t.datetime "updated_at"

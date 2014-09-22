@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   friendly_id :login, use: [:slugged, :finders, :history]
 
   has_one :profile, dependent: :destroy
+  has_many :orders, dependent: :destroy
 	accepts_nested_attributes_for :profile, update_only: true, allow_destroy: true
 
   validates :login, :uniqueness => { :case_sensitive => false }

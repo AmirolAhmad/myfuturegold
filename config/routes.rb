@@ -14,7 +14,9 @@ Rails.application.routes.draw do
   namespace :admin, path: '/master' do
     get "/" => "dashboards#index", as: 'master'
     resources :dashboards, only: [:index]
-    resources :users
+    resources :users do
+      resources :orders
+    end
     resources :orders
   end
 
