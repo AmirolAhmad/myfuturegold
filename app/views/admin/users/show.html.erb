@@ -5,9 +5,7 @@
 <div class="row">
 	<div class="col-md-4">
 		<div class="list-group">
-		  <a href="#" class="list-group-item active">
-		    Client Details
-		  </a>
+			<%= link_to "Client Details", admin_user_path, :class => 'list-group-item active' %>
 		  <%= link_to "Order Details", admin_user_orders_path(user_id:@user.login), :class => 'list-group-item' %>
 		  <a href="#" class="list-group-item">Morbi leo risus</a>
 		  <a href="#" class="list-group-item">Porta ac consectetur ac</a>
