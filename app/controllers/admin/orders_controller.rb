@@ -1,5 +1,5 @@
 class Admin::OrdersController < ApplicationController
-  before_filter :set_user, only: [:show]
+  before_filter :set_order, only: [:show]
 	before_filter :store_location, only: [:index]
   before_filter :require_admin
   
@@ -22,7 +22,7 @@ class Admin::OrdersController < ApplicationController
 
   private
 
-  def set_user
+  def set_order
     @order = Order.find(params[:id])
   end
 end
