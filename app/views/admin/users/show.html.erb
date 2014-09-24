@@ -1,3 +1,130 @@
-<%= @user.email %> | <%= @user.profile.try(:nama_penuh) %> | <%= @user.profile.try(:tel_num) %>
+<div class="page-header">
+  <h1>Client Details <small>Manage your client details here.</small></h1>
+</div>
 
-<%= link_to "View All Order", admin_user_orders_path(user_id:@user.login), :class => 'btn btn-primary btn-sm' %>
+<div class="row">
+	<div class="col-md-4">
+		<div class="list-group">
+		  <a href="#" class="list-group-item active">
+		    Client Details
+		  </a>
+		  <%= link_to "Order Details", admin_user_orders_path(user_id:@user.login), :class => 'list-group-item' %>
+		  <a href="#" class="list-group-item">Morbi leo risus</a>
+		  <a href="#" class="list-group-item">Porta ac consectetur ac</a>
+		  <a href="#" class="list-group-item">Vestibulum at eros</a>
+		</div>
+	</div>
+	<div class="col-md-8">
+		<!-- Client Details -->
+		<div class="panel panel-default">
+		  <div class="panel-heading">
+		    <h3 class="panel-title">Client Details <%= link_to 'Edit', edit_admin_user_path, :class => "pull-right btn btn-primary btn-xs", :style => "color:#ffffff;" %></h3>
+		  </div>
+		  <div class="panel-body">
+		
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+					    <label>Email address</label>
+					    <p><%= @user.email %></p>
+					  </div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+					    <label>Full Name</label>
+					    <p><%= @user.profile.try(:nama_penuh).empty? ? "N/A" : @user.profile.try(:nama_penuh) %></p>
+					  </div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+					    <label>IC Number</label>
+					    <p><%= @user.profile.try(:ic_number).empty? ? "N/A" : @user.profile.try(:ic_number) %></p>
+					  </div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+					    <label>Phone Number</label>
+					    <p><%= @user.profile.try(:tel_num).empty? ? "N/A" : @user.profile.try(:tel_num) %></p>
+					  </div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+					    <label>Facebook ID</label>
+					    <p><%= @user.profile.try(:facebook_id).empty? ? "N/A" : @user.profile.try(:facebook_id) %> <%= link_to "Open", "https://www.facebook.com/" + @user.profile.try(:facebook_id), :target => "_blank" %></p>
+					  </div>
+					</div>
+				</div>
+
+		  </div>
+		</div>
+		<!-- Parent Details -->
+		<div class="panel panel-default">
+		  <div class="panel-heading">
+		    <h3 class="panel-title">Parents Details</h3>
+		  </div>
+		  <div class="panel-body">
+		
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+					    <label>Nama Waris</label>
+					    <p><%= @user.profile.try(:nama_waris).empty? ? "N/A" : @user.profile.try(:nama_waris) %></p>
+					  </div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+					    <label>Hubungan Waris</label>
+					    <p><%= @user.profile.try(:hub_waris).empty? ? "N/A" : @user.profile.try(:hub_waris) %></p>
+					  </div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+					    <label>Phone Number Waris</label>
+					    <p><%= @user.profile.try(:tel_num_waris).empty? ? "N/A" : @user.profile.try(:tel_num_waris) %></p>
+					  </div>
+					</div>
+				</div>
+
+		  </div>
+		</div>
+		<!-- Bank Details -->
+		<div class="panel panel-default">
+		  <div class="panel-heading">
+		    <h3 class="panel-title">Bank Details</h3>
+		  </div>
+		  <div class="panel-body">
+		
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+					    <label>Bank Name</label>
+					    <p><%= @user.profile.try(:nama_bank).empty? ? "N/A" : @user.profile.try(:nama_bank) %></p>
+					  </div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+					    <label>Account Name</label>
+					    <p><%= @user.profile.try(:nama_akaun).empty? ? "N/A" : @user.profile.try(:nama_akaun) %></p>
+					  </div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+					    <label>Account Number</label>
+					    <p><%= @user.profile.try(:no_akaun).empty? ? "N/A" : @user.profile.try(:no_akaun) %></p>
+					  </div>
+					</div>
+				</div>
+
+		  </div>
+		</div>
+
+	</div>
+</div>
