@@ -4,7 +4,9 @@ class Admin::OrdersController < ApplicationController
   before_filter :require_admin
   
   def index
-    @orders = Order.all.order("created_at DESC")
+    @user = User.find(params[:user_id])
+    @orders = Order.where(user_id: @user).to_a
+    #@orders = Order.all.order("created_at DESC")
     respond_to do |format|
       format.html { @orders }
       format.json { render json: @orders.to_json(include: [:status, :package, :discount]) }
