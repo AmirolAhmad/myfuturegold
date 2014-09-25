@@ -1,6 +1,6 @@
 class Admin::OrdersController < ApplicationController
-  before_filter :set_user, only: [:index, :show, :edit, :update]
-  before_filter :set_order, only: [:show, :edit, :update]
+  before_filter :set_user, only: [:index, :show, :edit, :update, :destroy]
+  before_filter :set_order, only: [:show, :edit, :update, :destroy]
 	before_filter :store_location, only: [:index]
   before_filter :require_admin
   
@@ -41,6 +41,11 @@ class Admin::OrdersController < ApplicationController
     else
       render 'edit'
     end
+  end
+
+  def destroy
+    @order.destroy
+    redirect_to admin_user_orders_path, notice: "Order has been deleted."
   end
 
   private
