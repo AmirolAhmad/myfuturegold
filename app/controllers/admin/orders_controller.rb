@@ -25,11 +25,12 @@ class Admin::OrdersController < ApplicationController
   end
 
   def new
-    @order = Order.new
+    @order ||= Order.new
+    render
   end
 
   def create
-    @order = Order.new(order_params, user: @user)
+    @order = @user.orders.new(order_params)
     if @order.save
       redirect_to admin_user_orders_path, notice: "New order has been created."
 

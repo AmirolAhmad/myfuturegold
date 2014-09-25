@@ -23,6 +23,15 @@ class ApplicationController < ActionController::Base
     params.require(:order).permit(:id, :user_id, :package_id, :discount_id, :status_id, :status_name, :gram_quantity, :price, :total_price, :ref_number,
       status_attributes: [
         :id, :status_name
+      ],
+      discount_attributes: [
+        :id, :discount_date, :discount_price
+      ],
+      package_attributes: [
+        :id, :package_name, :selling_price, :buying_price, :price, :term_contract
+      ],
+      user_attributes: [
+        :id, :login, :email
       ])
   end
 end

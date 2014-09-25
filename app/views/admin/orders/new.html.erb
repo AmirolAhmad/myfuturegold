@@ -25,11 +25,6 @@
   <%= f.text_field :price, :class => "form-control" %>
 </div>
 
-<div class="form-group" style="display:none;">
-  <%= f.label :user_id, "User" %>
-  <%= f.collection_select(:user_id, User.all, :id, :login, {:selected => User.find(params[:user_id]).orders.map(&:user_id)}, {:class => "form-control" }) %>
-</div>
-
 <div class="form-group">
   <%= f.label :discount_id, "Discount" %>
   <%= f.collection_select(:discount_id, Discount.all, :id, :discount_date, {}, {:class => "form-control"}) %>
