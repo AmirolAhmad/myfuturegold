@@ -3,86 +3,130 @@
 </div>
 
 <div class="row">
-  <div class="col-md-6 col-md-offset-3">
-
-    <%= form_for :user, url: account_path(@user), method: :patch do |f| %>
-
-      <% @user.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-
-      <h4 class="text-center">Client Profile</h4>
-
-    	<div class="form-group">
-        <%= f.label :login, "Username" %><br>
-        <%= f.text_field :login, :class => "form-control" %>
-      </div>
-
-      <%= f.fields_for :profile_attributes, @user.profile do |profile| %>
-
-      <div class="form-group">
-    	  <%= profile.label :nama_penuh, "Full Name" %><br>
-    	  <%= profile.text_field :nama_penuh, :class => "form-control" %>
-      </div>
-
-      <div class="form-group">
-        <%= profile.label :ic_number, "IC Number" %><br>
-        <%= profile.text_field :ic_number, :class => "form-control" %>
-      </div>
-
-      <div class="form-group">
-        <%= profile.label :tel_num, "Phone Number" %><br>
-        <%= profile.text_field :tel_num, :class => "form-control" %>
-      </div>
-
-      <div class="form-group">
-        <%= profile.label :facebook_id, "Facebook ID" %><br>
-        <%= profile.text_field :facebook_id, :class => "form-control" %>
-      </div>
-
-      <h4 class="text-center">Profile Waris</h4>
-
-      <div class="form-group">
-        <%= profile.label :nama_waris, "Nama Waris" %><br>
-        <%= profile.text_field :nama_waris, :class => "form-control" %>
-      </div>
-
-      <div class="form-group">
-        <%= profile.label :hub_waris, "Hubungan Waris" %><br>
-        <%= profile.text_field :hub_waris, :class => "form-control" %>
-      </div>
-
-      <div class="form-group">
-        <%= profile.label :tel_num_waris, "Nombor Telefon Waris" %><br>
-        <%= profile.text_field :tel_num_waris, :class => "form-control" %>
-      </div>
-
-      <h4 class="text-center">Account Bank Details</h4>
-
-      <div class="form-group">
-        <%= profile.label :nama_bank, "Bank Name" %><br>
-        <%= profile.text_field :nama_bank, :class => "form-control" %>
-      </div>
-
-      <div class="form-group">
-        <%= profile.label :nama_akaun, "Bank Account Name" %><br>
-        <%= profile.text_field :nama_akaun, :class => "form-control" %>
-      </div>
-
-      <div class="form-group">
-        <%= profile.label :no_akaun, "Bank Account Number" %><br>
-        <%= profile.text_field :no_akaun, :class => "form-control" %>
-      </div>
-    	
-      <% end %>
-
-      <div class="form-group">
-        <%= f.submit "Save", :class => "btn btn-primary" %>
-        <%= link_to 'Back', admin_users_path, :class => "btn btn-link" %>
-      </div>
-
-    <% end %>
-
+  <div class="col-md-4">
+    <div class="list-group">
+      <%= link_to "Account Details", edit_user_registration_path, :class => 'list-group-item' %>
+      <%= link_to "Client Details", account_path, :class => 'list-group-item active' %>
+      <a href="#" class="list-group-item">Order Details</a>
+      <a href="#" class="list-group-item">Porta ac consectetur ac</a>
+      <a href="#" class="list-group-item">Vestibulum at eros</a>
+    </div>
   </div>
-</div>
+  <%= form_for :user, url: account_path(@user), method: :patch do |f| %>
 
+  <div class="col-md-8">
+    <!-- Client Details -->
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Client Details</h3>
+      </div>
+      <div class="panel-body">
+        <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+
+        <div class="row">
+          <%= f.fields_for :profile_attributes, @user.profile do |profile| %>
+          <div class="col-md-6">
+            <div class="form-group">
+              <%= profile.label :nama_penuh, "Full Name" %>
+              <%= profile.text_field :nama_penuh, :class => "form-control" %>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <%= profile.label :ic_number, "IC Number" %>
+              <%= profile.text_field :ic_number, :class => "form-control" %>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <%= profile.label :tel_num, "Phone Number" %>
+              <%= profile.text_field :tel_num, :class => "form-control" %>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <%= profile.label :facebook_id, "Facebook ID" %>
+              <%= profile.text_field :facebook_id, :class => "form-control" %>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!-- Waris Details -->
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Waris Details</h3>
+      </div>
+      <div class="panel-body">
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <%= profile.label :nama_waris, "Nama Waris" %>
+              <%= profile.text_field :nama_waris, :class => "form-control" %>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <%= profile.label :hub_waris, "Hubungan Waris" %>
+              <%= profile.text_field :hub_waris, :class => "form-control" %>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <%= profile.label :tel_num_waris, "Nombor Telefon Waris" %>
+              <%= profile.text_field :tel_num_waris, :class => "form-control" %>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!-- Account Bank Details -->
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Account Bank Details</h3>
+      </div>
+      <div class="panel-body">
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <%= profile.label :nama_bank, "Bank Name" %>
+              <%= profile.text_field :nama_bank, :class => "form-control" %>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <%= profile.label :nama_akaun, "Bank Account Name" %>
+              <%= profile.text_field :nama_akaun, :class => "form-control" %>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <%= profile.label :no_akaun, "Bank Account Number" %>
+              <%= profile.text_field :no_akaun, :class => "form-control" %>
+            </div>
+          </div>
+          <% end %>
+        </div>
+
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.submit "Save", :class => "btn btn-primary" %>
+      <%= link_to 'Back', account_path, :class => "btn btn-link" %>
+    </div>
+  </div>
+
+  <% end %>
+</div>
