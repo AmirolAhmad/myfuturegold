@@ -33,8 +33,14 @@ class Admin::OrdersController < ApplicationController
     if @order.save
       redirect_to admin_user_orders_path, notice: "Ref Number has been created."
 
+      # total price
       @total_price = @order.price.to_i * @order.gram_quantity.to_i
       @order.update_attributes(:total_price => @total_price)
+
+      # reference number
+      random = [('A'..'Z'), ('1'..'9')].map { |i| i.to_a }.flatten
+      ref_number = (0...10).map { random[rand(random.length)] }.join
+      @order.update_attributes(:ref_number => ref_number)
     else
       render 'new'
     end
