@@ -8,8 +8,9 @@
 	<table class="table table-bordered table-hover" id="clientOrders">
 		<thead>
 			<tr>
-				<th>Gram Quantity</th>
-				<th>Price</th>
+				<th>Reference Number</th>
+				<th>Package Name</th>
+				<th>Total Price</th>
 				<th class="col-md-1">Status</th>
 				<th class="col-md-2">Action</th>
 			</tr>
@@ -17,8 +18,9 @@
 		<tbody>
 			<% @orders.each do |order| %>
 			<tr>
-				<td><%= order.try(:gram_quantity) %>/gram</td>
-				<td>RM<%= order.try(:price) %></td>
+				<td><%= order.try(:ref_number) %></td>
+				<td><%= order.package.try(:package_name) %></td>
+				<td>RM<%= order.try(:total_price) %></td>
 
 				<td>
 					<% if order.status.try(:status_name) == "Active" %>
