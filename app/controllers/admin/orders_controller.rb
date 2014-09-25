@@ -1,6 +1,6 @@
 class Admin::OrdersController < ApplicationController
-  before_filter :set_user, only: [:index, :show]
-  before_filter :set_order, only: [:show]
+  before_filter :set_user, only: [:index, :show, :edit, :update]
+  before_filter :set_order, only: [:show, :edit, :update]
 	before_filter :store_location, only: [:index]
   before_filter :require_admin
   
@@ -21,6 +21,22 @@ class Admin::OrdersController < ApplicationController
     respond_to do |format|
       format.html { @order }
       format.json { render json: @order.to_json(include: [:status, :package, :discount]) }
+    end
+  end
+
+  def edit
+    if @order
+      render
+    else
+      redirect_to admin_user_orders_path, notice: "Order ID not found."
+    end
+  end
+
+  def update
+    if @order.update(order_params)
+      redirect_to admin_user_orders_path, notice: "#{@user.profile.nama_penuh} account has been updated."
+    else
+      render 'edit'
     end
   end
 
