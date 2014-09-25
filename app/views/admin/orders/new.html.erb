@@ -27,7 +27,7 @@
 
 <div class="form-group" style="display:none;">
   <%= f.label :user_id, "User" %>
-  <%= f.collection_select(:user_id, User.all, :id, :login, {}, {:class => "form-control" }) %>
+  <%= f.collection_select(:user_id, User.all, :id, :login, {:selected => User.find(params[:user_id]).orders.map(&:user_id)}, {:class => "form-control" }) %>
 </div>
 
 <div class="form-group">
@@ -42,7 +42,7 @@
 
 <div class="form-group">
 	<%= f.label :status_id, "Status" %>
-	<%= f.collection_select(:status_id, Status.all, :id, :status_name, {}, {:class => "form-control"}) %>
+	<%= f.collection_select(:status_id, Status.all, :id, :status_name, {:selected => 3}, {:class => "form-control"}) %>
 </div>
 
 <div class="form-group">
