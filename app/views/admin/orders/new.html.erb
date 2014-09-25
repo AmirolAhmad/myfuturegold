@@ -1,0 +1,53 @@
+<h5>admin/orders/new.html.erb</h5>
+
+<%= form_for :order, url: admin_user_orders_path, method: :post do |f| %>
+
+<% if @order.errors.any? %>
+<div class="alert alert-danger alert-dismissable">
+  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  <strong><%= pluralize(@order.errors.count, "error") %> prohibited
+    this order from being saved:</strong>
+    <ul>
+      <% @order.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+      <% end %>
+    </ul>
+</div>
+<% end %>
+
+<div class="form-group">
+  <%= f.label :gram_quantity, "Quantity per Gram" %>
+  <%= f.text_field :gram_quantity, :class => "form-control" %>
+</div>
+
+<div class="form-group">
+  <%= f.label :price, "Price" %><br>
+  <%= f.text_field :price, :class => "form-control" %>
+</div>
+
+<div class="form-group" style="display:none;">
+  <%= f.label :user_id, "User" %>
+  <%= f.collection_select(:user_id, User.all, :id, :login, {}, {:class => "form-control" }) %>
+</div>
+
+<div class="form-group">
+  <%= f.label :discount_id, "Discount" %>
+  <%= f.collection_select(:discount_id, Discount.all, :id, :discount_date, {}, {:class => "form-control"}) %>
+</div>
+
+<div class="form-group">
+  <%= f.label :package_id, "Package" %>
+  <%= f.collection_select(:package_id, Package.all, :id, :package_name, {}, {:class => "form-control"}) %>
+</div>
+
+<div class="form-group">
+	<%= f.label :status_id, "Status" %>
+	<%= f.collection_select(:status_id, Status.all, :id, :status_name, {}, {:class => "form-control"}) %>
+</div>
+
+<div class="form-group">
+  <%= f.submit "Save", :class => "btn btn-primary" %>
+  <%= link_to 'Back', admin_user_orders_path, :class => "btn btn-link" %>
+</div>
+
+<% end %>
