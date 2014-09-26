@@ -25,26 +25,26 @@ Package.find_or_create_by(
 Package.find_or_create_by(
 	package_name: "KJ03",
 	price: "1230",
-	term_contract: "11"
+	term_contract: "11 month"
 )
 Package.find_or_create_by(
 	package_name: "KJ04",
 	price: "5450",
-	term_contract: "5"
+	term_contract: "5 month"
 )
 Package.find_or_create_by(
 	package_name: "KJ DELUXE",
 	price: "3000",
-	term_contract: "12"
+	term_contract: "12 month"
 )
 
 Discount.find_or_create_by(
-	discount_date: "17",
-	discount_price: "10"
+	discount_date: "17th every month",
+	discount_price: "100"
 )
 Discount.find_or_create_by(
-	discount_date: "28",
-	discount_price: "10"
+	discount_date: "28th every month",
+	discount_price: "100"
 )
 
 user = User.create! :login => 'administrator',
