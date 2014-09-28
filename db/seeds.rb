@@ -12,9 +12,6 @@ Status.find_or_create_by(status_name: "Pending")
 Status.find_or_create_by(status_name: "Buyback")
 Status.find_or_create_by(status_name: "Auto Restock")
 
-PaymentStatus.find_or_create_by(payment_status: "Paid")
-PaymentStatus.find_or_create_by(payment_status: "Unpaid")
-
 Package.find_or_create_by(
 	package_name: "KJ01",
 	selling_price: "170",

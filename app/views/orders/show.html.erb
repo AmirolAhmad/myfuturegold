@@ -98,56 +98,6 @@
         </div>
 
       </div>
-    </div>
-
-    <!-- Payment Details -->
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Payment Details</h3>
-      </div>
-      <div class="panel-body">
-    
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-              <label>Payment Receipt Number</label>
-              <p><%= @order.try(:payment_receipt_number).blank? ? "N/A" : @order.try(:payment_receipt_number) %></p>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="form-group">
-              <label>Payment Method</label>
-              <p><%= @order.try(:payment_method).blank? ? "N/A" : @order.try(:payment_method) %></p>
-            </div>
-          </div>
-        </div>
-    
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-              <label>Payment Date</label>
-              <p><%= @order.try(:payment_date).blank? ? "N/A" : @order.try(:payment_date) %></p>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="form-group">
-              <label>Payment Status</label>
-              <p>
-                <% if @order.payment_status.payment_status == "Paid" %>
-                <span class="label label-primary">
-                  <%= @order.payment_status.payment_status %>
-                </span>
-                <% else @order.payment_status.payment_status == "Unpaid" %>
-                <span class="label label-danger">
-                  <%= @order.payment_status.payment_status %>
-                </span>
-                <% end %>
-              </p>
-            </div>
-          </div>
-        </div>
-
-      </div>
       <div class="panel-footer">
         <%= link_to 'Back', orders_path, :class => "btn btn-default" %>
       </div>
