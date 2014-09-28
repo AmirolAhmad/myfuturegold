@@ -1,62 +1,85 @@
-<p>Find me in app/views/admin/orders/index.html.erb</p>
-
 <div class="page-header">
-  <h1>Order List <small>Manage your client order details here. <%= link_to "New Order", new_admin_user_order_path, :class => 'btn btn-primary btn-sm' %></small></h1>
+  <h1>Client Details <small>Manage your client details here.</small></h1>
 </div>
 
-<div class="table-responsive">
-	<table class="table table-bordered table-hover" id="clientOrders">
-		<thead>
-			<tr>
-				<th>Reference Number</th>
-				<th>Package Name</th>
-				<th>Total Price</th>
-				<th class="col-md-1">Status</th>
-				<th class="col-md-2">Action</th>
-			</tr>
-		</thead>
-		<tbody>
-			<% @orders.each do |order| %>
-			<tr>
-				<td><%= order.try(:ref_number) %></td>
-				<td><%= order.package.try(:package_name) %></td>
-				<td>RM<%= order.try(:total_price) %></td>
+<div class="row">
+	<div class="col-md-4">
+		<div class="list-group">
+			<%= link_to "Client Details", admin_user_path(@user.login), :class => 'list-group-item' %>
+		  <%= link_to "Order Details", admin_user_orders_path(user_id:@user.login), :class => 'list-group-item active' %>
+		  <a href="#" class="list-group-item">Morbi leo risus</a>
+		  <a href="#" class="list-group-item">Porta ac consectetur ac</a>
+		  <a href="#" class="list-group-item">Vestibulum at eros</a>
+		</div>
+	</div>
+	<div class="col-md-8">
+		<!-- Client Details -->
+		<div class="panel panel-default">
+		  <div class="panel-heading">
+		    <h3 class="panel-title">Order List <%= link_to 'New Order', new_admin_user_order_path, :class => "pull-right btn btn-primary btn-xs", :style => "color:#ffffff;" %></h3>
+		  </div>
+		  <div class="panel-body">
+		
+				<div class="table-responsive">
+					<table class="table table-bordered table-hover" id="clientOrders">
+						<thead>
+							<tr>
+								<th class="col-md-2">Reference Number</th>
+								<th class="col-md-2">Package Name</th>
+								<th class="col-md-1">Status</th>
+								<th class="col-md-2">Action</th>
+							</tr>
+						</thead>
+						<tbody>
+							<% @orders.each do |order| %>
+							<tr>
+								<td><%= order.try(:ref_number) %></td>
+								<td><%= order.package.try(:package_name) %></td>
 
-				<td>
-					<% if order.status.try(:status_name) == "Active" %>
-						<span class="label label-primary">
-							<%= order.status.try(:status_name) %>
-						</span>
-					<% elsif order.status.try(:status_name) == "Inactive" %>
-						<span class="label label-danger">
-							<%= order.status.try(:status_name) %>
-						</span>
-					<% elsif order.status.try(:status_name) == "Pending" %>
-						<span class="label label-warning">
-							<%= order.status.try(:status_name) %>
-						</span>
-					<% elsif order.status.try(:status_name) == "Buyback" %>
-						<span class="label label-info">
-							<%= order.status.try(:status_name) %>
-						</span>
-					<% else %>
-						<span class="label label-default">
-							<%= order.status.try(:status_name) %>
-						</span>
-					<% end %>
-				</td>
+								<td>
+									<% if order.status.try(:status_name) == "Active" %>
+										<span class="label label-primary">
+											<%= order.status.try(:status_name) %>
+										</span>
+									<% elsif order.status.try(:status_name) == "Inactive" %>
+										<span class="label label-danger">
+											<%= order.status.try(:status_name) %>
+										</span>
+									<% elsif order.status.try(:status_name) == "Pending" %>
+										<span class="label label-warning">
+											<%= order.status.try(:status_name) %>
+										</span>
+									<% elsif order.status.try(:status_name) == "Buyback" %>
+										<span class="label label-info">
+											<%= order.status.try(:status_name) %>
+										</span>
+									<% else %>
+										<span class="label label-default">
+											<%= order.status.try(:status_name) %>
+										</span>
+									<% end %>
+								</td>
 
-				<td>
-					<div class="btn-group btn-group-xs">
-					<%= link_to 'View', admin_user_order_path(id:order.id), :class => "btn btn-default" %>
-					<%= link_to 'Edit', edit_admin_user_order_path(id:order.id), :class => "btn btn-info" %>
-					<%= link_to 'Delete', admin_user_order_path(id:order.id), method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %>
-					</div>
-				</td>
-			</tr>
-			<% end %>
-		</tbody>
-	</table>
+								<td>
+									<div class="btn-group btn-group-xs">
+									<%= link_to 'View', admin_user_order_path(id:order.id), :class => "btn btn-default" %>
+									<%= link_to 'Edit', edit_admin_user_order_path(id:order.id), :class => "btn btn-info" %>
+									<%= link_to 'Delete', admin_user_order_path(id:order.id), method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %>
+									</div>
+								</td>
+							</tr>
+							<% end %>
+						</tbody>
+					</table>
+				</div>
+
+		  </div>
+		  <div class="panel-footer">
+		  	<%= link_to "Back", admin_users_path, :class => "btn btn-default" %>
+		  </div>
+		</div>
+
+	</div>
 </div>
 
 <script type="text/javascript">

@@ -1,48 +1,124 @@
-<h5>admin/orders/new.html.erb</h5>
-
-<%= form_for :order, url: admin_user_orders_path, method: :post do |f| %>
-
-<% if @order.errors.any? %>
-<div class="alert alert-danger alert-dismissable">
-  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-  <strong><%= pluralize(@order.errors.count, "error") %> prohibited
-    this order from being saved:</strong>
-    <ul>
-      <% @order.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-      <% end %>
-    </ul>
-</div>
-<% end %>
-
-<div class="form-group">
-  <%= f.label :gram_quantity, "Quantity per Gram" %>
-  <%= f.text_field :gram_quantity, :class => "form-control" %>
+<div class="page-header">
+  <h1>Client Details <small>Manage your client details here.</small></h1>
 </div>
 
-<div class="form-group">
-  <%= f.label :price, "Price" %><br>
-  <%= f.text_field :price, :class => "form-control" %>
+<div class="row">
+  <div class="col-md-4">
+    <div class="list-group">
+      <%= link_to "Client Details", admin_user_path(@user.login), :class => 'list-group-item' %>
+      <%= link_to "Order Details", admin_user_orders_path(@user.login), :class => 'list-group-item active' %>
+      <a href="#" class="list-group-item">Morbi leo risus</a>
+      <a href="#" class="list-group-item">Porta ac consectetur ac</a>
+      <a href="#" class="list-group-item">Vestibulum at eros</a>
+    </div>
+  </div>
+  <%= form_for :order, url: admin_user_orders_path, method: :post do |f| %>
+
+  <div class="col-md-8">
+    <!-- Client Details -->
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Client Details</h3>
+      </div>
+      <div class="panel-body">
+
+        <% if @order.errors.any? %>
+        <div class="alert alert-danger alert-dismissable">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+          <strong><%= pluralize(@order.errors.count, "error") %> prohibited
+            this order from being saved:</strong>
+            <ul>
+              <% @order.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+              <% end %>
+            </ul>
+        </div>
+        <% end %>
+    
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <%= f.label :gram_quantity, "Quantity" %>
+              <%= f.text_field :gram_quantity, :class => "form-control" %>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <%= f.label :price, "Price per gram" %><br>
+              <%= f.text_field :price, :class => "form-control" %>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <%= f.label :discount_id, "Discount" %>
+              <p class="small"><%= link_to "More info", "", "data-toggle" => "modal", "data-target" => "#discount-info" %></p>
+              <%= f.collection_select(:discount_id, Discount.all, :id, :discount_date, {}, {:class => "form-control"}) %>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <%= f.label :package_id, "Package" %>
+              <p class="small"><%= link_to "More info", "", "data-toggle" => "modal", "data-target" => "#package-info" %></p>
+              <%= f.collection_select(:package_id, Package.all, :id, :package_name, {}, {:class => "form-control"}) %>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <%= f.label :status_id, "Status" %>
+              <%= f.collection_select(:status_id, Status.all, :id, :status_name, {:selected => 3}, {:class => "form-control"}) %>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="panel-footer">
+        <div class="form-group">
+          <%= f.submit "Save", :class => "btn btn-primary" %>
+          <%= link_to 'Cancel', admin_user_orders_path, :class => "btn btn-link" %>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <% end %>
 </div>
 
-<div class="form-group">
-  <%= f.label :discount_id, "Discount" %>
-  <%= f.collection_select(:discount_id, Discount.all, :id, :discount_date, {}, {:class => "form-control"}) %>
+<!-- Discount Modal -->
+<div class="modal fade" id="discount-info" tabindex="-1" role="dialog" aria-labelledby="Discount Info" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Discount</h4>
+      </div>
+      <div class="modal-body">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis magna quis lectus consequat efficitur id id ligula. Nullam sagittis suscipit arcu, quis bibendum sem mattis in. Curabitur tincidunt quam ut pretium pretium. Morbi eget ultricies purus. Sed et eros bibendum, viverra ex in, pulvinar eros. Sed eu dolor commodo purus condimentum ullamcorper. Maecenas tellus erat, volutpat sed rhoncus non, lacinia sit amet lacus. Fusce a nisl in nisl eleifend mollis ac et mauris. Donec egestas neque enim, quis sagittis arcu ullamcorper nec. Integer auctor pellentesque quam vel pretium. Donec eget felis sit amet nisi vulputate tincidunt. Curabitur luctus, lorem sed convallis semper, orci augue mattis velit, id vulputate quam neque at massa. Phasellus pellentesque leo at ante tincidunt elementum nec quis arcu. Vestibulum porttitor nulla eget mi viverra, in ultricies sem sollicitudin.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
 </div>
 
-<div class="form-group">
-  <%= f.label :package_id, "Package" %>
-  <%= f.collection_select(:package_id, Package.all, :id, :package_name, {}, {:class => "form-control"}) %>
+<!-- Package Modal -->
+<div class="modal fade" id="package-info" tabindex="-1" role="dialog" aria-labelledby="Package Info" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Package</h4>
+      </div>
+      <div class="modal-body">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis magna quis lectus consequat efficitur id id ligula. Nullam sagittis suscipit arcu, quis bibendum sem mattis in. Curabitur tincidunt quam ut pretium pretium. Morbi eget ultricies purus. Sed et eros bibendum, viverra ex in, pulvinar eros. Sed eu dolor commodo purus condimentum ullamcorper. Maecenas tellus erat, volutpat sed rhoncus non, lacinia sit amet lacus. Fusce a nisl in nisl eleifend mollis ac et mauris. Donec egestas neque enim, quis sagittis arcu ullamcorper nec. Integer auctor pellentesque quam vel pretium. Donec eget felis sit amet nisi vulputate tincidunt. Curabitur luctus, lorem sed convallis semper, orci augue mattis velit, id vulputate quam neque at massa. Phasellus pellentesque leo at ante tincidunt elementum nec quis arcu. Vestibulum porttitor nulla eget mi viverra, in ultricies sem sollicitudin.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
 </div>
-
-<div class="form-group">
-	<%= f.label :status_id, "Status" %>
-	<%= f.collection_select(:status_id, Status.all, :id, :status_name, {:selected => 3}, {:class => "form-control"}) %>
-</div>
-
-<div class="form-group">
-  <%= f.submit "Save", :class => "btn btn-primary" %>
-  <%= link_to 'Back', admin_user_orders_path, :class => "btn btn-link" %>
-</div>
-
-<% end %>
