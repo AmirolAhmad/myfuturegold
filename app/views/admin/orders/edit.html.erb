@@ -1,5 +1,5 @@
 <div class="page-header">
-  <h1>New Order <small>Create new order for <%= @user.login %> here.</small></h1>
+  <h1>New Order <small>Edit order #<%= @order.ref_number %> for <%= @user.login %> here.</small></h1>
 </div>
 
 <div class="row">
@@ -69,7 +69,7 @@
           <div class="col-md-6">
             <div class="form-group">
               <%= f.label :status_id, "Status" %>
-              <%= f.collection_select(:status_id, Status.all, :id, :status_name, {:selected => 3}, {:class => "form-control"}) %>
+              <%= f.collection_select(:status_id, Status.all, :id, :status_name, {}, {:class => "form-control"}) %>
             </div>
           </div>
         </div>
