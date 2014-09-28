@@ -4,21 +4,14 @@
 
 <div class="row">
   <div class="col-md-4">
-    <div class="list-group">
-      <%= link_to "Account Details", edit_user_registration_path, :class => 'list-group-item' %>
-			<%= link_to "Client Details", account_path, :class => 'list-group-item' %>
-			<%= link_to "Order Details", orders_path, :class => 'list-group-item active' %>
-      <a href="#" class="list-group-item">Morbi leo risus</a>
-      <a href="#" class="list-group-item">Porta ac consectetur ac</a>
-      <a href="#" class="list-group-item">Vestibulum at eros</a>
-    </div>
+    <%= render partial: "sidebar" %>
   </div>
 
   <div class="col-md-8">
     <!-- Client Details -->
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Order Details <%= link_to 'Edit', "", :class => "pull-right btn btn-primary btn-xs", :style => "color:#ffffff;" %></h3>
+        <h3 class="panel-title">Order Details <%= link_to 'Delete', order_path, method: :delete, data: { confirm: 'Are you sure?' }, :class => "pull-right btn btn-xs btn-danger", :style => "color:#ffffff;" %></h3>
       </div>
       <div class="panel-body">
     

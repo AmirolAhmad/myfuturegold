@@ -4,13 +4,7 @@
 
 <div class="row">
   <div class="col-md-4">
-    <div class="list-group">
-      <%= link_to "Client Details", admin_user_path(@user.login), :class => 'list-group-item' %>
-      <%= link_to "Order Details", admin_user_orders_path(@user.login), :class => 'list-group-item active' %>
-      <a href="#" class="list-group-item">Morbi leo risus</a>
-      <a href="#" class="list-group-item">Porta ac consectetur ac</a>
-      <a href="#" class="list-group-item">Vestibulum at eros</a>
-    </div>
+    <%= render partial: "sidebar" %>
   </div>
   <%= form_for :order, url: admin_user_order_path, method: :patch do |f| %>
 
