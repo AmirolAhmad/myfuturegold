@@ -29,7 +29,7 @@ class Admin::UsersController < ApplicationController
   def update
     # Rails.logger.debug "===> (1)"
     if @user.update(user_params)
-      redirect_to admin_users_path, notice: "#{@user.profile.nama_penuh} account has been updated."
+      redirect_to admin_user_path, notice: "#{@user.profile.nama_penuh} account has been updated."
     else
       render 'edit'
     end
