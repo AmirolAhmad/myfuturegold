@@ -21,5 +21,6 @@ Rails.application.routes.draw do
   end
 
   resource :account, only: [:show, :edit, :update]
+  resources :orders, only: [:index, :show, :destroy]
   
 end

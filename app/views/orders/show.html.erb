@@ -1,12 +1,13 @@
 <div class="page-header">
-  <h1>Order Details <small>View order #<%= @order.ref_number %> for <%= @user.login %> here.</small></h1>
+  <h1>Order Details <small>View order #<%= @order.ref_number %>.</small></h1>
 </div>
 
 <div class="row">
   <div class="col-md-4">
     <div class="list-group">
-      <%= link_to "Client Details", admin_user_path(@user.login), :class => 'list-group-item' %>
-      <%= link_to "Order Details", admin_user_orders_path(@user.login), :class => 'list-group-item active' %>
+      <%= link_to "Account Details", edit_user_registration_path, :class => 'list-group-item' %>
+			<%= link_to "Client Details", account_path, :class => 'list-group-item' %>
+			<%= link_to "Order Details", orders_path, :class => 'list-group-item active' %>
       <a href="#" class="list-group-item">Morbi leo risus</a>
       <a href="#" class="list-group-item">Porta ac consectetur ac</a>
       <a href="#" class="list-group-item">Vestibulum at eros</a>
@@ -17,7 +18,7 @@
     <!-- Client Details -->
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Order Details <small>for <%= @order.user.profile.nama_penuh %></small><%= link_to 'Edit', edit_admin_user_order_path, :class => "pull-right btn btn-primary btn-xs", :style => "color:#ffffff;" %></h3>
+        <h3 class="panel-title">Order Details <%= link_to 'Edit', "", :class => "pull-right btn btn-primary btn-xs", :style => "color:#ffffff;" %></h3>
       </div>
       <div class="panel-body">
     
@@ -30,7 +31,7 @@
           </div>
           <div class="col-md-6">
             <div class="form-group">
-              <label>Ordered Date</label>
+            	<label>Ordered Date</label>
               <p><%= @order.ordered_date.strftime("%d %B %Y") %></p>
             </div>
           </div>
@@ -69,7 +70,7 @@
         <div class="row">
           <div class="col-md-6">
             <div class="form-group">
-              <label>Total Price</label>
+            	<label>Total Price</label>
               <p>RM <%= @order.total_price %></p>
             </div>
           </div>
@@ -105,7 +106,7 @@
 
       </div>
       <div class="panel-footer">
-        <%= link_to 'Back', admin_user_orders_path, :class => "btn btn-default" %>
+        <%= link_to 'Back', orders_path, :class => "btn btn-default" %>
       </div>
     </div>
 
