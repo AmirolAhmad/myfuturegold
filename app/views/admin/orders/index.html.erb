@@ -56,9 +56,9 @@
 
 								<td>
 									<div class="btn-group btn-group-xs">
-									<%= link_to 'View', admin_user_order_path(id:order.id), :class => "btn btn-default" %>
-									<%= link_to 'Edit', edit_admin_user_order_path(id:order.id), :class => "btn btn-info" %>
-									<%= link_to 'Delete', admin_user_order_path(id:order.id), method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %>
+									<%= link_to 'View', admin_user_order_path(id:order), :class => "btn btn-default" %>
+									<%= link_to 'Edit', edit_admin_user_order_path(id:order), :class => "btn btn-info" %>
+									<%= link_to 'Delete', admin_user_order_path(id:order), method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %>
 									</div>
 								</td>
 							</tr>

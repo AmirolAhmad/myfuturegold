@@ -7,7 +7,7 @@ class OrdersController < ApplicationController
   end
 
   def show
-  	@order = Order.where(id: params[:id], user: @user).take
+  	@order = Order.where(slug: params[:id], user: @user).take
     if @order
       render
     else
@@ -16,7 +16,7 @@ class OrdersController < ApplicationController
   end
 
   def destroy
-  	@order = Order.where(id: params[:id], user: @user).take
+  	@order = Order.where(slug: params[:id], user: @user).take
   	@order.destroy
     redirect_to orders_path, notice: "Order has been deleted."
   end

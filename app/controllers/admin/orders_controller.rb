@@ -82,6 +82,6 @@ class Admin::OrdersController < ApplicationController
   end
 
   def set_order
-    @order = Order.where(id: params[:id], user: @user).take
+    @order = Order.where(slug: params[:id], user: @user).take
   end
 end
