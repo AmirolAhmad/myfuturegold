@@ -8,4 +8,6 @@ class Order < ActiveRecord::Base
 	validates_presence_of :discount_id
 	validates_presence_of :package_id
 	validates_presence_of :status_id
+
+	default_scope -> { order('orders.created_at DESC') }
 end
