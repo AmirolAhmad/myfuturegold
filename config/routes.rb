@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     resources :users do
       resources :orders
     end
-    resources :orders
+    #resources :orders
   end
 
   resource :account, only: [:show, :edit, :update]
