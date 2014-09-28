@@ -1,5 +1,5 @@
 <div class="page-header">
-  <h1>Order Details <small>View order <%= @order.ref_number %> for order for <%= @user.login %> here.</small></h1>
+  <h1>Order Details <small>View order #<%= @order.ref_number %> for <%= @user.login %> here.</small></h1>
 </div>
 
 <div class="row">
@@ -20,6 +20,15 @@
         <h3 class="panel-title">Order Details <small>for <%= @order.user.profile.nama_penuh %></small><%= link_to 'Edit', edit_admin_user_order_path, :class => "pull-right btn btn-primary btn-xs", :style => "color:#ffffff;" %></h3>
       </div>
       <div class="panel-body">
+    
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+            	<label>Reference Number</label>
+              <p><%= @order.ref_number %></p>
+            </div>
+          </div>
+        </div>
     
         <div class="row">
           <div class="col-md-6">
