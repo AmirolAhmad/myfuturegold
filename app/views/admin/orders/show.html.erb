@@ -54,14 +54,36 @@
         <div class="row">
           <div class="col-md-6">
             <div class="form-group">
-            	<label>Discount</label>
-              <p><%= @order.discount.discount_date %></p>
+            	<label>Status</label>
+              <p>
+              <% if @order.status.status_name == "Active" %>
+								<span class="label label-primary">
+									<%= @order.status.status_name %>
+								</span>
+							<% elsif @order.status.status_name == "Inactive" %>
+								<span class="label label-danger">
+									<%= @order.status.status_name %>
+								</span>
+							<% elsif @order.status.status_name == "Pending" %>
+								<span class="label label-warning">
+									<%= @order.status.status_name %>
+								</span>
+							<% elsif @order.status.status_name == "Buyback" %>
+								<span class="label label-info">
+									<%= @order.status.status_name %>
+								</span>
+							<% else %>
+								<span class="label label-default">
+									<%= @order.status.status_name %>
+								</span>
+							<% end %>
+							</p>
             </div>
           </div>
           <div class="col-md-6">
             <div class="form-group">
-            	<label>Status</label>
-              <p><%= @order.status.status_name %></p>
+            	<label>Ordered Date</label>
+              <p><%= @order.ordered_date.strftime("%d %B %Y") %></p>
             </div>
           </div>
         </div>
