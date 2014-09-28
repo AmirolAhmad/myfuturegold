@@ -38,7 +38,7 @@
           </div>
           <div class="col-md-6">
             <div class="form-group">
-              <%= f.label :price, "Price per gram" %><br>
+              <%= f.label :price, "Price per gram (RM)" %><br>
               <%= f.text_field :price, :class => "form-control" %>
             </div>
           </div>
@@ -46,7 +46,7 @@
         <div class="row">
           <div class="col-md-6">
             <div class="form-group">
-              <%= f.label :discount_id, "Discount" %>
+              <%= f.label :discount_id, "Recurring Payment Date" %>
               <p class="small"><%= link_to "More info", "", "data-toggle" => "modal", "data-target" => "#discount-info" %></p>
               <%= f.collection_select(:discount_id, Discount.all, :id, :discount_date, {}, {:class => "form-control"}) %>
             </div>
