@@ -61,7 +61,7 @@ class Admin::OrdersController < ApplicationController
 
   def update
     if @order.update(order_params)
-      redirect_to admin_user_orders_path, notice: "Ref Number #{@order.ref_number} has been updated."
+      redirect_to admin_user_order_path, notice: "Ref Number #{@order.ref_number} has been updated."
 
       @total_price = @order.price.to_i * @order.gram_quantity.to_i
       @order.update_attributes(:total_price => @total_price)

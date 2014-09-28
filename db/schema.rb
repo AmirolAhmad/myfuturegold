@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140928144700) do
+ActiveRecord::Schema.define(version: 20140928162610) do
 
   create_table "discounts", force: true do |t|
     t.string   "discount_date"
@@ -34,10 +34,10 @@ ActiveRecord::Schema.define(version: 20140928144700) do
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
   create_table "orders", force: true do |t|
-    t.integer  "user_id",       null: false
-    t.integer  "package_id",    null: false
-    t.integer  "discount_id",   null: false
-    t.integer  "status_id",     null: false
+    t.integer  "user_id",                null: false
+    t.integer  "package_id",             null: false
+    t.integer  "discount_id",            null: false
+    t.integer  "status_id",              null: false
     t.string   "gram_quantity"
     t.string   "price"
     t.string   "total_price"
@@ -46,6 +46,10 @@ ActiveRecord::Schema.define(version: 20140928144700) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "slug"
+    t.string   "payment_date",           null: false
+    t.string   "payment_receipt_number", null: false
+    t.integer  "payment_status_id",      null: false
+    t.string   "payment_method",         null: false
   end
 
   create_table "packages", force: true do |t|
@@ -54,6 +58,12 @@ ActiveRecord::Schema.define(version: 20140928144700) do
     t.string   "buying_price"
     t.string   "price"
     t.string   "term_contract"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "payment_statuses", force: true do |t|
+    t.string   "payment_status"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

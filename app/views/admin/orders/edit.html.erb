@@ -69,6 +69,46 @@
         </div>
 
       </div>
+    </div>
+
+    <!-- Payment Details -->
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Payment Details</h3>
+      </div>
+      <div class="panel-body">
+    
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <%= f.label :payment_receipt_number, "Payment Receipt Number" %>
+              <%= f.text_field :payment_receipt_number, :class => "form-control" %>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <%= f.label :payment_method, "Payment Method" %>
+              <%= f.text_field :payment_method, :class => "form-control", :placeholder => "Online Bankin (CIMB, Maybank), Cash Deposit Machine, ATM Machine" %>
+            </div>
+          </div>
+        </div>
+    
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <%= f.label :payment_date, "Payment Date" %>
+              <%= f.text_field :payment_date, :class => "form-control", :placeholder => "dd/mm/yyyy" %>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <%= f.label :payment_status, "Payment Status" %>
+              <%= f.collection_select(:payment_status_id, PaymentStatus.all, :id, :payment_status, {}, {:class => "form-control"}) %>
+            </div>
+          </div>
+        </div>
+
+      </div>
       <div class="panel-footer">
         <div class="form-group">
           <%= f.submit "Save", :class => "btn btn-primary" %>
