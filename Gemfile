@@ -35,6 +35,7 @@ gem 'friendly_id' # will use this once we have the order details
 gem 'paranoia' # will use this once we have the order details
 gem 'dalli'
 gem 'intercom-rails', '~> 0.2.24'
+gem 'prawn'
 
 group :doc do
 	gem 'sdoc', require: false
