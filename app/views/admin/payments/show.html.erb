@@ -1,0 +1,75 @@
+<div class="page-header">
+  <h1>Payment History <small>Manage <%= @user.login %> payment here.</small></h1>
+</div>
+
+<div class="row">
+  <div class="col-md-4">
+    <%= render partial: "sidebar" %>
+  </div>
+  <div class="col-md-8">
+    <!-- Client Details -->
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">
+          Payment History
+          <div class="pull-right btn-group btn-group-xs">
+            <%= link_to 'Edit', edit_admin_user_payment_path, :class => "btn btn-primary", :style => "color:#ffffff;" %>
+            <%= link_to 'Delete', admin_user_payment_path, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger", :style => "color:#ffffff;" %>
+          </div>
+        </h3>
+      </div>
+      <div class="panel-body">
+    
+        <div class="row">
+          <div class="col-md-6">
+            <label>Payment Receipt Number</label>
+            <p><%= @payment.receipt_number %></p>
+          </div>
+          <div class="col-md-6">
+            <label>Date of Payment</label>
+            <p><%= @payment.payment_date %></p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <label>Payment Method</label>
+            <p><%= @payment.method %></p>
+          </div>
+          <div class="col-md-6">
+            <label>Total Payment</label>
+            <p>RM <%= @payment.total_payment %></p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <label>Payment For (Order Ref Number)</label>
+            <p>#<%= @payment.order.ref_number %></p>
+          </div>
+          <div class="col-md-6">
+            <label>Payment Status</label>
+            <p>
+              <% if @payment.status == "Paid" %>
+              <span class="label label-primary">
+                <%= @payment.status %>
+              </span>
+              <% elsif @payment.status == "Cancel" %>
+              <span class="label label-default">
+                <%= @payment.status %>
+              </span>
+              <% else %>
+              <span class="label label-danger">
+                <%= @payment.status %>
+              </span>
+              <% end %>
+            </p>
+          </div>
+        </div>
+
+      </div>
+      <div class="panel-footer">
+        <%= link_to "Back", admin_user_payments_path, :class => "btn btn-default" %>
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -16,9 +16,6 @@ class ApplicationController < ActionController::Base
     params.require(:user).permit(:id, :login, :email,
       profile_attributes: [
         :id, :user_id, :nama_penuh, :ic_number, :tel_num, :facebook_id, :nama_waris, :hub_waris, :tel_num_waris, :nama_bank, :nama_akaun, :no_akaun
-      ],
-      payment_attributes: [
-        :id, :user_id, :order_id, :payment_date, :method, :status, :total_payment, :receipt_number
       ])
   end
 
@@ -36,5 +33,9 @@ class ApplicationController < ActionController::Base
       user_attributes: [
         :id, :login, :email
       ])
+  end
+
+  def payment_params
+    params.require(:payment).permit(:id, :user_id, :order_id, :payment_date, :method, :status, :total_payment, :receipt_number)
   end
 end
