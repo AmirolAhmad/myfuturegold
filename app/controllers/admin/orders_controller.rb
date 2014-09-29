@@ -14,13 +14,12 @@ class Admin::OrdersController < ApplicationController
 
   def show
     if @order
-      render
+      respond_to do |format|
+        format.html { @order }
+        format.json { render json: @order.to_json(include: [:status, :package, :discount]) }
+      end
     else
       redirect_to admin_user_orders_path, notice: "Order ID not found for that client."
-    end
-    respond_to do |format|
-      format.html { @order }
-      format.json { render json: @order.to_json(include: [:status, :package, :discount]) }
     end
   end
 

@@ -20,9 +20,13 @@ class Admin::UsersController < ApplicationController
   end
 
   def show
-    respond_to do |format|
-      format.html { @user }
-      format.json { render json: @user.to_json(include: [:profile]) }
+    if @user
+      respond_to do |format|
+        format.html { @user }
+        format.json { render json: @user.to_json(include: [:profile]) }
+      end
+    else
+      redirect_to admin_users_path, notice: "User not found."
     end
   end
 

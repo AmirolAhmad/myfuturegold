@@ -4,12 +4,19 @@ class OrdersController < ApplicationController
 
   def index
   	@orders = Order.where(user_id: @user)
+    respond_to do |format|
+      format.html { @orders }
+      format.json { render json: @orders.to_json(include: [:status, :package, :discount]) }
+    end
   end
 
   def show
   	@order = Order.where(slug: params[:id], user: @user).take
     if @order
-      render
+      respond_to do |format|
+        format.html { @order }
+        format.json { render json: @order.to_json(include: [:status, :package, :discount]) }
+      end
     else
       redirect_to orders_path, notice: "Order ID not found for that client."
     end

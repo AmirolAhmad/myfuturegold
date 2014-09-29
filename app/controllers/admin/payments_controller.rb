@@ -6,11 +6,18 @@ class Admin::PaymentsController < ApplicationController
 
   def index
     @payments = Payment.where(user_id: @user).to_a
+    respond_to do |format|
+      format.html { @payments }
+      format.json { render json: @payments.to_json(include: [:user, :order]) }
+    end
   end
 
   def show
     if @payment
-      render
+      respond_to do |format|
+        format.html { @payment }
+        format.json { render json: @payment.to_json(include: [:user, :order]) }
+      end
     else
       redirect_to admin_user_payments_path, notice: "Payment History not found for that order."
     end

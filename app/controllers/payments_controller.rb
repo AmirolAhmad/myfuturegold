@@ -4,12 +4,19 @@ class PaymentsController < ApplicationController
 
   def index
     @payments = Payment.where(user_id: @user)
+    respond_to do |format|
+      format.html { @payments }
+      format.json { render json: @payments.to_json(include: [:user, :order]) }
+    end
   end
 
   def show
     @payment = Payment.where(id: params[:id], user: @user).take
     if @payment
-      render
+      respond_to do |format|
+        format.html { @payment }
+        format.json { render json: @payment.to_json(include: [:user, :order]) }
+      end
     else
       redirect_to orders_path, notice: "Payment ID not found for that client."
     end
