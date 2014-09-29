@@ -1,73 +1,73 @@
 <div class="page-header">
-	<h1>Order Details <small>Manage your order details here.</small></h1>
+  <h1>Order Details <small>Manage your order details here.</small></h1>
 </div>
 
 <div class="row">
-	<div class="col-md-4">
-		<%= render partial: "sidebar" %>
-	</div>
-	<div class="col-md-8">
-		<!-- Client Details -->
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				<h3 class="panel-title">Order List</h3>
-			</div>
-			<div class="panel-body">
+  <div class="col-md-4">
+    <%= render partial: "sidebar" %>
+  </div>
+  <div class="col-md-8">
+    <!-- Client Details -->
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Order List</h3>
+      </div>
+      <div class="panel-body">
 
-				<div class="table-responsive">
-					<table class="table table-bordered table-hover" id="orderDetails">
-						<thead>
-							<tr>
-								<th class="col-md-2">Reference Number</th>
-								<th class="col-md-1">Package</th>
-								<th class="col-md-1">Status</th>
-								<th class="col-md-1">Action</th>
-							</tr>
-						</thead>
-						<tbody>
-							<% @orders.each do |order| %>
-							<tr>
-								<td><%= order.ref_number %></td>
-								<td><%= order.package.package_name %></td>
-								<td>
-									<% if order.status.status_name == "Active" %>
-										<span class="label label-primary">
-											<%= order.status.status_name %>
-										</span>
-									<% elsif order.status.status_name == "Inactive" %>
-										<span class="label label-danger">
-											<%= order.status.status_name %>
-										</span>
-									<% elsif order.status.status_name == "Pending" %>
-										<span class="label label-warning">
-											<%= order.status.status_name %>
-										</span>
-									<% elsif order.status.status_name == "Buyback" %>
-										<span class="label label-info">
-											<%= order.status.status_name %>
-										</span>
-									<% else %>
-										<span class="label label-default">
-											<%= order.status.status_name %>
-										</span>
-									<% end %>
-								</td>
-								<td>
-									<div class="btn-group btn-group-xs">
-									<%= link_to 'View', order_path(order), :class => "btn btn-default" %>
-									<%= link_to 'Delete', order_path(order), method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %>
-									</div>
-								</td>
-							</tr>
-							<% end %>
-						</tbody>
-					</table>
-				</div>
+        <div class="table-responsive">
+          <table class="table table-bordered table-hover" id="orderDetails">
+            <thead>
+              <tr>
+                <th class="col-md-2">Reference Number</th>
+                <th class="col-md-1">Package</th>
+                <th class="col-md-1">Status</th>
+                <th class="col-md-1">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @orders.each do |order| %>
+              <tr>
+                <td><%= order.ref_number %></td>
+                <td><%= order.package.package_name %></td>
+                <td>
+                  <% if order.status.status_name == "Active" %>
+                    <span class="label label-primary">
+                      <%= order.status.status_name %>
+                    </span>
+                  <% elsif order.status.status_name == "Inactive" %>
+                    <span class="label label-danger">
+                      <%= order.status.status_name %>
+                    </span>
+                  <% elsif order.status.status_name == "Pending" %>
+                    <span class="label label-warning">
+                      <%= order.status.status_name %>
+                    </span>
+                  <% elsif order.status.status_name == "Buyback" %>
+                    <span class="label label-info">
+                      <%= order.status.status_name %>
+                    </span>
+                  <% else %>
+                    <span class="label label-default">
+                      <%= order.status.status_name %>
+                    </span>
+                  <% end %>
+                </td>
+                <td>
+                  <div class="btn-group btn-group-xs">
+                  <%= link_to 'View', order_path(order), :class => "btn btn-default" %>
+                  <%= link_to 'Delete', order_path(order), method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %>
+                  </div>
+                </td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
 
-			</div>
-		</div>
+      </div>
+    </div>
 
-	</div>
+  </div>
 </div>
 
 <script type="text/javascript">

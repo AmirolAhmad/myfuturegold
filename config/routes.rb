@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'payments/index'
+
   namespace :admin do
   get 'orders/index'
   end
