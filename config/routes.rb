@@ -15,9 +15,8 @@ Rails.application.routes.draw do
     get "/" => "dashboards#index", as: 'master'
     resources :dashboards, only: [:index]
     resources :users do
-      resources :orders do
-        resources :payments
-      end
+      resources :orders
+      resources :payments
     end
   end
 
