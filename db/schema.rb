@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140928144700) do
+ActiveRecord::Schema.define(version: 20140929083745) do
 
   create_table "discounts", force: true do |t|
     t.string   "discount_date"
@@ -54,6 +54,18 @@ ActiveRecord::Schema.define(version: 20140928144700) do
     t.string   "buying_price"
     t.string   "price"
     t.string   "term_contract"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "payments", force: true do |t|
+    t.integer  "user_id",        null: false
+    t.integer  "order_id",       null: false
+    t.string   "payment_date"
+    t.string   "method"
+    t.string   "status"
+    t.string   "total_payment"
+    t.string   "receipt_number"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

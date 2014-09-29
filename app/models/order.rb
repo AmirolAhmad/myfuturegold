@@ -8,6 +8,7 @@ class Order < ActiveRecord::Base
   belongs_to :discount, foreign_key: :discount_id
   belongs_to :package, foreign_key: :package_id
   belongs_to :status, foreign_key: :status_id
+  has_many :payments, dependent: :destroy
 
   #validates_presence_of :user_id
   validates_presence_of :discount_id
