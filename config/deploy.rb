@@ -5,6 +5,7 @@ lock '3.2.1'
 set :repo_url, 'git@github.com:AmirolAhmad/myfuturegold.git'
 
 set :deploy_to, '/home/deploy/myfuturegold'
+set :rbenv_ruby, '2.1.2'
 
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
