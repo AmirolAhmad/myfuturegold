@@ -38,15 +38,19 @@ gem 'intercom-rails', '~> 0.2.24'
 gem 'prawn'
 
 group :doc do
-	gem 'sdoc', require: false
+  gem 'sdoc', require: false
 end
 
 group :development do
-	gem 'spring'
+  gem 'spring'
   gem 'letter_opener'
   gem 'quiet_assets'
+  gem 'capistrano', '~> 3.1'
+  gem 'capistrano-rails', '~> 1.1'
+  gem 'capistrano-rbenv', '~> 2.0'
+  gem 'capistrano-bundler', '~> 1.1.2'
 end
 
 group :production do
-	gem 'rails_12factor'
+  gem 'rails_12factor'
 end
