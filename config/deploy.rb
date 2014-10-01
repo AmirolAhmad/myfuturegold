@@ -1,10 +1,10 @@
 # config valid only for Capistrano 3.1
 lock '3.2.1'
 
-# set :application, 'myfuturegold'
 set :repo_url, 'git@github.com:AmirolAhmad/myfuturegold.git'
 
-set :deploy_to, '/home/deploy/myfuturegold'
+
+set :rbenv_type, :system
 set :rbenv_ruby, '2.1.2'
 
 # Default branch is :master
