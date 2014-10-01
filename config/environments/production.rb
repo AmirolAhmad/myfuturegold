@@ -55,7 +55,7 @@ Rails.application.configure do
   config.cache_store = :dalli_store, '127.0.0.1'
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
-  config.action_controller.asset_host = "128.199.138.90"
+  config.action_controller.asset_host = "http://myfuturegold.herokuapp.com"
 
   # Precompile additional assets.
   # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
@@ -78,13 +78,13 @@ Rails.application.configure do
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
 
-  config.action_mailer.default_url_options = {:host => '128.199.138.90'}
+  config.action_mailer.default_url_options = {:host => 'myfuturegold.herokuapp.com'}
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     :enable_starttls_auto => true,
     :address => "smtp.gmail.com",
     :port => 587,
-    :domain => "128.199.138.90",
+    :domain => "myfuturegold.herokuapp.com",
     :authentication => :login,
     :user_name => ENV["EMAIL"],
     :password => ENV["PASSWORD"]
