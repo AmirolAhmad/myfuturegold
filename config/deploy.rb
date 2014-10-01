@@ -3,8 +3,7 @@ lock '3.2.1'
 
 set :repo_url, 'git@github.com:AmirolAhmad/myfuturegold.git'
 
-
-set :rbenv_type, :system
+#set :rbenv_type, :system
 set :rbenv_ruby, '2.1.2'
 
 # Default branch is :master
