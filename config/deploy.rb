@@ -1,7 +1,7 @@
 # config valid only for Capistrano 3.1
 lock '3.2.1'
 
-set :application, 'myfuturegold'
+# set :application, 'myfuturegold'
 set :repo_url, 'git@github.com:AmirolAhmad/myfuturegold.git'
 
 set :deploy_to, '/home/deploy/myfuturegold'
@@ -47,7 +47,8 @@ namespace :deploy do
     end
   end
 
-  after :publishing, :restart
+  after :publishing, 'deploy:restart'
+  after :finishing, 'deploy:cleanup'
 
   after :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
