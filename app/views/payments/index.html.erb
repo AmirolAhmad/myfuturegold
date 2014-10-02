@@ -18,9 +18,10 @@
           <table class="table table-bordered table-hover" id="paymentList">
             <thead>
               <tr>
-                <th class="col-md-2">Receipt Number</th>
-                <th class="col-md-2">Payment Date</th>
-                <th class="col-md-2">Order Number</th>
+                <th class="col-md-3">Receipt Number</th>
+                <th class="col-md-3">Payment Date</th>
+                <th class="col-md-1">Package</th>
+                <th class="col-md-1">Total Payment</th>
                 <th class="col-md-1">Status</th>
                 <th class="col-md-1">Action</th>
               </tr>
@@ -30,7 +31,8 @@
               <tr>
                 <td><%= payment.receipt_number %></td>
                 <td><%= payment.payment_date %></td>
-                <td>#<%= payment.order.ref_number %></td>
+                <td><%= payment.order.package.package_name %></td>
+                <td>RM <%= payment.total_payment %></td>
                 <td>
                   <% if payment.status == "Paid" %>
                   <span class="label label-primary">
