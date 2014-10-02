@@ -38,9 +38,10 @@ class Admin::OrdersController < ApplicationController
       @order.update_attributes(:total_price => @total_price)
 
       # reference number
-      random = [('A'..'Z'), ('1'..'9')].map { |i| i.to_a }.flatten
+      # random = [('A'..'Z'), ('1'..'9')].map { |i| i.to_a }.flatten
+      random = ['1'..'9'].map { |i| i.to_a }.flatten
       ref_number = (0...7).map { random[rand(random.length)] }.join
-      @order.update_attributes(:ref_number => ref_number)
+      @order.update_attributes(:ref_number => "#" + ref_number)
 
       #ordered date
       @ordered_date = Time.now

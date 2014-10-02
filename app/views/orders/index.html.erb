@@ -27,7 +27,7 @@
             <tbody>
               <% @orders.each do |order| %>
               <tr>
-                <td>#<%= order.ref_number %></td>
+                <td><%= order.ref_number %></td>
                 <td><%= order.package.package_name %></td>
                 <td>
                   <% if order.status.status_name == "Active" %>

@@ -32,6 +32,10 @@ class Admin::PaymentsController < ApplicationController
     @payment = @user.payments.new(payment_params)
     if @payment.save
       redirect_to admin_user_payments_path, notice: "New payment has been created."
+
+      random = ['1'..'9'].map { |i| i.to_a }.flatten
+      receipt_number = (0...4).map { random[rand(random.length)] }.join
+      @payment.update_attributes(:receipt_number => "#MGR-P" + receipt_number)
     else
       render 'new'
     end

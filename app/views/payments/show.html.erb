@@ -1,5 +1,5 @@
 <div class="page-header">
-  <h1>Payment Details <small>View payment #<%= @payment.receipt_number %>.</small></h1>
+  <h1>Payment Details <small>View payment <%= @payment.receipt_number %>.</small></h1>
 </div>
 
 <div class="row">
@@ -49,7 +49,7 @@
           <div class="col-md-6">
             <div class="form-group">
             	<label>Payment For (Order Number)</label>
-              <p>#<%= @payment.order.ref_number %></p>
+              <p><%= @payment.order.ref_number %></p>
             </div>
           </div>
           <div class="col-md-6">

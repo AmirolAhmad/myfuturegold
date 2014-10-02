@@ -27,7 +27,7 @@
             <tbody>
               <% @orders.each do |order| %>
               <tr>
-                <td>#<%= order.try(:ref_number) %></td>
+                <td><%= order.try(:ref_number) %></td>
                 <td><%= order.package.try(:package_name) %></td>
 
                 <td>

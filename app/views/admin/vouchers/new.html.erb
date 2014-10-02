@@ -32,8 +32,8 @@
         <div class="row">
           <div class="col-md-6">
             <div class="form-group">
-              <%= f.label :receipt_number, "Voucher Receipt Number" %>
-              <%= f.text_field :receipt_number, :class => "form-control" %>
+              <%= f.label :method, "Voucher Method" %>
+              <%= f.text_field :method, :class => "form-control", :placeholder => "Online Bankin (CIMB, Maybank), ATM Machine" %>
             </div>
           </div>
           <div class="col-md-6">
@@ -46,8 +46,8 @@
         <div class="row">
           <div class="col-md-6">
             <div class="form-group">
-              <%= f.label :method, "Voucher Method" %>
-              <%= f.text_field :method, :class => "form-control", :placeholder => "Online Bankin (CIMB, Maybank), ATM Machine" %>
+              <%= f.label :ref_number, "Voucher For (Order Number)" %>
+              <%= f.collection_select(:order_id, Order.where(user_id: @order, user_id: @user), :id, :ref_number, {}, {:class => "form-control"}) %>
             </div>
           </div>
           <div class="col-md-6">
@@ -58,12 +58,6 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-              <%= f.label :ref_number, "Voucher For (Order Number)" %>
-              <%= f.collection_select(:order_id, Order.where(user_id: @order, user_id: @user), :id, :ref_number, {}, {:class => "form-control"}) %>
-            </div>
-          </div>
           <div class="col-md-6">
             <div class="form-group">
               <%= f.label :status, "Voucher Status" %>
