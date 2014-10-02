@@ -23,10 +23,13 @@ class VoucherPdf < Prawn::Document
     image logopath, :width => 197, :height => 91, :position => :center
     move_down 10
     text "Receipt", :align => :center, size: 22, :style => :italic
+    move_down 5
+    text "____________________", :align => :center, size: 9, :color => "999999"
+    move_down 10
   end
 
   def thanks_message
-    move_down 40
+    move_down 10
     text "Here is your voucher confirmation details that has been credited to your account by MyFuture Gold Resources. Please print and keep this receipt as confirmation of your voucher for your future reference.", :size => 9, :color => "585858"
   end
 
@@ -85,7 +88,7 @@ class VoucherPdf < Prawn::Document
   end
 
   def thank_you
-    move_down 170
+    move_down 160
     text "Thank You", :color => "eeeeee", :size => 40, :style => :bold
   end
 
