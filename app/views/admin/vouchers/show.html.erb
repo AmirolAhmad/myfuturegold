@@ -13,8 +13,12 @@
         <h3 class="panel-title">
           Voucher History
           <div class="pull-right btn-group btn-group-xs">
-            <%= link_to 'Edit', edit_admin_user_voucher_path, :class => "btn btn-primary", :style => "color:#ffffff;" %>
-            <%= link_to 'Delete', admin_user_voucher_path, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger", :style => "color:#ffffff;" %>
+            <%= link_to edit_admin_user_voucher_path, :class => "btn btn-primary", :style => "color:#ffffff;", "data-toggle" => "tooltip", :title => "Edit voucher detail" do %>
+              <span class="glyphicon glyphicon-edit"></span>
+            <% end %>
+            <%= link_to admin_user_voucher_path, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger", :style => "color:#ffffff;", "data-toggle" => "tooltip", :title => "Remove voucher detail" do %>
+              <span class="glyphicon glyphicon-remove"></span>
+            <% end %>
           </div>
         </h3>
       </div>

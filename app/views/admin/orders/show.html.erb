@@ -11,7 +11,12 @@
     <!-- Client Details -->
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Order Details <small>for <%= @order.user.profile.nama_penuh %></small><%= link_to 'Edit', edit_admin_user_order_path, :class => "pull-right btn btn-primary btn-xs", :style => "color:#ffffff;" %></h3>
+        <h3 class="panel-title">
+          Order Details <small>for <%= @order.user.profile.nama_penuh %></small>
+          <%= link_to edit_admin_user_order_path, :class => "pull-right btn btn-primary btn-xs", :style => "color:#ffffff;", "data-toggle" => "tooltip", :title => "Edit order detail" do %>
+            <span class="glyphicon glyphicon-edit"></span>
+          <% end %>
+        </h3>
       </div>
       <div class="panel-body">
     
