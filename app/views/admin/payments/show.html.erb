@@ -46,6 +46,12 @@
             <p>#<%= @payment.order.ref_number %></p>
           </div>
           <div class="col-md-6">
+            <label>Package Name</label>
+            <p><%= @payment.order.package.package_name %></p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
             <label>Payment Status</label>
             <p>
               <% if @payment.status == "Paid" %>
