@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'payments/index'
+  get 'about', to: 'pages#about'
 
   namespace :admin do
   get 'orders/index'

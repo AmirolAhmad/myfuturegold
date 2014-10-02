@@ -1,7 +1,10 @@
 class PagesController < ApplicationController
-	before_filter :store_location
-	
+  before_filter :store_location
+  
   def index
-  	@user = current_user
+    @user = current_user
+  end
+
+  def about
   end
 end
