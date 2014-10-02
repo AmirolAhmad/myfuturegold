@@ -18,7 +18,7 @@
           <table class="table table-bordered table-hover" id="clientOrders">
             <thead>
               <tr>
-                <th class="col-md-2">Reference Number</th>
+                <th class="col-md-2">Order Number</th>
                 <th class="col-md-1">Package</th>
                 <th class="col-md-1">Status</th>
                 <th class="col-md-2">Action</th>
@@ -27,7 +27,7 @@
             <tbody>
               <% @orders.each do |order| %>
               <tr>
-                <td><%= order.try(:ref_number) %></td>
+                <td>#<%= order.try(:ref_number) %></td>
                 <td><%= order.package.try(:package_name) %></td>
 
                 <td>

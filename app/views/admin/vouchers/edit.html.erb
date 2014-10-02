@@ -60,7 +60,7 @@
         <div class="row">
           <div class="col-md-6">
             <div class="form-group">
-              <%= f.label :ref_number, "Voucher For (Order Ref Number)" %>
+              <%= f.label :ref_number, "Voucher For (Order Number)" %>
               <%= f.collection_select(:order_id, Order.where(user_id: @order, user_id: @user), :id, :ref_number, {}, {:class => "form-control"}) %>
             </div>
           </div>
