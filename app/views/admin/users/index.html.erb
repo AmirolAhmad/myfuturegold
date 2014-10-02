@@ -15,7 +15,7 @@
 		<tbody>
 			<% @users.each do |user| %>
 			<tr>
-				<td><%= user.profile.try(:nama_penuh) %></td>
+				<td><%= image_tag avatar_url(user), :class => "img-rounded" %> <%= user.profile.try(:nama_penuh) %></td>
 				<td><%= user.profile.try(:ic_number) %></td>
 				<td><%= user.email %></td>
 				<td>
