@@ -46,6 +46,12 @@
             <p>#<%= @voucher.order.ref_number %></p>
           </div>
           <div class="col-md-6">
+            <label>Package Name</label>
+            <p><%= @voucher.order.package.package_name %></p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
             <label>Voucher Status</label>
             <p>
               <% if @voucher.status == "Paid" %>

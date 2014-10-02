@@ -54,6 +54,14 @@
           </div>
           <div class="col-md-6">
             <div class="form-group">
+              <label>Package Name</label>
+              <p><%= @voucher.order.package.package_name %></p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
             	<label>Voucher Status</label>
               <p>
                 <% if @voucher.status == "Paid" %>
