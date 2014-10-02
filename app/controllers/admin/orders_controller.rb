@@ -39,7 +39,7 @@ class Admin::OrdersController < ApplicationController
 
       # reference number
       random = [('A'..'Z'), ('1'..'9')].map { |i| i.to_a }.flatten
-      ref_number = (0...10).map { random[rand(random.length)] }.join
+      ref_number = (0...7).map { random[rand(random.length)] }.join
       @order.update_attributes(:ref_number => ref_number)
 
       #ordered date
