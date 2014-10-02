@@ -4,7 +4,7 @@ class VoucherPdf < Prawn::Document
     super()
     @voucher = voucher
     @view = view
-    text "Order Number: ##{@voucher.order.ref_number}"
+    text "Order Number: #{@voucher.order.ref_number}"
     thanks_message
     order_date
   end

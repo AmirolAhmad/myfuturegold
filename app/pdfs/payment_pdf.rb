@@ -4,7 +4,7 @@ class PaymentPdf < Prawn::Document
     super()
     @payment = payment
     @view = view
-    text "Order Number: ##{@payment.order.ref_number}"
+    text "Order Number: #{@payment.order.ref_number}"
     thanks_message
     order_date
   end
