@@ -1,5 +1,5 @@
 <div class="page-header">
-  <h1>Payment Details <small>View payment #<%= @payment.receipt_number %>.</small></h1>
+  <h1>Voucher Details <small>View voucher #<%= @voucher.receipt_number %>.</small></h1>
 </div>
 
 <div class="row">
@@ -11,7 +11,7 @@
     <!-- Payment Details -->
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Order Payment</h3>
+        <h3 class="panel-title">Order Voucher</h3>
       </div>
       <div class="panel-body">
     
@@ -19,13 +19,13 @@
           <div class="col-md-6">
             <div class="form-group">
             	<label>Receipt Number</label>
-              <p><%= @payment.receipt_number %></p>
+              <p><%= @voucher.receipt_number %></p>
             </div>
           </div>
           <div class="col-md-6">
             <div class="form-group">
             	<label>Date of Payment</label>
-              <p><%= @payment.payment_date %></p>
+              <p><%= @voucher.voucher_date %></p>
             </div>
           </div>
         </div>
@@ -33,14 +33,14 @@
         <div class="row">
           <div class="col-md-6">
             <div class="form-group">
-            	<label>Payment Method</label>
-              <p><%= @payment.method %></p>
+            	<label>voucher Method</label>
+              <p><%= @voucher.method %></p>
             </div>
           </div>
           <div class="col-md-6">
             <div class="form-group">
-            	<label>Total Payment</label>
-              <p>RM <%= @payment.total_payment %></p>
+            	<label>Total voucher</label>
+              <p>RM <%= @voucher.total_payment %></p>
             </div>
           </div>
         </div>
@@ -48,25 +48,25 @@
         <div class="row">
           <div class="col-md-6">
             <div class="form-group">
-            	<label>Payment For (Order Ref Number)</label>
-              <p>#<%= @payment.order.ref_number %></p>
+            	<label>Voucher For (Order Ref Number)</label>
+              <p>#<%= @voucher.order.ref_number %></p>
             </div>
           </div>
           <div class="col-md-6">
             <div class="form-group">
-            	<label>Payment Status</label>
+            	<label>Voucher Status</label>
               <p>
-                <% if @payment.status == "Paid" %>
+                <% if @voucher.status == "Paid" %>
                 <span class="label label-primary">
-                  <%= @payment.status %>
+                  <%= @voucher.status %>
                 </span>
-                <% elsif @payment.status == "Cancel" %>
+                <% elsif @voucher.status == "Cancel" %>
                 <span class="label label-default">
-                  <%= @payment.status %>
+                  <%= @voucher.status %>
                 </span>
                 <% else %>
                 <span class="label label-danger">
-                  <%= @payment.status %>
+                  <%= @voucher.status %>
                 </span>
                 <% end %>
               </p>
@@ -76,8 +76,8 @@
 
       </div>
       <div class="panel-footer">
-        <%= link_to "Download Invoice", payment_path(@payment.id, :format => "pdf"), :class => "btn btn-primary", :target => "_blank" %>
-        <%= link_to 'Back', payments_path, :class => "btn btn-default" %>
+        <%= link_to "Download Invoice", voucher_path(@voucher.id, :format => "pdf"), :class => "btn btn-primary", :target => "_blank" %>
+        <%= link_to 'Back', vouchers_path, :class => "btn btn-default" %>
       </div>
     </div>
 

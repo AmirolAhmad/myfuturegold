@@ -19,11 +19,13 @@ Rails.application.routes.draw do
     resources :users do
       resources :orders
       resources :payments
+      resources :vouchers
     end
   end
 
   resource :account, only: [:show, :edit, :update]
   resources :orders, only: [:index, :show, :destroy]
-  resources :payments, only: [:index, :show, :destroy]
+  resources :payments, only: [:index, :show]
+  resources :vouchers, only: [:index, :show]
   
 end

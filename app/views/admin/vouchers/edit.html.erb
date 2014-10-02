@@ -1,0 +1,87 @@
+<div class="page-header">
+  <h1>Voucher History <small>Manage <%= @user.login %> voucher here.</small></h1>
+</div>
+
+<div class="row">
+  <div class="col-md-4">
+    <%= render partial: "sidebar" %>
+  </div>
+  <%= form_for :voucher, url: admin_user_voucher_path, method: :patch do |f| %>
+
+  <div class="col-md-8">
+    <!-- Client Details -->
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Voucher History</h3>
+      </div>
+      <div class="panel-body">
+
+        <% if @voucher.errors.any? %>
+        <div class="alert alert-danger alert-dismissable">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+          <strong><%= pluralize(@voucher.errors.count, "error") %> prohibited
+            this voucher from being saved:</strong>
+            <ul>
+              <% @voucher.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+              <% end %>
+            </ul>
+        </div>
+        <% end %>
+    
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <%= f.label :receipt_number, "Voucher Receipt Number" %>
+              <%= f.text_field :receipt_number, :class => "form-control" %>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <%= f.label :voucher_date, "Date of Payment" %>
+              <%= f.text_field :voucher_date, :class => "form-control", :placeholder => "dd/mm/yyyy" %>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <%= f.label :method, "Voucher Payment Method" %>
+              <%= f.text_field :method, :class => "form-control", :placeholder => "Online Bankin (CIMB, Maybank), ATM Machine" %>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <%= f.label :total_payment, "Total Payment (RM)" %>
+              <%= f.text_field :total_payment, :class => "form-control" %>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <%= f.label :ref_number, "Voucher For (Order Ref Number)" %>
+              <%= f.collection_select(:order_id, Order.where(user_id: @order, user_id: @user), :id, :ref_number, {}, {:class => "form-control"}) %>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <%= f.label :status, "Voucher Status" %>
+              <%# f.select :status, [['Paid', 1], ['Unpaid', 2], ['Cancel', 3]], {:selected => 3}, {:class => "form-control"}) %>
+              <%= f.select(:status, options_for_select([['Paid', 'Paid'], ['Unpaid', 'Unpaid'], ['Cancel', 'Cancel']], @voucher.status), {}, {:class => "form-control"}) %>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="panel-footer">
+        <div class="form-group">
+          <%= f.submit "Save", :class => "btn btn-primary" %>
+          <%= link_to "Cancel", admin_user_vouchers_path(@user), :class => "btn btn-default" %>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <% end %>
+</div>

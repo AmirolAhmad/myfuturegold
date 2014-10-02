@@ -1,0 +1,73 @@
+<div class="page-header">
+  <h1>Voucher History <small>Manage <%= @user.login %> voucher here.</small></h1>
+</div>
+
+<div class="row">
+  <div class="col-md-4">
+    <%= render partial: "sidebar" %>
+  </div>
+  <div class="col-md-8">
+    <!-- Client Details -->
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Voucher History <%= link_to 'Add Voucher', new_admin_user_voucher_path, :class => "pull-right btn btn-primary btn-xs", :style => "color:#ffffff;" %></h3>
+      </div>
+      <div class="panel-body">
+    
+        <div class="table-responsive">
+          <table class="table table-bordered table-hover" id="voucherList">
+            <thead>
+              <tr>
+                <th class="col-md-2">Receipt Number</th>
+                <th class="col-md-2">Voucher Date</th>
+                <th class="col-md-3">Order Reference Number</th>
+                <th class="col-md-1">voucher Status</th>
+                <th class="col-md-1">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @vouchers.each do |voucher| %>
+              <tr>
+                <td><%= voucher.receipt_number %></td>
+                <td><%= voucher.voucher_date %></td>
+                <td>#<%= voucher.order.ref_number %></td>
+                <td>
+                  <% if voucher.status == "Paid" %>
+                  <span class="label label-primary">
+                    <%= voucher.status %>
+                  </span>
+                  <% elsif voucher.status == "Cancel" %>
+                  <span class="label label-default">
+                    <%= voucher.status %>
+                  </span>
+                  <% else %>
+                  <span class="label label-danger">
+                    <%= voucher.status %>
+                  </span>
+                  <% end %>
+                </td>
+                <td>
+                  <div class="btn-group btn-group-xs">
+                  <%= link_to 'View', admin_user_voucher_path(id:voucher), :class => "btn btn-default" %>
+                  </div>
+                </td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+      <div class="panel-footer">
+        <%= link_to "Back", admin_users_path, :class => "btn btn-default" %>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script type="text/javascript">
+$(document).ready( function () {
+    $('#voucherList').DataTable();
+} );
+</script>

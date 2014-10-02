@@ -38,4 +38,8 @@ class ApplicationController < ActionController::Base
   def payment_params
     params.require(:payment).permit(:id, :user_id, :order_id, :payment_date, :method, :status, :total_payment, :receipt_number)
   end
+
+  def voucher_params
+    params.require(:voucher).permit(:id, :user_id, :order_id, :voucher_date, :method, :status, :total_payment, :receipt_number)
+  end
 end
