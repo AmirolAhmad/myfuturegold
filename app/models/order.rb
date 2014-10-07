@@ -17,4 +17,8 @@ class Order < ActiveRecord::Base
   validates_presence_of :status_id
 
   default_scope -> { order('orders.created_at DESC') }
+
+  def self.total_on(date)
+    where(["date(ordered_date) = ?", date]).sum(:total_price)
+  end
 end

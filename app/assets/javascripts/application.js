@@ -20,6 +20,7 @@
 //= require jquery.dataTables
 //= require dataTables.bootstrap
 //= require d3
+//= require highcharts
 //= require_tree .
 
 

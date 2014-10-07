@@ -6,3 +6,58 @@
 <%= link_to "Manage Client", admin_users_path, :class => "btn btn-primary btn-lg" %>
 
 <hr>
+
+
+
+
+<div id="chart" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
+<script type="text/javascript">
+$(function visitorData (data) {
+    $('#chart').highcharts({
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'Order Summary'
+        },
+        subtitle: {
+            text: '<%= current_user.profile.nama_penuh %>'
+        },
+        xAxis: {
+            type: "datetime"
+        },
+        yAxis: {
+            // min: 0,
+            title: {
+                text: 'Summary'
+            }
+        },
+        tooltip: {
+        	formatter: function(){
+        		return Highcharts.dateFormat("%B %e, %Y", this.x) + ': ' + "<b>RM" + Highcharts.numberFormat(this.y, 2) + "";
+        	}
+        },
+        series: [{
+            name: 'Total Order',
+            pointInterval: <%= 1.day * 1000 %>,
+            pointStart: <%= 1.weeks.ago.to_i * 1000 %>,
+            data: <%= (1.weeks.ago.to_date..Date.today).map { |date| Order.total_on(date).to_f }.inspect %>
+
+        }, {
+            name: 'Payment Received',
+            pointInterval: <%= 1.day * 1000 %>,
+            pointStart: <%= 1.weeks.ago.to_i * 1000 %>,
+            data: <%= (1.weeks.ago.to_date..Date.today).map { |date| Payment.total_on(date).to_f }.inspect %>
+
+        }, {
+            name: 'Voucher Send',
+            pointInterval: <%= 1.day * 1000 %>,
+            pointStart: <%= 1.weeks.ago.to_i * 1000 %>,
+            data: <%= (1.weeks.ago.to_date..Date.today).map { |date| Voucher.total_on(date).to_f }.inspect %>
+
+        }
+        ]
+    });
+});
+</script>

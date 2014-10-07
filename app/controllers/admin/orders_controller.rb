@@ -44,7 +44,7 @@ class Admin::OrdersController < ApplicationController
       @order.update_attributes(:ref_number => "#" + ref_number)
 
       #ordered date
-      @ordered_date = Time.now
+      @ordered_date = Time.zone.now
       @order.update_attributes(:ordered_date => @ordered_date)
     else
       render 'new'
