@@ -1,14 +1,16 @@
 <div class="alert alert-info" role="alert">
-	<h5>Welcome <%= current_user.login.upcase %> to the admin dashboard.</h5>
-	<p>Here you are able to manage your client details, order details, and track your client payment history. As addition, you can do anything as what you want.</p>
+  <h5>Welcome <%= current_user.login.upcase %> to the admin dashboard.</h5>
+  <p>Here you are able to manage your client details, order details, and track your client payment history. As addition, you can do anything as what you want.</p>
 </div>
 
 <%= link_to "Manage Client", admin_users_path, :class => "btn btn-primary btn-lg" %>
 
 <hr>
 
-
-
+<div class="row">
+  <div class="col-md-6"></div>
+  <div class="col-md-6"></div>
+</div>
 
 <div id="chart" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 
@@ -34,9 +36,9 @@ $(function visitorData (data) {
             }
         },
         tooltip: {
-        	formatter: function(){
-        		return Highcharts.dateFormat("%B %e, %Y", this.x) + ': ' + "<b>RM" + Highcharts.numberFormat(this.y, 2) + "</b>";
-        	}
+          formatter: function(){
+            return Highcharts.dateFormat("%B %e, %Y", this.x) + ': ' + "<b>RM" + Highcharts.numberFormat(this.y, 2) + "</b>";
+          }
         },
         series: [{
             name: 'Total Order',
