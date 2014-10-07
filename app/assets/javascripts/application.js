@@ -19,6 +19,7 @@
 //= require respond.min
 //= require jquery.dataTables
 //= require dataTables.bootstrap
+//= require d3
 //= require_tree .
 
 
