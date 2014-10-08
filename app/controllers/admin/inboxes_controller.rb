@@ -1,5 +1,5 @@
 class Admin::InboxesController < ApplicationController
-  before_filter :set_inbox, only: [:show, :edit, :update, :destroy]
+  before_filter :set_inbox, only: [:show, :destroy]
   before_filter :store_location, only: [:index]
   before_filter :require_admin
 
@@ -38,23 +38,6 @@ class Admin::InboxesController < ApplicationController
       @inbox.update_attributes(:ticket_id => "#MGR-" + ticket_id)
     else
       render 'new'
-    end
-  end
-
-  def edit
-    if @inbox
-      @inbox.update_attributes(:unread => true)
-      render
-    else
-      redirect_to admin_inboxes_path, notice: "Message not found."
-    end
-  end
-
-  def update
-    if @inbox.update(inbox_params)
-      redirect_to admin_inboxes_path, notice: "Ticket ID #{@inbox.ticket_id} has been updated."
-    else
-      render 'edit'
     end
   end
 

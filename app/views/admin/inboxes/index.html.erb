@@ -45,11 +45,8 @@
         </td>
         <td>
           <div class="btn-group btn-group-xs">
-          <%= link_to admin_inbox_path(inbox), :class => "btn btn-default", "data-toggle" => "tooltip", :title => "View more details" do %>
+          <%= link_to admin_inbox_path(inbox), :class => "btn btn-default", "data-toggle" => "tooltip", :title => "Read message" do %>
             <span class="glyphicon glyphicon-eye-open"></span>
-          <% end %>
-          <%= link_to edit_admin_inbox_path(inbox), :class => "btn btn-info", "data-toggle" => "tooltip", :title => "Edit this order" do %>
-            <span class="glyphicon glyphicon-edit"></span>
           <% end %>
           <%= link_to admin_inbox_path(inbox), method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger", "data-toggle" => "tooltip", :title => "Remove this message" do %>
             <span class="glyphicon glyphicon-remove"></span>
