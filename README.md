@@ -21,3 +21,4 @@ MGR | Gold Solution & Management Tracking System
 - Sidekiq
 - AWS S3
 - Carrierwave
+- Twillio
