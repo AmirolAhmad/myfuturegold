@@ -1,10 +1,10 @@
 class Admin::InboxesController < ApplicationController
-  before_filter :set_inbox, only: [:show, :destroy]
+  before_filter :set_inbox, only: [:show, :edit, :update, :destroy]
   before_filter :store_location, only: [:index]
   before_filter :require_admin
 
   def index
-    @inboxes = Inbox.all
+    @inboxes = Inbox.all.order("created_at DESC")
     respond_to do |format|
       format.html { @inboxes }
       format.json { render json: @inboxes.to_json(include: [:user]) }
@@ -13,7 +13,6 @@ class Admin::InboxesController < ApplicationController
 
   def show
     if @inbox
-      @inboxes = Inbox.hash_tree
       @inbox.update_attributes(:unread => true)
       respond_to do |format|
         format.html { @inbox }
@@ -25,25 +24,12 @@ class Admin::InboxesController < ApplicationController
   end
 
   def new
-    @inbox ||= Inbox.new(parent_id: params[:parent_id])
-    render
-  end
-
-  def new_reply
-    @inbox ||= Inbox.new(parent_id: params[:parent_id])
+    @inbox ||= Inbox.new
     render
   end
 
   def create
-    #@inbox = Inbox.new(inbox_params)
-
-    if params[:inbox][:parent_id].to_i > 0
-      parent = Inbox.find_by_id(params[:inbox].delete(:parent_id))
-      @inbox = parent.children.build(inbox_params)
-    else
-      @inbox = Inbox.new(inbox_params)
-    end
-
+    @inbox = Inbox.new(inbox_params)
     if @inbox.save
       redirect_to admin_inboxes_path, notice: "New message has been created."
 
@@ -52,6 +38,23 @@ class Admin::InboxesController < ApplicationController
       @inbox.update_attributes(:ticket_id => "#MGR-" + ticket_id)
     else
       render 'new'
+    end
+  end
+
+  def edit
+    if @inbox
+      @inbox.update_attributes(:unread => true)
+      render
+    else
+      redirect_to admin_inboxes_path, notice: "Message not found."
+    end
+  end
+
+  def update
+    if @inbox.update(inbox_params)
+      redirect_to admin_inboxes_path, notice: "Ticket ID #{@inbox.ticket_id} has been updated."
+    else
+      render 'edit'
     end
   end
 

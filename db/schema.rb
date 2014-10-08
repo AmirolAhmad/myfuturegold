@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141008130919) do
+ActiveRecord::Schema.define(version: 20141008083708) do
 
   create_table "discounts", force: true do |t|
     t.string   "discount_date"
@@ -33,15 +33,6 @@ ActiveRecord::Schema.define(version: 20141008130919) do
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
-  create_table "inbox_hierarchies", id: false, force: true do |t|
-    t.integer "ancestor_id",   null: false
-    t.integer "descendant_id", null: false
-    t.integer "generations",   null: false
-  end
-
-  add_index "inbox_hierarchies", ["ancestor_id", "descendant_id", "generations"], name: "inbox_anc_desc_udx", unique: true, using: :btree
-  add_index "inbox_hierarchies", ["descendant_id"], name: "inbox_desc_idx", using: :btree
-
   create_table "inboxes", force: true do |t|
     t.integer  "user_id",                     null: false
     t.string   "ticket_id"
@@ -52,7 +43,6 @@ ActiveRecord::Schema.define(version: 20141008130919) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "unread",      default: false
-    t.integer  "parent_id"
   end
 
   create_table "orders", force: true do |t|
