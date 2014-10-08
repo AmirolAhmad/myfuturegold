@@ -1,0 +1,52 @@
+<div class="page-header">
+  <h1>Compose New Message</h1>
+</div>
+
+<%= form_for :inbox, url: admin_inboxes_path, method: :post do |f| %>
+
+<% if @inbox.errors.any? %>
+<div class="alert alert-danger alert-dismissable">
+  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  <strong><%= pluralize(@inbox.errors.count, "error") %> prohibited
+    this message from being saved:</strong>
+    <ul>
+      <% @inbox.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+      <% end %>
+    </ul>
+</div>
+<% end %>
+
+<div class="form-group">
+  <%= f.label :user_id, "Select Client" %>
+  <%= f.collection_select(:user_id, User.all, :id, :login, {}, {:class => "form-control"}) %>
+</div>
+
+<div class="form-group">
+  <%= f.label :category, "Category" %>
+  <%= f.select(:category, options_for_select([['General', 'General'], ['Account', 'Account'], ['Product', 'Product']], 'General'), {}, {:class => "form-control"}) %>
+</div>
+
+<div class="form-group">
+  <%= f.label :status, "Status" %>
+  <%= f.select(:status, options_for_select([['New', 'New'], ['Resolved', 'Resolved'], ['Pending', 'Pending']], 'New'), {}, {:class => "form-control"}) %>
+</div>
+
+<div class="form-group">
+  <%= f.label :subject, "Subject : " %>
+  <%= f.text_field :subject, :class => "form-control", :placeholder => "Enter your message subject" %>
+</div>
+
+<div class="form-group">
+  <%= f.label :description, "Message : " %>
+  <%= f.text_area :description, :class => "form-control", :placeholder => "Enter your message", :rows => 10 %>
+</div>
+
+<div class="form-group">
+  <%= f.submit "Save", :class => "btn btn-primary" %>
+  <%= link_to 'Back to Inbox', admin_inboxes_path, :class => 'btn btn-default' %>
+</div>
+
+
+
+<% end %>

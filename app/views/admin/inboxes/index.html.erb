@@ -1,0 +1,73 @@
+<div class="page-header">
+  <h1>Inbox <small>Manage your client messages here.
+  <%= link_to 'Compose Message', new_admin_inbox_path, :class => 'btn btn-default btn-xs' %>
+  </small></h1>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-bordered table-hover" id="inboxMessages">
+    <thead>
+      <tr>
+        <th class="col-md-2">Ticket ID</th>
+        <th>By</th>
+        <th>Subject</th>
+        <th class="col-md-1">Status</th>
+        <th class="col-md-2">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @inboxes.each do |inbox| %>
+      <tr>
+        <td>
+          <%= inbox.ticket_id %>
+          <% if inbox.unread == false %>
+          <span class="badge">
+            New
+          </span>
+          <% end %>
+        </td>
+        <td><%= inbox.user.profile.try(:nama_penuh) %></td>
+        <td><%= inbox.subject %></td>
+        <td>
+          <% if inbox.status == "New" %>
+          <span class="label label-primary">
+            <%= inbox.status %>
+          </span>
+          <% elsif inbox.status == "Pending" %>
+          <span class="label label-warning">
+            <%= inbox.status %>
+          </span>
+          <% else %>
+          <span class="label label-success">
+            <%= inbox.status %>
+          </span>
+          <% end %>
+        </td>
+        <td>
+          <div class="btn-group btn-group-xs">
+          <%= link_to admin_inbox_path(inbox), :class => "btn btn-default", "data-toggle" => "tooltip", :title => "View more details" do %>
+            <span class="glyphicon glyphicon-eye-open"></span>
+          <% end %>
+          <%= link_to edit_admin_inbox_path(inbox), :class => "btn btn-info", "data-toggle" => "tooltip", :title => "Edit this order" do %>
+            <span class="glyphicon glyphicon-edit"></span>
+          <% end %>
+          <%= link_to admin_inbox_path(inbox), method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger", "data-toggle" => "tooltip", :title => "Remove this message" do %>
+            <span class="glyphicon glyphicon-remove"></span>
+          <% end %>
+          </div>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<script type="text/javascript">
+$(document).ready( function () {
+    $('#inboxMessages').DataTable();
+} );
+</script>
+
+
+
+

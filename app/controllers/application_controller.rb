@@ -42,4 +42,8 @@ class ApplicationController < ActionController::Base
   def voucher_params
     params.require(:voucher).permit(:id, :user_id, :order_id, :voucher_date, :method, :status, :total_payment, :receipt_number)
   end
+
+  def inbox_params
+    params.require(:inbox).permit(:id, :user_id, :ticket_id, :subject, :description, :status, :category)
+  end
 end
