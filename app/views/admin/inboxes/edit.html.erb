@@ -24,12 +24,12 @@
 
 <div class="form-group">
   <%= f.label :category, "Category" %>
-  <%= f.select(:category, options_for_select([['General', 'General'], ['Account', 'Account'], ['Product', 'Product']], 'General'), {}, {:class => "form-control"}) %>
+  <%= f.select(:category, options_for_select([['General', 'General'], ['Account', 'Account'], ['Product', 'Product'], ['Payment', 'Payment'], ['Voucher', 'Voucher'], ['Feedback', 'Feedback']], @inbox.category), {}, {:class => "form-control"}) %>
 </div>
 
 <div class="form-group">
   <%= f.label :status, "Status" %>
-  <%= f.select(:status, options_for_select([['New', 'New'], ['Resolved', 'Resolved'], ['Pending', 'Pending']], 'New'), {}, {:class => "form-control"}) %>
+  <%= f.select(:status, options_for_select([['New', 'New'], ['Solved', 'Solved'], ['Pending', 'Pending'], ['Closed', 'Closed']], @inbox.status), {}, {:class => "form-control"}) %>
 </div>
 
 <div class="form-group">

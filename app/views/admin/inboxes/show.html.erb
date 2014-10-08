@@ -1,5 +1,5 @@
 <div class="page-header">
-  <h1>Message <small>from <%= @inbox.user.profile.nama_penuh %>.</small></h1>
+  <h1>Message <small>from <%= @inbox.user.profile.nama_penuh %>. <%= link_to 'Back to Inbox', admin_inboxes_path, :class => 'btn btn-primary btn-xs' %></small></h1>
 </div>
 
 <div class="row">
@@ -28,5 +28,3 @@
 
 <label>Messages : </label>
 <p><%= @inbox.description %></p>
-
-<%= link_to 'Back to Inbox', admin_inboxes_path, :class => 'btn btn-primary' %>
