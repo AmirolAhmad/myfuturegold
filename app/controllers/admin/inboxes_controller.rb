@@ -4,7 +4,7 @@ class Admin::InboxesController < ApplicationController
   before_filter :require_admin
 
   def index
-    @inboxes = Inbox.all.order("created_at DESC")
+    @inboxes = Inbox.all
     respond_to do |format|
       format.html { @inboxes }
       format.json { render json: @inboxes.to_json(include: [:user]) }
@@ -13,6 +13,7 @@ class Admin::InboxesController < ApplicationController
 
   def show
     if @inbox
+      @inboxes = Inbox.hash_tree
       @inbox.update_attributes(:unread => true)
       respond_to do |format|
         format.html { @inbox }
@@ -24,12 +25,25 @@ class Admin::InboxesController < ApplicationController
   end
 
   def new
-    @inbox ||= Inbox.new
+    @inbox ||= Inbox.new(parent_id: params[:parent_id])
+    render
+  end
+
+  def new_reply
+    @inbox ||= Inbox.new(parent_id: params[:parent_id])
     render
   end
 
   def create
-    @inbox = Inbox.new(inbox_params)
+    #@inbox = Inbox.new(inbox_params)
+
+    if params[:inbox][:parent_id].to_i > 0
+      parent = Inbox.find_by_id(params[:inbox].delete(:parent_id))
+      @inbox = parent.children.build(inbox_params)
+    else
+      @inbox = Inbox.new(inbox_params)
+    end
+
     if @inbox.save
       redirect_to admin_inboxes_path, notice: "New message has been created."
 

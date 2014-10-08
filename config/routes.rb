@@ -22,6 +22,7 @@ Rails.application.routes.draw do
       resources :vouchers
     end
     resources :inboxes, only: [:index, :show, :new, :create, :destroy]
+    get '/inboxes/new/(:parent_id)', to: 'inboxes#new_reply', as: :new_reply
   end
 
   resource :account, only: [:show, :edit, :update]

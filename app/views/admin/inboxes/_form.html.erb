@@ -1,8 +1,4 @@
-<div class="page-header">
-  <h1>Compose New Message</h1>
-</div>
-
-<%= form_for :inbox, url: admin_inbox_path, method: :patch do |f| %>
+<%= form_for :inbox, url: admin_inboxes_path, method: :post do |f| %>
 
 <% if @inbox.errors.any? %>
 <div class="alert alert-danger alert-dismissable">
@@ -16,6 +12,8 @@
     </ul>
 </div>
 <% end %>
+
+<%= f.hidden_field :parent_id %>
 
 <div class="form-group">
   <%= f.label :user_id, "Select Client" %>
@@ -46,7 +44,5 @@
   <%= f.submit "Save", :class => "btn btn-primary" %>
   <%= link_to 'Back to Inbox', admin_inboxes_path, :class => 'btn btn-default' %>
 </div>
-
-
 
 <% end %>
