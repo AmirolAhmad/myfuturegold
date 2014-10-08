@@ -1,6 +1,6 @@
 class Admin::OrdersController < ApplicationController
   before_filter :set_user, only: [:index, :create, :show, :edit, :update, :destroy, :new]
-  before_filter :set_order, only: [:index, :show, :edit, :update, :destroy]
+  before_filter :set_order, only: [:show, :edit, :update, :destroy]
 	before_filter :store_location, only: [:index]
   before_filter :require_admin
   
