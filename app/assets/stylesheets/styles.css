@@ -119,6 +119,18 @@ code {
   text-align: left;
 }
 
+.marketing .col-md-4 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+.marketing h2 {
+  font-weight: normal;
+}
+.marketing .col-md-4 p {
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
 
 
 

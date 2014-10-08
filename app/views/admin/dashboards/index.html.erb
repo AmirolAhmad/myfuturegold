@@ -1,16 +1,29 @@
-<div class="alert alert-info" role="alert">
-  <h5>Welcome <%= current_user.login.upcase %> to the admin dashboard.</h5>
-  <p>Here you are able to manage your client details, order details, and track your client payment history. As addition, you can do anything as what you want.</p>
+<div class="text-bg-classes">
+  <p class="bg-info">Welcome <b><%= current_user.login.upcase %></b> to the admin dashboard.</p>
 </div>
 
-<%= link_to "Manage Client", admin_users_path, :class => "btn btn-primary btn-lg" %>
+<div class="marketing row">
+  <div class="col-md-4">
+    <%= image_tag('Dude@2x.png', :alt => "View Message", :style => 'width: 140px; height: 140px;') %>
+    <h2>Client</h2>
+    <p class="small">Manage your client details, order details, payment details and voucher details.</p>
+    <p><%= link_to "Manage Client", admin_users_path, :class => "btn btn-primary" %></p>
+  </div>
+  <div class="col-md-4">
+    <%= image_tag('Mail@2x.png', :alt => "View Message", :style => 'width: 140px; height: 140px;') %>
+    <h2>Message</h2>
+    <p class="small">Manage your mail message that has been sent to you from user side.</p>
+    <p><%= link_to "Manage Message", '', :class => "btn btn-primary" %></p>
+  </div>
+  <div class="col-md-4">
+    <%= image_tag('Support@2x.png', :alt => "View Message", :style => 'width: 140px; height: 140px;') %>
+    <h2>Feedback</h2>
+    <p class="small">Manage your feedback that has been sent to you from user side.</p>
+    <p><%= link_to "Manage Feedback", '', :class => "btn btn-primary" %></p>
+  </div>
+</div>
 
 <hr>
-
-<div class="row">
-  <div class="col-md-6"></div>
-  <div class="col-md-6"></div>
-</div>
 
 <div id="chart" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 
