@@ -3,38 +3,38 @@
 </div>
 
 <div class="table-responsive">
-	<table class="table table-bordered table-hover" id="clientDetails">
-		<thead>
-			<tr>
-				<th>Client Name</th>
-				<th>IC Number</th>
-				<th>Client Email</th>
-				<th class="col-md-2">Action</th>
-			</tr>
-		</thead>
-		<tbody>
-			<% @users.each do |user| %>
-			<tr>
-				<td><%= image_tag avatar_url(user), :class => "img-rounded" %> <%= user.profile.try(:nama_penuh) %></td>
-				<td><%= user.profile.try(:ic_number) %></td>
-				<td><%= user.email %></td>
-				<td>
-					<div class="btn-group btn-group-xs">
-					<%= link_to admin_user_path(user), :class => "btn btn-default", "data-toggle" => "tooltip", :title => "View more details" do %>
-						<span class="glyphicon glyphicon-eye-open"></span>
-					<% end %>
-					<%= link_to edit_admin_user_path(user), :class => "btn btn-info", "data-toggle" => "tooltip", :title => "Edit client details" do %>
-						<span class="glyphicon glyphicon-edit"></span>
-					<% end %>
-					<%= link_to admin_user_path(user), method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger", "data-toggle" => "tooltip", :title => "Remove this client" do %>
-						<span class="glyphicon glyphicon-remove"></span>
-					<% end %>
-					</div>
-				</td>
-			</tr>
-			<% end %>
-		</tbody>
-	</table>
+  <table class="table table-bordered table-hover" id="clientDetails" data-no-turbolink>
+    <thead>
+      <tr>
+        <th>Client Name</th>
+        <th>IC Number</th>
+        <th>Client Email</th>
+        <th class="col-md-2">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+      <tr>
+        <td><%= image_tag avatar_url(user), :class => "img-rounded" %> <%= user.profile.try(:nama_penuh) %></td>
+        <td><%= user.profile.try(:ic_number) %></td>
+        <td><%= user.email %></td>
+        <td>
+          <div class="btn-group btn-group-xs">
+          <%= link_to admin_user_path(user), :class => "btn btn-default", "data-toggle" => "tooltip", :title => "View more details" do %>
+            <span class="glyphicon glyphicon-eye-open"></span>
+          <% end %>
+          <%= link_to edit_admin_user_path(user), :class => "btn btn-info", "data-toggle" => "tooltip", :title => "Edit client details" do %>
+            <span class="glyphicon glyphicon-edit"></span>
+          <% end %>
+          <%= link_to admin_user_path(user), method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger", "data-toggle" => "tooltip", :title => "Remove this client" do %>
+            <span class="glyphicon glyphicon-remove"></span>
+          <% end %>
+          </div>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>
 
 <script type="text/javascript">
