@@ -1,12 +1,82 @@
-<div class="jumbotron">
-  <h1>Gold is Real Money!</h1>
-  <p>Throughout history no paper currency has survived in its original form. Paper currencies are normally inflated away until they are worthless.</p>
-  <p><a class="btn btn-primary btn-lg" role="button">Learn more</a></p>
-</div>
+<% if user_signed_in? && !current_user.try(:admin) %>
 
-<div class="page-header">
-  <h1><center>Gold Solution & Management Tracking System</center></h1>
-  <p class="lead">
-    <center>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum gravida nisl. Etiam nisi lacus, dignissim eget pretium in, dictum vel nisl. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vivamus justo eros, tincidunt id consectetur ut, dignissim non purus. Fusce eu dapibus massa</center>
-  </p>
-</div>
+	<div class="page-header">
+	  <h1>My Dashboard</h1>
+	</div>
+
+<div id="chart" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
+<script type="text/javascript">
+$(function visitorData (data) {
+  $('#chart').highcharts({
+    chart: {
+      type: 'column'
+    },
+    title: {
+      text: 'Performance Report (per week)'
+    },
+    xAxis: {
+      type: "datetime",
+      title: {
+          text: "Date for 1 week"
+      }
+    },
+    yAxis: {
+      title: {
+          text: 'Amount (MYR)'
+      }
+    },
+    tooltip: {
+      formatter: function(){
+        return Highcharts.dateFormat("%B %e, %Y", this.x) + ': ' + "<b>RM" + Highcharts.numberFormat(this.y, 2) + "</b>";
+      }
+    },
+    series: [{
+      name: 'Total Order',
+      pointInterval: <%= 1.1.day * 1000 %>,
+      pointStart: <%= 1.weeks.ago.to_i * 1000 %>,
+      data: 
+      	<% @orders = Order.where("user_id = ?", current_user.id) %>
+      	<%= (1.weeks.ago.to_date..Date.today ).map { |date| @orders.total_on(date).to_f }.inspect %>
+
+    }, {
+      name: 'Payment Send',
+      pointInterval: <%= 1.1.day * 1000 %>,
+      pointStart: <%= 1.weeks.ago.to_i * 1000 %>,
+      data:
+      	<% @payments = Payment.where("user_id = ?", current_user.id) %> 
+      	<%= (1.weeks.ago.to_date..Date.today).map { |date| @payments.total_on(date).to_f }.inspect %>
+
+    }, {
+      name: 'Voucher Received',
+      pointInterval: <%= 1.1.day * 1000 %>,
+      pointStart: <%= 1.weeks.ago.to_i * 1000 %>,
+      data:
+      	<% @vouchers = Voucher.where("user_id = ?", current_user.id) %>
+      	<%= (1.weeks.ago.to_date..Date.today).map { |date| @vouchers.total_on(date).to_f }.inspect %>
+
+    }]
+  });
+});
+</script>
+
+<% elsif current_user.try(:admin) %>
+
+	<h1>I'm an admin</h1>
+
+<% else %>
+
+	<div class="jumbotron">
+	  <h1>Gold is Real Money!</h1>
+	  <p>Throughout history no paper currency has survived in its original form. Paper currencies are normally inflated away until they are worthless.</p>
+	  <p><a class="btn btn-primary btn-lg" role="button">Learn more</a></p>
+	</div>
+
+	<div class="page-header">
+	  <h1><center>Gold Solution & Management Tracking System</center></h1>
+	  <p class="lead">
+	    <center>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum gravida nisl. Etiam nisi lacus, dignissim eget pretium in, dictum vel nisl. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vivamus justo eros, tincidunt id consectetur ut, dignissim non purus. Fusce eu dapibus massa</center>
+	  </p>
+	</div>
+
+<% end %>
