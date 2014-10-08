@@ -4,29 +4,43 @@
 
 <div class="row">
   <div class="col-md-3">
-    <label>Ticket ID : </label>
-    <%= @inbox.ticket_id %>
+    <div class="form-group">
+      <label>Ticket ID</label>
+      <p class="form-control-static"><%= @inbox.ticket_id %></p>
+    </div>
   </div>
   <div class="col-md-3">
-    <label>Status : </label>
-    <%= @inbox.status %>
+    <div class="form-group">
+      <label>Status</label>
+      <p class="form-control-static"><%= @inbox.status %></p>
+    </div>
   </div>
   <div class="col-md-3">
-    <label>Category : </label>
-    <%= @inbox.category %>
+    <div class="form-group">
+      <label>Category</label>
+      <p class="form-control-static"><%= @inbox.category %></p>
+    </div>
   </div>
   <div class="col-md-3">
-    <label>Date Created : </label>
-    <%= @inbox.created_at.strftime("%d %B %Y") %>
+    <div class="form-group">
+      <label>Date Created</label>
+      <p class="form-control-static"><%= @inbox.created_at.strftime("%d %B %Y") %></p>
+    </div>
   </div>
 </div>  
 
-<label>Subject : </label>
-<%= @inbox.subject %>
+<div class="form-group">
+  <label>Subject</label>
+  <p class="form-control-static"><%= @inbox.subject %></p>
+</div>
 
 <hr>
 
-<label>Messages : </label>
-<p><%= @inbox.description %></p>
+<div class="form-group">
+  <label>Messages</label>
+  <p class="form-control-static"><%= @inbox.description %></p>
+</div>
 
-<%= link_to "Reply", '', :class => 'btn btn-primary' %>
+<div class="form-group">
+  <%= link_to "Reply", '', :class => 'btn btn-primary' %>
+</div>
