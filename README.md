@@ -10,3 +10,14 @@ MGR | Gold Solution & Management Tracking System
 ## Rails Version
 
 4.1.6
+
+## Technology Used
+
+- Capistrano
+- BackboneJS & UnderscoreJS
+- D3js
+- HighChartJS
+- Redis
+- Sidekiq
+- AWS S3
+- Carrierwave
