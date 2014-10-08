@@ -1,10 +1,10 @@
 class CreateInboxes < ActiveRecord::Migration
   def up
     create_table :inboxes do |t|
-      t.integer :user_id, null: false
+      t.integer :user_id
       t.string :ticket_id
-      t.text :subject, null: false
-      t.text :description, null: false
+      t.text :subject
+      t.text :description
       t.string :status
       t.string :category
 

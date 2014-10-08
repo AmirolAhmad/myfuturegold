@@ -34,10 +34,10 @@ ActiveRecord::Schema.define(version: 20141008083708) do
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
   create_table "inboxes", force: true do |t|
-    t.integer  "user_id",                     null: false
+    t.integer  "user_id"
     t.string   "ticket_id"
-    t.text     "subject",                     null: false
-    t.text     "description",                 null: false
+    t.text     "subject"
+    t.text     "description"
     t.string   "status"
     t.string   "category"
     t.datetime "created_at"
@@ -46,10 +46,10 @@ ActiveRecord::Schema.define(version: 20141008083708) do
   end
 
   create_table "orders", force: true do |t|
-    t.integer  "user_id",       null: false
-    t.integer  "package_id",    null: false
-    t.integer  "discount_id",   null: false
-    t.integer  "status_id",     null: false
+    t.integer  "user_id"
+    t.integer  "package_id"
+    t.integer  "discount_id"
+    t.integer  "status_id"
     t.string   "gram_quantity"
     t.string   "price"
     t.string   "total_price"
@@ -71,8 +71,8 @@ ActiveRecord::Schema.define(version: 20141008083708) do
   end
 
   create_table "payments", force: true do |t|
-    t.integer  "user_id",        null: false
-    t.integer  "order_id",       null: false
+    t.integer  "user_id"
+    t.integer  "order_id"
     t.string   "payment_date"
     t.string   "method"
     t.string   "status"
@@ -134,8 +134,8 @@ ActiveRecord::Schema.define(version: 20141008083708) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "vouchers", force: true do |t|
-    t.integer  "user_id",        null: false
-    t.integer  "order_id",       null: false
+    t.integer  "user_id"
+    t.integer  "order_id"
     t.string   "voucher_date"
     t.string   "method"
     t.string   "status"

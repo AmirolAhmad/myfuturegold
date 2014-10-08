@@ -1,8 +1,8 @@
 class CreatePayments < ActiveRecord::Migration
   def up
     create_table :payments do |t|
-      t.integer :user_id, null: false
-      t.integer :order_id, null: false
+      t.integer :user_id
+      t.integer :order_id
       t.string :payment_date
       t.string :method
       t.string :status
