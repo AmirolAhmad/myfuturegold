@@ -32,9 +32,12 @@
       <% if user_signed_in? %>
       <ul class="nav navbar-nav navbar-right">
         <li>
-          <%= link_to account_path, :class => 'btn', "data-toggle" => "tooltip", :title => "#{Inbox.where(:unread => 0).count} unread messages" do %>
-          <span class="glyphicon glyphicon-inbox"></span>
-          <span class="badge"><%= Inbox.where(:unread => 0).count %></span>
+          <%= link_to account_path, :class => 'btn', "data-toggle" => "tooltip", :title => "#{Inbox.where(:unread => 'false').count} unread messages" do %>
+            <span class="glyphicon glyphicon-inbox"></span>
+            <% if Inbox.where(:unread => 'false').count == 0 %>
+            <% else %>
+            <span class="label label-danger"><%= Inbox.where(:unread => 'false').count %></span>
+            <% end %>
           <% end %>
         </li>
         <li class="dropdown">
