@@ -1,0 +1,7 @@
+<div class="page-header">
+  <h1>Message <small>from <%= @inbox.user.profile.nama_penuh %>. <%= link_to 'Back to Inbox', admin_inboxes_path, :class => 'btn btn-primary btn-xs' %></small></h1>
+</div>
+
+<%= render @inbox %>
+
+<%= replies_tree_for @inboxes %>
