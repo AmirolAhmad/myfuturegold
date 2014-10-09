@@ -21,7 +21,11 @@ Rails.application.routes.draw do
       resources :payments
       resources :vouchers
     end
-    resources :inboxes
+    resources :inboxes do
+      member do
+        post :reply
+      end
+    end
   end
 
   resource :account, only: [:show, :edit, :update]

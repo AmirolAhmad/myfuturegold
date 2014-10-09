@@ -23,6 +23,10 @@ class Admin::InboxesController < ApplicationController
     end
   end
 
+  def reply
+    
+  end
+
   def new
     @inbox ||= Inbox.new
     render
