@@ -41,6 +41,14 @@
   <p class="form-control-static"><%= @inbox.description %></p>
 </div>
 
-<div class="form-group">
-  <%= link_to "Reply", '', :class => 'btn btn-primary' %>
-</div>
+<hr>
+
+<%= form_for :inbox, url: reply_admin_inbox_path, method: :post do |f| %>
+  <div class="form-group">
+    <%= f.text_area :description, :class => "form-control", :rows => 5 %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit "Reply", :class => "btn btn-primary" %>
+  </div>
+<% end %>

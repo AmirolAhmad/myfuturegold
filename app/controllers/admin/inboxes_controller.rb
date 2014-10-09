@@ -1,5 +1,5 @@
 class Admin::InboxesController < ApplicationController
-  before_filter :set_inbox, only: [:show, :edit, :update, :destroy]
+  before_filter :set_inbox, only: [:show, :reply, :edit, :update, :destroy]
   before_filter :store_location, only: [:index]
   before_filter :require_admin
 
