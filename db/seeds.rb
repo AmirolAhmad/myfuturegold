@@ -47,13 +47,13 @@ Discount.find_or_create_by(
 	discount_price: "100"
 )
 
-user = User.create! :login => 'administrator',
-                    :email => 'admin@demo.com',
-                    :password => 'password',
-                    :password_confirmation => 'password',
-                    :admin => '1',
-                    :created_at => '2014-09-11 14:14:00',
-                    :updated_at => '2014-09-11 14:14:14',
-                    :confirmed_at => '2014-09-11 14:14:14',
-                    :confirmation_sent_at => '2014-09-11 14:14:00',
-                    :sign_in_count => '0'
+# user = User.create! :login => 'administrator',
+#                     :email => 'admin@demo.com',
+#                     :password => 'password',
+#                     :password_confirmation => 'password',
+#                     :admin => '1',
+#                     :created_at => '2014-09-11 14:14:00',
+#                     :updated_at => '2014-09-11 14:14:14',
+#                     :confirmed_at => '2014-09-11 14:14:14',
+#                     :confirmation_sent_at => '2014-09-11 14:14:00',
+#                     :sign_in_count => '0'
