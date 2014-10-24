@@ -4,6 +4,8 @@ Rails.application.configure do
   # Code is not reloaded between requests.
   config.cache_classes = true
 
+  config.secret_key_base = '<%= ENV["SECRET_KEY_BASE"] %>'
+
   # Eager load code on boot. This eager loads most of Rails and
   # your application in memory, allowing both thread web servers
   # and those relying on copy on write to perform better.
@@ -13,6 +15,7 @@ Rails.application.configure do
   # Full error reports are disabled and caching is turned on.
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
+  config.cache_store = :dalli_store
 
   # Enable Rack::Cache to put a simple HTTP cache in front of your application
   # Add `rack-cache` to your Gemfile before enabling this.
@@ -77,4 +80,18 @@ Rails.application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+
+  # Do not dump schema after migrations.
+  config.active_record.dump_schema_after_migration = false
+
+  config.action_mailer.default_url_options = { host: 'staging.myfuturegold.my' }
+  ActionMailer::Base.smtp_settings = {
+    :address        => 'smtp.mandrillapp.com',
+    :port           => '587',
+    :authentication => :plain,
+    :user_name      => 'hisyamnasir@gmail.com',
+    :password       => 'pg-ZrAhIpCnaThyyPnTDTQ',
+    :domain         => 'staging.myfuturegold.my',
+    :enable_starttls_auto => true
+  }
 end

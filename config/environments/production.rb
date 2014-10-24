@@ -4,6 +4,8 @@ Rails.application.configure do
   # Code is not reloaded between requests.
   config.cache_classes = true
 
+  config.secret_key_base = '<%= ENV["SECRET_KEY_BASE"] %>'
+
   # Eager load code on boot. This eager loads most of Rails and
   # your application in memory, allowing both threaded web servers
   # and those relying on copy on write to perform better.
@@ -13,6 +15,7 @@ Rails.application.configure do
   # Full error reports are disabled and caching is turned on.
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
+  config.cache_store = :dalli_store
 
   # Enable Rack::Cache to put a simple HTTP cache in front of your application
   # Add `rack-cache` to your Gemfile before enabling this.
@@ -52,10 +55,10 @@ Rails.application.configure do
   # config.logger = ActiveSupport::TaggedLogging.new(SyslogLogger.new)
 
   # Use a different cache store in production.
-  config.cache_store = :dalli_store, '127.0.0.1'
+  # config.cache_store = :dalli_store, '127.0.0.1'
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
-  config.action_controller.asset_host = "http://myfuturegold.herokuapp.com"
+  config.action_controller.asset_host = "http://myfuturegold.my"
 
   # Precompile additional assets.
   # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
@@ -78,15 +81,17 @@ Rails.application.configure do
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
 
-  config.action_mailer.default_url_options = {:host => 'myfuturegold.herokuapp.com'}
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    :enable_starttls_auto => true,
-    :address => "smtp.gmail.com",
-    :port => 587,
-    :domain => "myfuturegold.herokuapp.com",
-    :authentication => :login,
-    :user_name => ENV["EMAIL"],
-    :password => ENV["PASSWORD"]
+  # Do not dump schema after migrations.
+  config.active_record.dump_schema_after_migration = false
+
+  config.action_mailer.default_url_options = { host: 'myfuturegold.my' }
+  ActionMailer::Base.smtp_settings = {
+    :address        => 'smtp.mandrillapp.com',
+    :port           => '587',
+    :authentication => :plain,
+    :user_name      => 'hisyamnasir@gmail.com',
+    :password       => 'pg-ZrAhIpCnaThyyPnTDTQ',
+    :domain         => 'myfuturegold.my',
+    :enable_starttls_auto => true
   }
 end

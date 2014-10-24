@@ -1,17 +1,13 @@
 # config valid only for Capistrano 3.1
 lock '3.2.1'
 
-# set :application, 'myfuturegold'
+set :application, 'myfuturegold'
 set :repo_url, 'git@github.com:AmirolAhmad/myfuturegold.git'
 
-set :deploy_to, '/home/deploy/myfuturegold'
-set :rbenv_ruby, '2.1.2'
+server '119.81.109.221', user: 'deploy', roles: %w{web app}
 
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
-
-# Default deploy_to directory is /var/www/my_app
-# set :deploy_to, '/var/www/my_app'
 
 # Default value for :scm is :git
 # set :scm, :git
@@ -47,16 +43,9 @@ namespace :deploy do
     end
   end
 
-  after :publishing, 'deploy:restart'
-  after :finishing, 'deploy:cleanup'
+  after :publishing, :restart
 
-  after :restart, :clear_cache do
-    on roles(:web), in: :groups, limit: 3, wait: 10 do
-      # Here we can do anything such as:
-      # within release_path do
-      #   execute :rake, 'cache:clear'
-      # end
-    end
-  end
+  after :finishing, 'deploy:cleanup'
+  after :finishing, 'deploy:restart'
 
 end

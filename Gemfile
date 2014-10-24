@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.1.3'
+# ruby '2.1.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.6'
@@ -42,15 +42,10 @@ group :doc do
 end
 
 group :development do
-  gem 'spring'
   gem 'letter_opener'
   gem 'quiet_assets'
-  gem 'capistrano', '~> 3.1'
-  gem 'capistrano-rails', '~> 1.1'
-  gem 'capistrano-rbenv', '~> 2.0'
-  gem 'capistrano-bundler', '~> 1.1.2'
-end
-
-group :production do
-  gem 'rails_12factor'
+  gem 'capistrano', github: "capistrano/capistrano", require: false
+  gem 'capistrano-rbenv', github: "capistrano/rbenv", require: false
+  gem 'capistrano-bundler', github: "capistrano/bundler", require: false
+  gem 'capistrano-rails', require: false
 end
