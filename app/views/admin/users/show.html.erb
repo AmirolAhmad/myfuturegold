@@ -29,7 +29,7 @@
 					<div class="col-md-6">
 						<div class="form-group">
 					    <label>Full Name</label>
-					    <p><%= @user.profile.try(:nama_penuh).empty? ? "N/A" : @user.profile.try(:nama_penuh) %></p>
+					    <p><%= @user.profile.try(:nama_penuh).blank? ? "N/A" : @user.profile.try(:nama_penuh) %></p>
 					  </div>
 					</div>
 				</div>
@@ -37,13 +37,13 @@
 					<div class="col-md-6">
 						<div class="form-group">
 					    <label>IC Number</label>
-					    <p><%= @user.profile.try(:ic_number).empty? ? "N/A" : @user.profile.try(:ic_number) %></p>
+					    <p><%= @user.profile.try(:ic_number).blank? ? "N/A" : @user.profile.try(:ic_number) %></p>
 					  </div>
 					</div>
 					<div class="col-md-6">
 						<div class="form-group">
 					    <label>Phone Number</label>
-					    <p><%= @user.profile.try(:tel_num).empty? ? "N/A" : @user.profile.try(:tel_num) %></p>
+					    <p><%= @user.profile.try(:tel_num).blank? ? "N/A" : @user.profile.try(:tel_num) %></p>
 					  </div>
 					</div>
 				</div>
@@ -51,7 +51,7 @@
 					<div class="col-md-6">
 						<div class="form-group">
 					    <label>Facebook ID</label>
-					    <p><%= @user.profile.try(:facebook_id).empty? ? "N/A" : @user.profile.try(:facebook_id) %> <%= link_to "Open", "https://www.facebook.com/" + @user.profile.try(:facebook_id), :target => "_blank" %></p>
+					    <p><%= @user.profile.try(:facebook_id).blank? ? "N/A" : @user.profile.try(:facebook_id) %> <%= link_to "Open", "https://www.facebook.com/" + @user.profile.try(:facebook_id).to_s, :target => "_blank" %></p>
 					  </div>
 					</div>
 				</div>
