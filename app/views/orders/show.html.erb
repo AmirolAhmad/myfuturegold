@@ -99,6 +99,7 @@
 
       </div>
       <div class="panel-footer">
+        <%= link_to "Download Invoice", order_path(@order, :format => "pdf"), :class => "btn btn-primary", :target => "_blank" %>
         <%= link_to 'Back', orders_path, :class => "btn btn-default" %>
       </div>
     </div>
