@@ -21,4 +21,12 @@ class Order < ActiveRecord::Base
   def self.total_on(date)
     where(["date(ordered_date) = ?", date]).sum(:total_price)
   end
+
+  after_save :send_order_email
+
+  protected
+
+  def send_order_email
+    OrderMailer.order_email(user, self).deliver
+ end
 end

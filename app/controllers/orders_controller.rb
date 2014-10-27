@@ -19,8 +19,7 @@ class OrdersController < ApplicationController
   def create
     @order = @user.orders.new(order_params)
     if @order.save
-      redirect_to orders_path, notice: "New order has been created."
-
+      
       # total price
       @total_price = @order.price.to_i * @order.gram_quantity.to_i
       @order.update_attributes(:total_price => @total_price)
@@ -34,6 +33,9 @@ class OrdersController < ApplicationController
       #ordered date
       @ordered_date = Time.zone.now
       @order.update_attributes(:ordered_date => @ordered_date)
+
+      redirect_to orders_path, notice: "New order has been created."
+
     else
       render 'new'
     end
