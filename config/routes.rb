@@ -29,7 +29,7 @@ Rails.application.routes.draw do
   end
 
   resource :account, only: [:show, :edit, :update]
-  resources :orders, only: [:index, :show, :destroy]
+  resources :orders, only: [:index, :new, :create, :show, :destroy]
   resources :payments, only: [:index, :show]
   resources :vouchers, only: [:index, :show]
   
