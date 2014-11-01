@@ -22,7 +22,7 @@ class Order < ActiveRecord::Base
     where(["date(ordered_date) = ?", date]).sum(:total_price)
   end
 
-  after_save :send_order_email
+  # after_save :send_order_email
 
   protected
 
