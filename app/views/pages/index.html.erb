@@ -4,11 +4,13 @@
   <h1>My Dashboard</h1>
 </div>
 
+<% if @announcement %>
 <div class="alert alert-info alert-dismissible">
   <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
   <h5>Announcement</h5>
   <p class="small"><strong><%= @announcement.subject %> :-</strong> <%= @announcement.description %></p>
 </div>
+<% end %>
 
 <div id="chart" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 
