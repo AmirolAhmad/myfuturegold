@@ -31,6 +31,20 @@
       </ul>
       <% if user_signed_in? %>
       <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-shopping-cart"></span> Order <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><%= link_to "Manage Order", orders_path %></li>
+            <li><%= link_to "Add new order", new_order_path %></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-usd"></span> Payment <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><%= link_to "Manage Payment", payments_path %></li>
+            <li><%= link_to "Add new payment", new_payment_path %></li>
+          </ul>
+        </li>
         <li>
           <%= link_to account_path, :class => 'btn', "data-toggle" => "tooltip", :title => "#{Inbox.where(:unread => 'false').count} unread messages" do %>
             <span class="glyphicon glyphicon-inbox"></span>
@@ -45,6 +59,7 @@
             <%= image_tag avatar_url(current_user), :class => "img-rounded" %> <%= current_user.login %><span class="caret"></span>
           <% end %>
           <ul class="dropdown-menu" role="menu">
+            <li><%= link_to "Account Settings", edit_user_registration_path %></li>
             <li><%= link_to "Manage Profile", account_path %></li>
             <li class="divider"></li>
             <li>
