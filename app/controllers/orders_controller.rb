@@ -34,6 +34,8 @@ class OrdersController < ApplicationController
       @ordered_date = Time.zone.now
       @order.update_attributes(:ordered_date => @ordered_date)
 
+      OrderMailer.order_email(@order).deliver
+
       redirect_to orders_path, notice: "New order has been created."
 
     else

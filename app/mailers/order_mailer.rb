@@ -1,10 +1,12 @@
 class OrderMailer < ActionMailer::Base
   default from: '"MyFutureGold Resouces" <hello@myfuturegold.my>'
 
-  def order_email(user, order)
-    @user = user
+  def order_email(order)
     @order = order
 
-    mail(:to => "#{user.login} <#{user.email}>", :subject => "New Order Created!")
+    mail(
+    	:to => "#{order.user.login} <#{order.user.email}>",
+    	:subject => "New Order #{order.ref_number} Created!"
+    	)
    end
 end
