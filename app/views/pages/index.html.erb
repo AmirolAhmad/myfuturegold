@@ -12,6 +12,21 @@
 </div>
 <% end %>
 
+
+<div class="row">
+  <div class="col-md-6">
+    <h4>User Info: </h4>
+    <p>Name: <%= current_user.profile.nama_penuh %></p>
+    <p>Phone Number: <%= current_user.profile.tel_num %></p>
+    <p>First Heir: <%= current_user.profile.nama_waris %></p>
+    <p>Second Heir: <%= current_user.profile.nama_waris %></p>
+  </div>
+  <div class="col-md-6">
+    <h4>Order Details: </h4>
+    <p>Total Order: <%= @order.count %></p>
+  </div>
+</div>
+
 <div id="chart" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 
 <script type="text/javascript">
