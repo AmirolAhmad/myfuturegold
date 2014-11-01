@@ -30,3 +30,8 @@ $(document).ready( function () {
     	container: 'body'
     });
 });
+
+function myFunction() {
+    var x = document.getElementById("order_package_id").value;
+    document.getElementById("order_price").value = "" + x;
+}
