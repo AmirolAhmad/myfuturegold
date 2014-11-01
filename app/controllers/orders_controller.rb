@@ -18,7 +18,7 @@ class OrdersController < ApplicationController
 
   def create
     @order = @user.orders.new(order_params)
-    if @order.save
+    if @order.save 
       
       # total price
       @total_price = @order.price.to_i * @order.gram_quantity.to_i

@@ -16,6 +16,13 @@ class Order < ActiveRecord::Base
   validates_presence_of :package_id
   validates_presence_of :status_id
 
+  validates :gram_quantity, numericality: { only_integer: true }
+  # validates :restock, numericality: {
+  #                                   only_integer: true,
+  #                                   :greater_than_or_equal_to => 1,
+  #                                   :less_than_or_equal_to => 36
+  #                                 }
+
   default_scope -> { order('orders.created_at DESC') }
 
   def self.total_on(date)

@@ -31,10 +31,10 @@ $(document).ready( function () {
     });
 });
 
-// function myFunction() {
-//     var x = document.getElementById("order_package_id").value;
-//     document.getElementById("order_price").value = "" + x;
-// } 
+function myFunction() {
+    var x = document.getElementById("order_package_id").value;
+    document.getElementById("order_price").value = x;
+}
 
 
 
