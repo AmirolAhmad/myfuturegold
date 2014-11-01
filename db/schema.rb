@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141101041626) do
+ActiveRecord::Schema.define(version: 20141101125010) do
 
   create_table "announcements", force: true do |t|
     t.integer  "user_id",     null: false
@@ -104,6 +104,33 @@ ActiveRecord::Schema.define(version: 20141101041626) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.string   "ic_number"
+    t.string   "address1"
+    t.string   "address2"
+    t.string   "city"
+    t.string   "state"
+    t.integer  "postcode"
+    t.string   "country"
+    t.string   "ic_num_heir1"
+    t.string   "heir1_address1"
+    t.string   "heir1_address2"
+    t.string   "heir1_city"
+    t.string   "heir1_state"
+    t.string   "heir1_postcode"
+    t.string   "heir1_country"
+    t.string   "heir1_email"
+    t.string   "heir1_fb_id"
+    t.string   "heir2_name"
+    t.string   "heir2_rel"
+    t.string   "heir2_phone_num"
+    t.string   "ic_num_heir2"
+    t.string   "heir2_address1"
+    t.string   "heir2_address2"
+    t.string   "heir2_city"
+    t.string   "heir2_state"
+    t.string   "heir2_postcode"
+    t.string   "heir2_country"
+    t.string   "heir2_email"
+    t.string   "heir2_fb_id"
   end
 
   create_table "statuses", force: true do |t|

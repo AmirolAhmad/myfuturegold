@@ -1,5 +1,5 @@
 class AddIcNumberToProfiles < ActiveRecord::Migration
-	def up
+  def up
     add_column :profiles, :ic_number, :string unless column_exists? :profiles, :ic_number
   end
 

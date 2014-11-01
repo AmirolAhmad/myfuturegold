@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
   def user_params
     params.require(:user).permit(:id, :login, :email,
       profile_attributes: [
-        :id, :user_id, :nama_penuh, :ic_number, :tel_num, :facebook_id, :nama_waris, :hub_waris, :tel_num_waris, :nama_bank, :nama_akaun, :no_akaun
+        :id, :user_id, :nama_penuh, :ic_number, :tel_num, :facebook_id, :nama_waris, :hub_waris, :tel_num_waris, :nama_bank, :nama_akaun, :no_akaun, :address1, :address2, :city, :state, :postcode, :country, :ic_num_heir1, :heir1_address1, :heir1_address2, :heir1_city, :heir1_state, :heir1_postcode, :heir1_country, :heir1_email, :heir1_fb_id, :heir2_name, :heir2_rel, :heir2_phone_num, :ic_num_heir2, :heir2_address1, :heir2_address2, :heir2_city, :heir2_state, :heir2_state, :heir2_postcode, :heir2_country, :heir2_email, :heir2_fb_id
       ])
   end
 
