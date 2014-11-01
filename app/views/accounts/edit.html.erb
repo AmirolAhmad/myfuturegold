@@ -1,0 +1,315 @@
+<div class="page-header">
+  <h1>Client Details <small>Edit client details for your record.</small></h1>
+</div>
+
+<div class="row">
+  <div class="col-md-4">
+    <%= render partial: "sidebar" %>
+  </div>
+  <%= form_for :user, url: account_path(@user), method: :patch do |f| %>
+
+  <div class="col-md-8">
+    <!-- Client Details -->
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Profile Details</h3>
+      </div>
+      <div class="panel-body">
+        <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+
+        <div class="row">
+          <%= f.fields_for :profile_attributes, @user.profile do |profile| %>
+          <div class="col-md-6">
+            <div class="form-group">
+              <%= profile.label :nama_penuh, "Full Name" %>
+              <%= profile.text_field :nama_penuh, :class => "form-control" %>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <%= profile.label :ic_number, "IC Number" %>
+              <%= profile.text_field :ic_number, :class => "form-control" %>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <%= profile.label :address1, "Address 1" %>
+              <%= profile.text_field :address1, :class => "form-control" %>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <%= profile.label :address2, "Address 2" %>
+              <%= profile.text_field :address2, :class => "form-control" %>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <%= profile.label :city, "City" %>
+              <%= profile.text_field :city, :class => "form-control" %>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <%= profile.label :postcode, "Postcode" %>
+              <%= profile.text_field :postcode, :class => "form-control" %>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <%= profile.label :state, "State" %>
+              <%= profile.select(:state, options_for_select([['Selangor', 'Selangor'], ['Kuala Lumpur', 'Kuala Lumpur'], ['Sarawak', 'Sarawak'], ['Johor', 'Johor'], ['P. Pinang', 'P. Pinang'], ['Sabah', 'Sabah'], ['Perak', 'Perak'], ['Pahang', 'Pahang'], ['N. Sembilan', 'N. Sembilan'], ['Kedah', 'Kedah'], ['Melaka', 'Melaka'], ['Terengganu', 'Terengganu'], ['Kelantan', 'Kelantan'], ['Perlis', 'Perlis'], ['W.P. Labuan', 'W.P. Labuan']], @user.profile.state), {}, {:class => "form-control"}) %>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <%= profile.label :country, "Country" %>
+              <%= profile.select(:country, options_for_select([['Malaysia', 'Malaysia']], @user.profile.country), {}, {:class => "form-control"}) %>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <%= profile.label :tel_num, "Phone Number" %>
+              <%= profile.text_field :tel_num, :class => "form-control" %>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <%= profile.label :facebook_id, "Facebook ID" %>
+              <%= profile.text_field :facebook_id, :class => "form-control" %>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!-- Waris Details -->
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Waris Details</h3>
+      </div>
+      <div class="panel-body">
+        <h4>First Heir</h4>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <%= profile.label :nama_waris, "Full Name" %>
+              <%= profile.text_field :nama_waris, :class => "form-control" %>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <%= profile.label :hub_waris, "Relationship" %>
+              <%= profile.text_field :hub_waris, :class => "form-control" %>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <%= profile.label :heir1_address1, "Address 1" %>
+              <%= profile.text_field :heir1_address1, :class => "form-control" %>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <%= profile.label :heir1_address2, "Address 2" %>
+              <%= profile.text_field :heir1_address2, :class => "form-control" %>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <%= profile.label :heir1_city, "City" %>
+              <%= profile.text_field :heir1_city, :class => "form-control" %>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <%= profile.label :heir1_postcode, "Postcode" %>
+              <%= profile.text_field :heir1_postcode, :class => "form-control" %>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <%= profile.label :heir1_state, "State" %>
+              <%= profile.select(:heir1_state, options_for_select([['Selangor', 'Selangor'], ['Kuala Lumpur', 'Kuala Lumpur'], ['Sarawak', 'Sarawak'], ['Johor', 'Johor'], ['P. Pinang', 'P. Pinang'], ['Sabah', 'Sabah'], ['Perak', 'Perak'], ['Pahang', 'Pahang'], ['N. Sembilan', 'N. Sembilan'], ['Kedah', 'Kedah'], ['Melaka', 'Melaka'], ['Terengganu', 'Terengganu'], ['Kelantan', 'Kelantan'], ['Perlis', 'Perlis'], ['W.P. Labuan', 'W.P. Labuan']], @user.profile.heir1_state), {}, {:class => "form-control"}) %>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <%= profile.label :heir1_country, "Country" %>
+              <%= profile.select(:heir1_country, options_for_select([['Malaysia', 'Malaysia']], @user.profile.heir1_country), {}, {:class => "form-control"}) %>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <%= profile.label :tel_num_waris, "Phone Number" %>
+              <%= profile.text_field :tel_num_waris, :class => "form-control" %>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <%= profile.label :ic_num_heir1, "IC Number" %>
+              <%= profile.text_field :ic_num_heir1, :class => "form-control" %>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <%= profile.label :heir1_email, "Email Address" %>
+              <%= profile.text_field :heir1_email, :class => "form-control" %>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <%= profile.label :heir1_fb_id, "Facebook ID" %>
+              <%= profile.text_field :heir1_fb_id, :class => "form-control" %>
+            </div>
+          </div>
+        </div>
+        <h4>Second Heir</h4>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <%= profile.label :heir2_name, "Full Name" %>
+              <%= profile.text_field :heir2_name, :class => "form-control" %>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <%= profile.label :heir2_rel, "Relationship" %>
+              <%= profile.text_field :heir2_rel, :class => "form-control" %>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <%= profile.label :heir2_address1, "Address 1" %>
+              <%= profile.text_field :heir2_address1, :class => "form-control" %>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <%= profile.label :heir2_address2, "Address 2" %>
+              <%= profile.text_field :heir2_address2, :class => "form-control" %>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <%= profile.label :heir2_city, "City" %>
+              <%= profile.text_field :heir2_city, :class => "form-control" %>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <%= profile.label :heir2_postcode, "Postcode" %>
+              <%= profile.text_field :heir2_postcode, :class => "form-control" %>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <%= profile.label :heir2_state, "State" %>
+              <%= profile.select(:heir2_state, options_for_select([['Selangor', 'Selangor'], ['Kuala Lumpur', 'Kuala Lumpur'], ['Sarawak', 'Sarawak'], ['Johor', 'Johor'], ['P. Pinang', 'P. Pinang'], ['Sabah', 'Sabah'], ['Perak', 'Perak'], ['Pahang', 'Pahang'], ['N. Sembilan', 'N. Sembilan'], ['Kedah', 'Kedah'], ['Melaka', 'Melaka'], ['Terengganu', 'Terengganu'], ['Kelantan', 'Kelantan'], ['Perlis', 'Perlis'], ['W.P. Labuan', 'W.P. Labuan']], @user.profile.heir2_state), {}, {:class => "form-control"}) %>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <%= profile.label :heir2_country, "Country" %>
+              <%= profile.select(:heir2_country, options_for_select([['Malaysia', 'Malaysia']], @user.profile.heir2_country), {}, {:class => "form-control"}) %>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <%= profile.label :heir2_phone_num, "Phone Number" %>
+              <%= profile.text_field :heir2_phone_num, :class => "form-control" %>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <%= profile.label :ic_num_heir2, "IC Number" %>
+              <%= profile.text_field :ic_num_heir2, :class => "form-control" %>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <%= profile.label :heir2_email, "Email Address" %>
+              <%= profile.text_field :heir2_email, :class => "form-control" %>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <%= profile.label :heir2_fb_id, "Facebook ID" %>
+              <%= profile.text_field :heir2_fb_id, :class => "form-control" %>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!-- Account Bank Details -->
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Account Bank Details</h3>
+      </div>
+      <div class="panel-body">
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <%= profile.label :nama_bank, "Bank Name" %>
+              <%= profile.text_field :nama_bank, :class => "form-control" %>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <%= profile.label :nama_akaun, "Bank Account Name" %>
+              <%= profile.text_field :nama_akaun, :class => "form-control" %>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <%= profile.label :no_akaun, "Bank Account Number" %>
+              <%= profile.text_field :no_akaun, :class => "form-control" %>
+            </div>
+          </div>
+          <% end %>
+        </div>
+
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.submit "Save", :class => "btn btn-primary" %>
+      <%= link_to 'Back', account_path, :class => "btn btn-link" %>
+    </div>
+  </div>
+
+  <% end %>
+</div>
