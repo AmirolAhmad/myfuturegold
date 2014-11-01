@@ -64,13 +64,13 @@
         <div class="row">
           <div class="col-md-6">
             <div class="form-group">
-              <label>City</label>
+              <label>Postcode</label>
               <p><%= @user.profile.try(:postcode).blank? ? "N/A" : @user.profile.try(:postcode) %></p>
             </div>
           </div>
           <div class="col-md-6">
             <div class="form-group">
-              <label>State</label>
+              <label>Country</label>
               <p><%= @user.profile.try(:country).blank? ? "N/A" : @user.profile.try(:country) %></p>
             </div>
           </div>
@@ -152,13 +152,13 @@
         <div class="row">
           <div class="col-md-6">
             <div class="form-group">
-              <label>City</label>
+              <label>Postcode</label>
               <p><%= @user.profile.try(:heir1_postcode).blank? ? "N/A" : @user.profile.try(:heir1_postcode) %></p>
             </div>
           </div>
           <div class="col-md-6">
             <div class="form-group">
-              <label>State</label>
+              <label>Country</label>
               <p><%= @user.profile.try(:heir1_country).blank? ? "N/A" : @user.profile.try(:heir1_country) %></p>
             </div>
           </div>
@@ -237,13 +237,13 @@
         <div class="row">
           <div class="col-md-6">
             <div class="form-group">
-              <label>City</label>
+              <label>Postcode</label>
               <p><%= @user.profile.try(:heir2_postcode).blank? ? "N/A" : @user.profile.try(:heir2_postcode) %></p>
             </div>
           </div>
           <div class="col-md-6">
             <div class="form-group">
-              <label>State</label>
+              <label>Country</label>
               <p><%= @user.profile.try(:heir2_country).blank? ? "N/A" : @user.profile.try(:heir2_country) %></p>
             </div>
           </div>
