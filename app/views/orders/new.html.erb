@@ -38,7 +38,7 @@
           </div>
           <div class="col-md-6">
             <div class="form-group">
-              <%= f.label :price, "Package" %><br>
+              <%= f.label :price, "Programme" %><br>
               <%= f.collection_select(:package_id, Package.all, :id, :package_name, {}, {:class => "form-control", :onchange => "myFunction()"}) %>
               <%= f.collection_select(:price, Package.all, :id, :selling_price, {}, {:class => "form-control", :style => "visibility: hidden"}) %>
             </div>
