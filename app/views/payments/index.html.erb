@@ -10,7 +10,12 @@
     <!-- Client Details -->
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Payment History</h3>
+        <h3 class="panel-title">
+          Payment History
+          <%= link_to new_payment_path, :class => "pull-right btn btn-primary btn-xs", :style => "color:#ffffff;", "data-toggle" => "tooltip", :title => "Add new payment" do %>
+          <span class="glyphicon glyphicon-plus"></span>
+          <% end %>
+        </h3>
       </div>
       <div class="panel-body">
 

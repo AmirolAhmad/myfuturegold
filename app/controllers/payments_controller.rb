@@ -1,5 +1,5 @@
 class PaymentsController < ApplicationController
-  before_filter :set_user, only: [:index, :show]
+  before_filter :set_user, only: [:index, :new, :create, :show]
   before_filter :require_user
 
   def index
@@ -7,6 +7,26 @@ class PaymentsController < ApplicationController
     respond_to do |format|
       format.html { @payments }
       format.json { render json: @payments.to_json(include: [:user, :order]) }
+    end
+  end
+
+  def new
+    @payment ||= Payment.new
+    render
+  end
+
+  def create
+    @payment = @user.payments.new(payment_params)
+    if @payment.save
+      
+      random = ['1'..'9'].map { |i| i.to_a }.flatten
+      receipt_number = (0...4).map { random[rand(random.length)] }.join
+      @payment.update_attributes(:receipt_number => "#MGR-P" + receipt_number)
+
+      redirect_to payments_path, notice: "New order has been created."
+
+    else
+      render 'new'
     end
   end
 
@@ -25,7 +45,7 @@ class PaymentsController < ApplicationController
         end
       end
     else
-      redirect_to orders_path, notice: "Payment ID not found for that client."
+      redirect_to payments_path, notice: "Payment ID not found for that client."
     end
   end
 

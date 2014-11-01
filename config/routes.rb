@@ -31,7 +31,7 @@ Rails.application.routes.draw do
 
   resource :account, only: [:show, :edit, :update]
   resources :orders, only: [:index, :new, :create, :show, :destroy]
-  resources :payments, only: [:index, :show]
+  resources :payments, only: [:index, :new, :create, :show]
   resources :vouchers, only: [:index, :show]
   
 end
