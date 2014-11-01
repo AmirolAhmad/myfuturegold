@@ -1,0 +1,41 @@
+<div class="page-header">
+  <h1>Create Broadcast Announcement</h1>
+</div>
+
+<%= form_for :announcement, url: admin_announcements_path, method: :post do |f| %>
+
+  <% if @announcement.errors.any? %>
+  <div class="alert alert-danger alert-dismissable">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    <strong><%= pluralize(@announcement.errors.count, "error") %> prohibited
+      this message from being saved:</strong>
+      <ul>
+        <% @announcement.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+        <% end %>
+      </ul>
+  </div>
+  <% end %>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="form-group">
+        <%= f.label :subject, "Subject" %>
+        <%= f.text_field :subject, :class => "form-control", :placeholder => "Enter your announcement subject" %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="form-group">
+        <%= f.label :description, "Message" %>
+        <%= f.text_area :description, :class => "form-control", :placeholder => "Enter your announcement", :rows => 10 %>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.submit "Save", :class => "btn btn-primary" %>
+    <%= link_to 'Back to Announcement', admin_announcements_path, :class => 'btn btn-default' %>
+  </div>
+
+<% end %>

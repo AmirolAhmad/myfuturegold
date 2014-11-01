@@ -12,6 +12,8 @@ class User < ActiveRecord::Base
   has_many :payments, dependent: :destroy
   has_many :vouchers, dependent: :destroy
   has_many :inboxes, dependent: :destroy
+  has_many :announcements, dependent: :destroy
+    
 	accepts_nested_attributes_for :profile, update_only: true, allow_destroy: true
 
   validates :login, :uniqueness => { :case_sensitive => false }

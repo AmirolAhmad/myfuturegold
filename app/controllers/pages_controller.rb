@@ -3,6 +3,7 @@ class PagesController < ApplicationController
   
   def index
     @user = current_user
+    @announcement = Announcement.first
   end
 
   def about

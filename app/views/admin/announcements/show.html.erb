@@ -1,0 +1,13 @@
+<div class="page-header">
+  <h1><%= @announcement.subject %></h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="form-group">
+      <p class="form-control-static"><%= @announcement.description %></p>
+    </div>
+  </div>
+</div>
+
+<%= link_to 'Back to Announcement', admin_announcements_path, :class => 'btn btn-primary btn-xs' %>

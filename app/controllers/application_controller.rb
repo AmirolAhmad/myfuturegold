@@ -46,4 +46,8 @@ class ApplicationController < ActionController::Base
   def inbox_params
     params.require(:inbox).permit(:id, :user_id, :ticket_id, :subject, :description, :status, :category)
   end
+
+  def announcement_params
+    params.require(:announcement).permit(:id, :user_id, :subject, :description)
+  end
 end

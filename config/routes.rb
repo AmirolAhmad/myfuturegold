@@ -26,6 +26,7 @@ Rails.application.routes.draw do
         post :reply
       end
     end
+    resources :announcements
   end
 
   resource :account, only: [:show, :edit, :update]
