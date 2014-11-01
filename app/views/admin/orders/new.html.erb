@@ -53,7 +53,7 @@
           </div>
           <div class="col-md-6">
             <div class="form-group">
-              <%= f.label :package_id, "Package" %>
+              <%= f.label :package_id, "Programme" %>
               <p class="small"><%= link_to "More info", "", "data-toggle" => "modal", "data-target" => "#package-info" %></p>
               <%= f.collection_select(:package_id, Package.all, :id, :package_name, {}, {:class => "form-control"}) %>
             </div>
