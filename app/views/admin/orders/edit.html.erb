@@ -66,6 +66,10 @@
               <%= f.collection_select(:status_id, Status.all, :id, :status_name, {}, {:class => "form-control"}) %>
             </div>
           </div>
+          <div class="col-md-6" id="restock" style="display:none;">
+            <%= f.label :restock, "Restock (month)" %>
+            <%= f.text_field :restock, :class => "form-control" %>
+          </div>
         </div>
 
       </div>
@@ -116,3 +120,12 @@
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+  $('#order_package_id').change(function() {
+      if($(this).val() == 6)
+          $('#restock').show();
+      else
+          $('#restock').hide();
+  }); 
+</script>
