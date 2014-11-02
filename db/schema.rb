@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141101171550) do
+ActiveRecord::Schema.define(version: 20141102022736) do
 
   create_table "announcements", force: true do |t|
     t.integer  "user_id",     null: false
@@ -54,10 +54,10 @@ ActiveRecord::Schema.define(version: 20141101171550) do
   end
 
   create_table "orders", force: true do |t|
-    t.integer  "user_id",       null: false
-    t.integer  "package_id",    null: false
-    t.integer  "discount_id",   null: false
-    t.integer  "status_id",     null: false
+    t.integer  "user_id",           null: false
+    t.integer  "package_id",        null: false
+    t.integer  "discount_id",       null: false
+    t.integer  "status_id",         null: false
     t.string   "gram_quantity"
     t.string   "price"
     t.string   "total_price"
@@ -67,12 +67,14 @@ ActiveRecord::Schema.define(version: 20141101171550) do
     t.datetime "updated_at"
     t.string   "slug"
     t.integer  "restock"
+    t.integer  "discount_per_gram"
+    t.integer  "total_discount"
   end
 
   create_table "packages", force: true do |t|
     t.string   "package_name"
-    t.string   "selling_price"
-    t.string   "buying_price"
+    t.integer  "selling_price"
+    t.integer  "buying_price"
     t.string   "price"
     t.string   "term_contract"
     t.datetime "created_at"

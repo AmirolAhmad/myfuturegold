@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
   end
 
   def order_params
-    params.require(:order).permit(:id, :user_id, :package_id, :discount_id, :status_id, :status_name, :gram_quantity, :price, :total_price, :restock, :ref_number,
+    params.require(:order).permit(:id, :user_id, :package_id, :discount_id, :status_id, :status_name, :gram_quantity, :price, :total_price, :restock, :discount_per_gram, :total_discount, :ref_number,
       status_attributes: [
         :id, :status_name
       ],
