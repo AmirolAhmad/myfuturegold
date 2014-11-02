@@ -45,6 +45,7 @@
           <th class="col-md-2">Total Weight</th>
           <th class="col-md-2">Total Discount</th>
           <th class="col-md-2">Discount Date</th>
+          <th class="col-md-1">Status</th>
         </tr>
       </thead>
       <tbody>
@@ -55,6 +56,29 @@
           <td><%= order.gram_quantity %> gram</td>
           <td>RM <%= order.total_discount %></td>
           <td><%= order.discount.discount_date %></td>
+          <td>
+            <% if order.status.status_name == "Active" %>
+              <span class="label label-primary">
+                <%= order.status.status_name %>
+              </span>
+            <% elsif order.status.status_name == "Inactive" %>
+              <span class="label label-danger">
+                <%= order.status.status_name %>
+              </span>
+            <% elsif order.status.status_name == "Pending" %>
+              <span class="label label-warning">
+                <%= order.status.status_name %>
+              </span>
+            <% elsif order.status.status_name == "Buyback" %>
+              <span class="label label-info">
+                <%= order.status.status_name %>
+              </span>
+            <% else %>
+              <span class="label label-default">
+                <%= order.status.status_name %>
+              </span>
+            <% end %>
+          </td>
         </tr>
         <% end %>
       <% end %>
@@ -71,6 +95,7 @@
           <th class="col-md-2">Total Weight</th>
           <th class="col-md-2">Price</th>
           <th class="col-md-2">Total Price</th>
+          <th class="col-md-1">Status</th>
         </tr>
       </thead>
       <tbody>
@@ -81,6 +106,29 @@
           <td><%= order.gram_quantity %> gram</td>
           <td>RM <%= order.price %></td>
           <td>RM <%= order.total_price %></td>
+          <td>
+            <% if order.status.status_name == "Active" %>
+              <span class="label label-primary">
+                <%= order.status.status_name %>
+              </span>
+            <% elsif order.status.status_name == "Inactive" %>
+              <span class="label label-danger">
+                <%= order.status.status_name %>
+              </span>
+            <% elsif order.status.status_name == "Pending" %>
+              <span class="label label-warning">
+                <%= order.status.status_name %>
+              </span>
+            <% elsif order.status.status_name == "Buyback" %>
+              <span class="label label-info">
+                <%= order.status.status_name %>
+              </span>
+            <% else %>
+              <span class="label label-default">
+                <%= order.status.status_name %>
+              </span>
+            <% end %>
+          </td>
         </tr>
         <% end %>
       <% end %>
