@@ -31,7 +31,6 @@ class Admin::OrdersController < ApplicationController
   def create
     @order = @user.orders.new(order_params)
     if @order.save
-      redirect_to admin_user_orders_path, notice: "New order has been created."
 
       # total price
       @total_price = @order.price.to_i * @order.gram_quantity.to_i
@@ -46,6 +45,21 @@ class Admin::OrdersController < ApplicationController
       #ordered date
       @ordered_date = Time.zone.now
       @order.update_attributes(:ordered_date => @ordered_date)
+
+      OrderMailer.order_email(@order).deliver
+
+      if @order.package_id == 6
+        #discount_per_gram
+        @discount_per_gram = @order.package.buying_price - @order.package.selling_price
+        @order.update_attributes(:discount_per_gram => @discount_per_gram)
+
+        #total_discount
+        @total_discount = @order.discount_per_gram * @order.gram_quantity.to_i
+        @order.update_attributes(:total_discount => @total_discount)
+      end
+
+      redirect_to admin_user_orders_path, notice: "New order has been created."
+      
     else
       render 'new'
     end

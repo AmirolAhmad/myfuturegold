@@ -60,6 +60,23 @@
           </div>
         </div>
 
+        <% if @order.package_id == 6 %>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Discount per Gram</label>
+              <p>RM <%= @order.discount_per_gram %></p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Total Discount</label>
+              <p>RM <%= @order.total_discount %></p>
+            </div>
+          </div>
+        </div>
+        <% end %>
+
         <div class="row">
           <div class="col-md-6">
             <div class="form-group">
@@ -96,23 +113,6 @@
             </div>
           </div>
         </div>
-
-        <% if @order.package_id == 6 %>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-              <label>Discount per Gram</label>
-              <p>RM <%= @order.discount_per_gram %></p>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="form-group">
-              <label>Total Discount</label>
-              <p>RM <%= @order.total_discount %></p>
-            </div>
-          </div>
-        </div>
-        <% end %>
 
       </div>
       <div class="panel-footer">
