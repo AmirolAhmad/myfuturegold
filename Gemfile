@@ -36,6 +36,7 @@ gem 'paranoia' # will use this once we have the order details
 gem 'dalli'
 gem 'intercom-rails'
 gem 'prawn'
+gem 'twilio-ruby', '~> 3.12'
 
 group :doc do
   gem 'sdoc', require: false
