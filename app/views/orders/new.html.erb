@@ -117,4 +117,8 @@
     var urlField = $("#order_price");
     urlField.val($("#getPrice :selected").text());
   });
+
+  $('#order_package_id').change(function() {
+    $('#order_discount_id').val( this.value == 6 ? "3" : "2" );
+  });
 </script>
