@@ -31,11 +31,23 @@ class Admin::PaymentsController < ApplicationController
   def create
     @payment = @user.payments.new(payment_params)
     if @payment.save
-      redirect_to admin_user_payments_path, notice: "New payment has been created."
 
       random = ['1'..'9'].map { |i| i.to_a }.flatten
       receipt_number = (0...4).map { random[rand(random.length)] }.join
       @payment.update_attributes(:receipt_number => "#MGR-P" + receipt_number)
+
+      redirect_to admin_user_payments_path, notice: "New payment has been created."
+
+      #send sms with twillio
+      client = Twilio::REST::Client.new(Settings.twilio.sid, Settings.twilio.token)
+
+      # Create and send an SMS message
+      client.account.sms.messages.create(
+        from: Settings.twilio.from,
+        to: "+6#{@user.profile.tel_num}",
+        body: "Hi #{@user.login}, thank you for submitting a payment RM #{@payment.total_payment} with receipt number #{@payment.receipt_number} . An admin will respond to you shortly. Thank you!"
+      )
+      
     else
       render 'new'
     end

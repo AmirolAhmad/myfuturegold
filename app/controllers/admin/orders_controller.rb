@@ -59,6 +59,16 @@ class Admin::OrdersController < ApplicationController
       end
 
       redirect_to admin_user_orders_path, notice: "New order has been created."
+
+      #send sms with twillio
+      client = Twilio::REST::Client.new(Settings.twilio.sid, Settings.twilio.token)
+
+      # Create and send an SMS message
+      client.account.sms.messages.create(
+        from: Settings.twilio.from,
+        to: "+6#{@user.profile.tel_num}",
+        body: "Hi #{@user.login}, new order no #{@order.ref_number} with programme #{@order.package.package_name} has been added into your account. Please login to view the order. Thank you!"
+      )
       
     else
       render 'new'

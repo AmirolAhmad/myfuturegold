@@ -31,11 +31,23 @@ class Admin::VouchersController < ApplicationController
   def create
     @voucher = @user.vouchers.new(voucher_params)
     if @voucher.save
-      redirect_to admin_user_vouchers_path, notice: "New voucher has been created."
 
       random = ['1'..'9'].map { |i| i.to_a }.flatten
       receipt_number = (0...4).map { random[rand(random.length)] }.join
       @voucher.update_attributes(:receipt_number => "#MGR-V" + receipt_number)
+
+      redirect_to admin_user_vouchers_path, notice: "New voucher has been created."
+
+      #send sms with twillio
+      client = Twilio::REST::Client.new(Settings.twilio.sid, Settings.twilio.token)
+
+      # Create and send an SMS message
+      client.account.sms.messages.create(
+        from: Settings.twilio.from,
+        to: "+6#{@user.profile.tel_num}",
+        body: "Hi #{@user.login}, a voucher has been credited into your account with receipt no #{@voucher.receipt_number}. Please login into your account to view. Thank you!"
+      )
+
     else
       render 'new'
     end
