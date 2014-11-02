@@ -36,6 +36,71 @@
 </div>
 
 <hr>
+  <h3>Order Overview for KJ06 Programme: </h3>
+  <div class="table-responsive">
+    <table class="table table-bordered table-hover" id="orderDetails">
+      <thead>
+        <tr>
+          <th class="col-md-2">Programme</th>
+          <th class="col-md-2">Total Weight</th>
+          <th class="col-md-2">Discount per gram</th>
+          <th class="col-md-2">Discount Date</th>
+          <th class="col-md-1">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @order.each do |order| %>
+        <% if order.package_id == 6 %>
+        <tr>
+          <td><%= order.package.package_name %></td>
+          <td><%= order.gram_quantity %> gram</td>
+          <td>RM <%= order.discount_per_gram %></td>
+          <td><%= order.discount.discount_date %></td>
+          <td>
+            <div class="btn-group btn-group-xs btn-group-justified">
+            <%= link_to 'View', order_path(order), :class => "btn btn-default" %>
+            </div>
+          </td>
+        </tr>
+        <% end %>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Order Overview for Others Programme: </h3>
+  <div class="table-responsive">
+    <table class="table table-bordered table-hover" id="orderDetails">
+      <thead>
+        <tr>
+          <th class="col-md-2">Programme</th>
+          <th class="col-md-2">Total Weight</th>
+          <th class="col-md-2">Price</th>
+          <th class="col-md-2">Total Price</th>
+          <th class="col-md-1">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @order.each do |order| %>
+        <% if order.package_id != 6 %>
+        <tr>
+          <td><%= order.package.package_name %></td>
+          <td><%= order.gram_quantity %> gram</td>
+          <td>RM <%= order.price %></td>
+          <td>RM <%= order.total_price %></td>
+          <td>
+            <div class="btn-group btn-group-xs btn-group-justified">
+            <%= link_to 'View', order_path(order), :class => "btn btn-default" %>
+            </div>
+          </td>
+        </tr>
+        <% end %>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+
+<hr>
 
 <div id="chart" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 
