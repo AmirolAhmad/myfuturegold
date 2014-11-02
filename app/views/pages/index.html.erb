@@ -38,7 +38,7 @@
 <hr>
   <h3>Order Overview for KJ06 Programme: </h3>
   <div class="table-responsive">
-    <table class="table table-bordered table-hover" id="orderDetails">
+    <table class="table table-bordered table-hover" id="overviewkj06Details">
       <thead>
         <tr>
           <th class="col-md-2">Programme</th>
@@ -70,7 +70,7 @@
 
   <h3>Order Overview for Others Programme: </h3>
   <div class="table-responsive">
-    <table class="table table-bordered table-hover" id="orderDetails">
+    <table class="table table-bordered table-hover" id="overviewDetails">
       <thead>
         <tr>
           <th class="col-md-2">Programme</th>
@@ -178,3 +178,10 @@ $(function visitorData (data) {
 	</div>
 
 <% end %>
+
+<script type="text/javascript">
+$(document).ready( function () {
+    $('#overviewDetails').DataTable();
+    $('#overviewkj06Details').DataTable();
+} );
+</script>
