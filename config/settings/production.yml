@@ -1,4 +1,4 @@
-site_domain: myfuturegold.herokuapp.com
+site_domain: myfuturegold.my
 google_analytics_tracker: #UA-53563177-2
 s3:
   bucket: #signature-bravo-production

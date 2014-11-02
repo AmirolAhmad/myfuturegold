@@ -1,4 +1,4 @@
-site_domain: staging.myfuture.my
+site_domain: staging.myfuturegold.my
 google_analytics_tracker: #UA-53563177-1
 s3:
   bucket: #signature-bravo-dev-staging
