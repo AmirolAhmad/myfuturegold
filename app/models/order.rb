@@ -17,11 +17,15 @@ class Order < ActiveRecord::Base
   validates_presence_of :status_id
 
   validates :gram_quantity, numericality: { only_integer: true }
-  # validates :restock, numericality: {
-  #                                   only_integer: true,
-  #                                   :greater_than_or_equal_to => 1,
-  #                                   :less_than_or_equal_to => 36
-  #                                 }
+  validates :price, numericality: { only_integer: true }
+  validates :discount_per_gram, numericality: { only_integer: true }, allow_blank: true
+  validates :total_discount, numericality: { only_integer: true }, allow_blank: true
+  validates :restock, numericality: {
+                                    only_integer: true,
+                                    :greater_than_or_equal_to => 1,
+                                    :less_than_or_equal_to => 36,
+                                    :allow_blank => true
+                                  }
 
   default_scope -> { order('orders.created_at DESC') }
 
