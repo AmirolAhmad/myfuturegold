@@ -1,4 +1,4 @@
-<% if user_signed_in? && !current_user.try(:admin) %>
+<% if user_signed_in? || current_user.try(:admin) %>
 
 <div class="page-header">
   <h1>My Dashboard</h1>
@@ -193,10 +193,6 @@ $(function visitorData (data) {
   });
 });
 </script>
-
-<% elsif current_user.try(:admin) %>
-
-	<h1>I'm an admin</h1>
 
 <% else %>
 

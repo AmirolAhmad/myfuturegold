@@ -19,7 +19,7 @@
         <td><%= user.profile.try(:ic_number) %></td>
         <td><%= user.email %></td>
         <td>
-          <div class="btn-group btn-group-xs">
+          <div class="btn-group btn-group-xs btn-group-justified">
           <%= link_to admin_user_path(user), :class => "btn btn-default", "data-toggle" => "tooltip", :title => "View more details" do %>
             <span class="glyphicon glyphicon-eye-open"></span>
           <% end %>
