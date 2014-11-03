@@ -4,14 +4,17 @@
     <p class="list-group-item-text">Manage client account details</p>
   <% end %>
   <%= link_to admin_user_orders_path(@user.login), :class => 'list-group-item active' do %>
+    <span class="badge"><%= Order.where(user_id: @user).count %></span>
     <h5>Order Details</h5>
     <p class="list-group-item-text">View/Create/Delete order details</p>
   <% end %>
   <%= link_to admin_user_payments_path(@user.login), :class => "list-group-item" do %>
+    <span class="badge"><%= Payment.where(user_id: @user).count %></span>
     <h5>Payment History</h5>
     <p class="list-group-item-text">View/Add/Delete payment details</p>
   <% end %>
   <%= link_to admin_user_vouchers_path(@user.login), :class => "list-group-item" do %>
+    <span class="badge"><%= Voucher.where(user_id: @user).count %></span>
     <h5>Voucher History</h5>
     <p class="list-group-item-text">View/Add/Delete voucher details</p>
   <% end %>

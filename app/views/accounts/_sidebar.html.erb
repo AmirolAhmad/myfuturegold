@@ -1,7 +1,16 @@
 <div class="list-group">
   <%= link_to "Account Settings", edit_user_registration_path, :class => 'list-group-item' %>
   <%= link_to "Profile Details", account_path, :class => 'list-group-item active' %>
-  <%= link_to "Order Details", orders_path, :class => 'list-group-item' %>
-  <%= link_to "Payment History", payments_path, :class => 'list-group-item' %>
-  <%= link_to "Voucher History", vouchers_path, :class => 'list-group-item' %>
+  <%= link_to orders_path, :class => 'list-group-item' do %>
+  <span class="badge"><%= Order.where(user_id: current_user).count %></span>
+  Order Details
+  <% end %>
+  <%= link_to payments_path, :class => 'list-group-item' do %>
+  <span class="badge"><%= Payment.where(user_id: current_user).count %></span>
+  Payment History
+  <% end %>
+  <%= link_to vouchers_path, :class => 'list-group-item' do %>
+  <span class="badge"><%= Voucher.where(user_id: current_user).count %></span>
+  Voucher History
+  <% end %>
 </div>
