@@ -36,7 +36,7 @@ class Admin::VouchersController < ApplicationController
       receipt_number = (0...4).map { random[rand(random.length)] }.join
       @voucher.update_attributes(:receipt_number => "#MGR-V" + receipt_number)
 
-      redirect_to admin_user_vouchers_path, notice: "New voucher has been created."
+      redirect_to admin_user_voucher_path(id:@voucher), notice: "New voucher has been created."
 
       #send sms with twillio
       client = Twilio::REST::Client.new(Settings.twilio.sid, Settings.twilio.token)
@@ -63,7 +63,7 @@ class Admin::VouchersController < ApplicationController
 
   def update
     if @voucher.update(voucher_params)
-      redirect_to admin_user_vouchers_path, notice: "Receipt Number #{@voucher.receipt_number} has been updated."
+      redirect_to admin_user_voucher_path(id:@voucher), notice: "Receipt Number #{@voucher.receipt_number} has been updated."
     else
       render 'edit'
     end

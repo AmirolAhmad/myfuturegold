@@ -23,7 +23,7 @@ class PaymentsController < ApplicationController
       receipt_number = (0...4).map { random[rand(random.length)] }.join
       @payment.update_attributes(:receipt_number => "#MGR-P" + receipt_number)
 
-      redirect_to payments_path, notice: "Thank you for submitting a payment. An admin will respond to you shortly."
+      redirect_to payment_path(@payment), notice: "Thank you for submitting a payment. An admin will respond to you shortly."
 
       #send sms with twillio
       client = Twilio::REST::Client.new(Settings.twilio.sid, Settings.twilio.token)

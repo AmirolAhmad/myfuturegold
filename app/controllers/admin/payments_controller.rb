@@ -36,7 +36,7 @@ class Admin::PaymentsController < ApplicationController
       receipt_number = (0...4).map { random[rand(random.length)] }.join
       @payment.update_attributes(:receipt_number => "#MGR-P" + receipt_number)
 
-      redirect_to admin_user_payments_path, notice: "New payment has been created."
+      redirect_to admin_user_payment_path(id:@payment), notice: "New payment has been created."
 
       #send sms with twillio
       client = Twilio::REST::Client.new(Settings.twilio.sid, Settings.twilio.token)
@@ -63,7 +63,7 @@ class Admin::PaymentsController < ApplicationController
 
   def update
     if @payment.update(payment_params)
-      redirect_to admin_user_payments_path, notice: "Receipt Number #{@payment.receipt_number} has been updated."
+      redirect_to admin_user_payment_path(id:@payment), notice: "Receipt Number #{@payment.receipt_number} has been updated."
     else
       render 'edit'
     end

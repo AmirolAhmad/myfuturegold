@@ -58,7 +58,7 @@ class Admin::OrdersController < ApplicationController
         @order.update_attributes(:total_discount => @total_discount)
       end
 
-      redirect_to admin_user_orders_path, notice: "New order has been created."
+      redirect_to admin_user_order_path(id:@order), notice: "New order has been created."
 
       #send sms with twillio
       client = Twilio::REST::Client.new(Settings.twilio.sid, Settings.twilio.token)
@@ -85,7 +85,7 @@ class Admin::OrdersController < ApplicationController
 
   def update
     if @order.update(order_params)
-      redirect_to admin_user_orders_path, notice: "Ref Number #{@order.ref_number} has been updated."
+      redirect_to admin_user_order_path(id:@order), notice: "Ref Number #{@order.ref_number} has been updated."
 
       @total_price = @order.price.to_i * @order.gram_quantity.to_i
       @order.update_attributes(:total_price => @total_price)
