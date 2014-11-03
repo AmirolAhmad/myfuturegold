@@ -31,7 +31,7 @@
     <%= render 'layouts/messages' %>
     <%= yield %>
   
-  <%= render partial: "footer" %>
+  <%= render partial: "footer" unless @disable_header %>
 
 </body>
 </html>

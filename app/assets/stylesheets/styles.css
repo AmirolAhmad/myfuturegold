@@ -348,7 +348,7 @@ thead {
     letter-spacing: .03em;
     line-height: 1.5em;
     max-width: 1020px;
-    padding: 117px 0 100px;
+    padding: 117px 0 60px;
     text-transform: uppercase;
 }
 #my-banner h1#my-banner-h1 {
@@ -370,6 +370,7 @@ thead {
     color: #fff;
     font-weight: 700;
     letter-spacing: .05em;
+    margin-top: 50px;
     margin-bottom: 56px;
     text-transform :uppercase;
 }

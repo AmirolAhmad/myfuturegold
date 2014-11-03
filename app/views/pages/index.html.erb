@@ -204,6 +204,14 @@ $(function visitorData (data) {
   <%= image_tag('bg.png', :id => "my-banner-img", :alt => "Background") %>
     <div class="content-wrapper">
         <h1 id="my-banner-h1">Gold is a Real Money! <span id="accent">100%</span> Real Money for Future.</h1>
+        <div class="row">
+          <div class="col-md-4 col-md-offset-4">
+            <div class="btn-group btn-group-justified">
+              <%= link_to "LOGIN", login_path, :class => "btn btn-danger btn-lg" %>
+              <%= link_to "REGISTER", register_path, :class => "btn btn-default btn-lg" %>
+            </div>
+          </div>
+        </div>
         <p id="my-banner-p">We're Not Kidding.</p>
     </div>
 </section>
@@ -317,18 +325,11 @@ $(function visitorData (data) {
     </div>
 </section>
 
-	<!-- <div class="jumbotron">
-	  <h1>Gold is Real Money!</h1>
-	  <p>Throughout history no paper currency has survived in its original form. Paper currencies are normally inflated away until they are worthless.</p>
-	  <p><a class="btn btn-primary btn-lg" role="button">Learn more</a></p>
-	</div>
-
-	<div class="page-header">
-	  <h1><center>Gold Solution & Management Tracking System</center></h1>
-	  <p class="lead">
-	    <center>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum gravida nisl. Etiam nisi lacus, dignissim eget pretium in, dictum vel nisl. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vivamus justo eros, tincidunt id consectetur ut, dignissim non purus. Fusce eu dapibus massa</center>
-	  </p>
-	</div> -->
+<div class="footer">
+  <div class="container">
+    <p class="text-muted small text-right">&copy 2014. MyFutureGold Sdn Bhd. Created by <%= link_to "AmirolAhmad", "https://twitter.com/amirolahmad", :target => "_blank" %>. Powered by <%= link_to "GB Network Solution", "http://www.gempakbox.net/", :target => "_blank" %>. All right reserved.</p>
+  </div>
+</div>
 
 <% end %>
 
