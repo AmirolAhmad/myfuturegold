@@ -50,4 +50,8 @@ class ApplicationController < ActionController::Base
   def announcement_params
     params.require(:announcement).permit(:id, :user_id, :subject, :description)
   end
+
+  def disable_header
+    @disable_header = true
+  end
 end

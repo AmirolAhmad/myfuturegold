@@ -26,11 +26,11 @@
   <%= csrf_meta_tags %>
 </head>
 <body class="<%= body_class %>" data-user="<%= h current_user.try(:to_json) %>">
-	<%= render partial: "header" %>
-  <div class="container">
+	<%= render partial: "header" unless @disable_header %>
+  
     <%= render 'layouts/messages' %>
     <%= yield %>
-  </div>
+  
   <%= render partial: "footer" %>
 
 </body>
