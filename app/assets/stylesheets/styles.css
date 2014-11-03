@@ -572,7 +572,7 @@ thead {
     top: 30px;
 }
 #how-works #templates {
-    float; left;
+    float: left;
     top: -10px;
     width: 400px;
 }
