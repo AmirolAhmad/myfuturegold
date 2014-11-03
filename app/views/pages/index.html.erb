@@ -1,144 +1,147 @@
 <% if user_signed_in? || current_user.try(:admin) %>
+<%= render partial: "header" %>
 
-<div class="page-header">
-  <h1>My Dashboard</h1>
-</div>
-
-<% if @announcement %>
-<div class="alert alert-info alert-dismissible">
-  <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-  <h5>Announcement</h5>
-  <p class="small"><strong><%= @announcement.subject %> :-</strong> <%= @announcement.description %></p>
-</div>
-<% end %>
-
-
-<div class="row">
-  <div class="col-md-6">
-    <h3><span class="glyphicon glyphicon-user"></span> Account Information: <small><%= link_to "Update Your Details", account_path %></small></h3>
-    <hr>
-    <p class="lead"><%= current_user.profile.nama_penuh %></p>
-    <p>
-      <%= current_user.profile.address1 %><br>
-      <%= current_user.profile.address2 %><br>
-      <%= current_user.profile.postcode %>, <%= current_user.profile.city %><br>
-      <%= current_user.profile.state %>, <%= current_user.profile.country %><br>
-    </p>
+  <div class="page-header">
+    <h1>My Dashboard</h1>
   </div>
-  <div class="col-md-6">
-    <h3><span class="glyphicon glyphicon-list-alt"></span> Account Overview: </h3>
-    <hr>
-    <p>Number of Order: <strong><%= @order.count %></strong></p>
-    <p>Total of Order Amount: <strong>RM <%= current_user.orders.sum(:total_price) %>0</strong></p>
-    <p>Total of Payment: <strong>RM <%= current_user.payments.sum(:total_payment) %>0</strong></p>
-    <p>Total of Voucher: <strong>RM <%= current_user.vouchers.sum(:total_payment) %>0</strong></p>
-  </div>
-</div>
 
-<hr>
-  <h3>Order Overview for KJ06 Programme: </h3>
-  <div class="table-responsive">
-    <table class="table table-bordered table-hover" id="overviewkj06Details">
-      <thead>
-        <tr>
-          <th class="col-md-2">Programme</th>
-          <th class="col-md-2">Total Weight</th>
-          <th class="col-md-2">Total Discount</th>
-          <th class="col-md-2">Discount Date</th>
-          <th class="col-md-1">Status</th>
-        </tr>
-      </thead>
-      <tbody>
-      <% @order.each do |order| %>
-        <% if order.package_id == 6 %>
-        <tr>
-          <td><%= order.package.package_name %></td>
-          <td><%= order.gram_quantity %> gram</td>
-          <td>RM <%= order.total_discount %></td>
-          <td><%= order.discount.discount_date %></td>
-          <td>
-            <% if order.status.status_name == "Active" %>
-              <span class="label label-primary">
-                <%= order.status.status_name %>
-              </span>
-            <% elsif order.status.status_name == "Inactive" %>
-              <span class="label label-danger">
-                <%= order.status.status_name %>
-              </span>
-            <% elsif order.status.status_name == "Pending" %>
-              <span class="label label-warning">
-                <%= order.status.status_name %>
-              </span>
-            <% elsif order.status.status_name == "Buyback" %>
-              <span class="label label-info">
-                <%= order.status.status_name %>
-              </span>
-            <% else %>
-              <span class="label label-default">
-                <%= order.status.status_name %>
-              </span>
-            <% end %>
-          </td>
-        </tr>
+  <% if @announcement %>
+  <div class="alert alert-info alert-dismissible">
+    <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+    <h5>Announcement</h5>
+    <p class="small"><strong><%= @announcement.subject %> :-</strong> <%= @announcement.description %></p>
+  </div>
+  <% end %>
+
+
+  <div class="row">
+    <div class="col-md-6">
+      <h3><span class="glyphicon glyphicon-user"></span> Account Information: <small><%= link_to "Update Your Details", account_path %></small></h3>
+      <hr>
+      <p class="lead"><%= current_user.profile.nama_penuh %></p>
+      <p>
+        <%= current_user.profile.address1 %><br>
+        <%= current_user.profile.address2 %><br>
+        <%= current_user.profile.postcode %>, <%= current_user.profile.city %><br>
+        <%= current_user.profile.state %>, <%= current_user.profile.country %><br>
+      </p>
+    </div>
+    <div class="col-md-6">
+      <h3><span class="glyphicon glyphicon-list-alt"></span> Account Overview: </h3>
+      <hr>
+      <p>Number of Order: <strong><%= @order.count %></strong></p>
+      <p>Total of Order Amount: <strong>RM <%= current_user.orders.sum(:total_price) %>0</strong></p>
+      <p>Total of Payment: <strong>RM <%= current_user.payments.sum(:total_payment) %>0</strong></p>
+      <p>Total of Voucher: <strong>RM <%= current_user.vouchers.sum(:total_payment) %>0</strong></p>
+    </div>
+  </div>
+
+  <hr>
+    <h3>Order Overview for KJ06 Programme: </h3>
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover" id="overviewkj06Details">
+        <thead>
+          <tr>
+            <th class="col-md-2">Programme</th>
+            <th class="col-md-2">Total Weight</th>
+            <th class="col-md-2">Total Discount</th>
+            <th class="col-md-2">Discount Date</th>
+            <th class="col-md-1">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @order.each do |order| %>
+          <% if order.package_id == 6 %>
+          <tr>
+            <td><%= order.package.package_name %></td>
+            <td><%= order.gram_quantity %> gram</td>
+            <td>RM <%= order.total_discount %></td>
+            <td><%= order.discount.discount_date %></td>
+            <td>
+              <% if order.status.status_name == "Active" %>
+                <span class="label label-primary">
+                  <%= order.status.status_name %>
+                </span>
+              <% elsif order.status.status_name == "Inactive" %>
+                <span class="label label-danger">
+                  <%= order.status.status_name %>
+                </span>
+              <% elsif order.status.status_name == "Pending" %>
+                <span class="label label-warning">
+                  <%= order.status.status_name %>
+                </span>
+              <% elsif order.status.status_name == "Buyback" %>
+                <span class="label label-info">
+                  <%= order.status.status_name %>
+                </span>
+              <% else %>
+                <span class="label label-default">
+                  <%= order.status.status_name %>
+                </span>
+              <% end %>
+            </td>
+          </tr>
+          <% end %>
         <% end %>
-      <% end %>
-      </tbody>
-    </table>
-  </div>
+        </tbody>
+      </table>
+    </div>
 
-  <h3>Order Overview for Others Programme: </h3>
-  <div class="table-responsive">
-    <table class="table table-bordered table-hover" id="overviewDetails">
-      <thead>
-        <tr>
-          <th class="col-md-2">Programme</th>
-          <th class="col-md-2">Total Weight</th>
-          <th class="col-md-2">Price</th>
-          <th class="col-md-2">Total Price</th>
-          <th class="col-md-1">Status</th>
-        </tr>
-      </thead>
-      <tbody>
-      <% @order.each do |order| %>
-        <% if order.package_id != 6 %>
-        <tr>
-          <td><%= order.package.package_name %></td>
-          <td><%= order.gram_quantity %> gram</td>
-          <td>RM <%= order.price %></td>
-          <td>RM <%= order.total_price %></td>
-          <td>
-            <% if order.status.status_name == "Active" %>
-              <span class="label label-primary">
-                <%= order.status.status_name %>
-              </span>
-            <% elsif order.status.status_name == "Inactive" %>
-              <span class="label label-danger">
-                <%= order.status.status_name %>
-              </span>
-            <% elsif order.status.status_name == "Pending" %>
-              <span class="label label-warning">
-                <%= order.status.status_name %>
-              </span>
-            <% elsif order.status.status_name == "Buyback" %>
-              <span class="label label-info">
-                <%= order.status.status_name %>
-              </span>
-            <% else %>
-              <span class="label label-default">
-                <%= order.status.status_name %>
-              </span>
-            <% end %>
-          </td>
-        </tr>
+    <h3>Order Overview for Others Programme: </h3>
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover" id="overviewDetails">
+        <thead>
+          <tr>
+            <th class="col-md-2">Programme</th>
+            <th class="col-md-2">Total Weight</th>
+            <th class="col-md-2">Price</th>
+            <th class="col-md-2">Total Price</th>
+            <th class="col-md-1">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @order.each do |order| %>
+          <% if order.package_id != 6 %>
+          <tr>
+            <td><%= order.package.package_name %></td>
+            <td><%= order.gram_quantity %> gram</td>
+            <td>RM <%= order.price %></td>
+            <td>RM <%= order.total_price %></td>
+            <td>
+              <% if order.status.status_name == "Active" %>
+                <span class="label label-primary">
+                  <%= order.status.status_name %>
+                </span>
+              <% elsif order.status.status_name == "Inactive" %>
+                <span class="label label-danger">
+                  <%= order.status.status_name %>
+                </span>
+              <% elsif order.status.status_name == "Pending" %>
+                <span class="label label-warning">
+                  <%= order.status.status_name %>
+                </span>
+              <% elsif order.status.status_name == "Buyback" %>
+                <span class="label label-info">
+                  <%= order.status.status_name %>
+                </span>
+              <% else %>
+                <span class="label label-default">
+                  <%= order.status.status_name %>
+                </span>
+              <% end %>
+            </td>
+          </tr>
+          <% end %>
         <% end %>
-      <% end %>
-      </tbody>
-    </table>
-  </div>
+        </tbody>
+      </table>
+    </div>
 
-<hr>
+  <hr>
 
-<div id="chart" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+  <div id="chart" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
+<%= render partial: "footer" %>
 
 <script type="text/javascript">
 $(function visitorData (data) {
@@ -196,7 +199,125 @@ $(function visitorData (data) {
 
 <% else %>
 
-	<div class="jumbotron">
+<!-- banner -->
+<section id="my-banner">
+  <%= image_tag('bg.png', :id => "my-banner-img", :alt => "Background") %>
+    <div class="content-wrapper">
+        <h1 id="my-banner-h1">Gold is a Real Money! <span id="accent">100%</span> Real Money for Future.</h1>
+        <p id="my-banner-p">We're Not Kidding.</p>
+    </div>
+</section>
+<!-- sub-heading -->
+<section id="sub-heading">
+    <div class="content-wrapper">
+        <p id="sub-heading-primary">
+          <strong>Throughout history no paper currency has survived in its original form.</strong>
+        </p>
+        <p id="sub-heading-secondary">
+          Paper currencies are normally inflated away until they are worthless.
+        </p>
+    </div>
+</section>
+<!-- stats -->
+<section id="stats">
+    <div id="stats-container">
+        <div class="stat" id="stats-01">
+            <h3 id="stats-01-h3">Huge Market</h3>
+            <h2 id="stats-01-h2">25,000</h2>
+            <p id="stats-01-p">Customers</p>
+        </div>
+        <%= image_tag('math1.png', :id => "stats-img-02", :alt => "math symbols") %>
+        <div class="stat" id="stats-02">
+            <h3 id="stats-02-h3">Great Visibility</h3>
+            <h2 id="stats-02-h2">23,000,000</h2>
+            <p id="stats-02-p">Pageviews</p>
+        </div>
+        <%= image_tag('math2.png', :id => "stats-img-03", :alt => "math symbols") %>
+        <div class="stat" id="stats-03">
+            <h3 id="stats-03-h3">Be First</h3>
+            <h2 id="stats-03-h2">ONLY 20+</h2>
+            <p id="stats-03-p">Sellers</p>
+        </div>
+        <%= image_tag('math3.png', :id => "stats-img-04", :alt => "math symbols") %>
+        <div class="stat" id="stats-04">
+            <h3 id="stats-04-h3">Big Potential</h3>
+            <h2 id="stats-04-h2">100%</h2>
+            <p id="stats-04-p">Goes to You</p>
+        </div>
+    </div>
+</section>
+<!-- testimonial -->
+<section id="testimonial">
+    <div class="content-wrapper">
+        <%= image_tag('testimonial.png', :id => "testimonial-img", :alt => "antonio rillera") %>
+        <p id="testimonial-copy">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum gravida nisl. Etiam nisi lacus, dignissim eget pretium in, dictum vel nisl. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vivamus justo eros, tincidunt id consectetur ut, dignissim non purus. Fusce eu dapibus massa.</p>
+        <h4 id="testimonial-author">Evalisa Andria</h4>
+        <span id="testimonial-title">Fulltime Housewife</span>
+    </div>
+</section>
+
+<!-- How does it work -->
+<section id="how-works">
+    <div class="content-wrapper">
+        <h2 id="how-works-header">How Does It Work</h2>
+        <div class="step" id="step1">
+            <div class="left">
+                <p class="num" id="num1">1</p>
+                <h3 id="how-works-01-header">Simply click <%= link_to "here", register_path %> to become a member of the MyFutureGold Resources.</h3>
+                <p id="how-works-01-copy">You will be asked to signup with your Email Address to begin creating order & receiving payments. Don’t have an account yet? Don’t worry, signup is free and takes less than 2 minutes</p>
+            </div>
+            <%= link_to register_path, :id => "how-works-01-image-link" do %>
+              <div class="image" id="register-btn">
+                <%= image_tag('register-btn.png', :id => "register-button", :alt => "register") %>
+              </div>
+            <% end %>
+        </div>
+        <div class="step" id="step2">
+            <div class="right">
+                <p class="num" id="num2">2</p><h3 id="how-works-02-header">Begin ordering your gold programme.</h3>
+                <p id="how-works-02-copy">We’ve included loads of programme and support materials to help you along the way.</p>
+            </div>
+            <div class="left" id="templates">
+              <%= image_tag('templates.png', :id => "how-works-02-img", :alt => "templates") %>
+            </div>
+        </div>
+        <div class="step" id="step3">
+            <div class="left">
+                <p class="num" id="num3">3</p><h3 id="how-works-03-header">Submit your order for approval and voila!</h3>
+                <p id="how-works-03-copy">Once approved, you will receive the physical gold right into your hand and will notify you via SMS and Email.</p>
+            </div>
+            <div class="image submit">
+              <%= image_tag('submit.png', :id => "how-works-03-img", :alt => "submit") %>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- start-today -->
+<section id="start-today">
+    <div class="content-wrapper">
+        <h2 id="start-today-header">Start Today!</h2>
+        <%= link_to register_path, :id => "start-today-link", :class => 'click-btn' do %>
+        <u>Click Here</u> to Register as Supplier <span>»</span>
+        <% end %>
+    </div>
+</section>
+<!-- brands -->
+<section id="brands">
+    <div class="content-wrapper">
+        <h3 id="brands-header">Brands That Trust MyFutureGold Resources</h3>
+        <div id="logos">
+            <%= image_tag('macrumors.png', :id => "brands-img-01", :alt => "MacRumors") %>
+            <%= image_tag('product-launch-formula.png', :id => "brands-img-02", :alt => "Product Launch Formula") %>
+            <%= image_tag('book-solid.png', :id => "brands-img-03", :alt => "Book Yourself Solid") %>
+            <%= image_tag('digital-marketer.png', :id => "brands-img-04", :alt => "Digital Marketer Lab") %>
+            <%= image_tag('greenpeace.png', :id => "brands-img-05", :alt => "GreenPeace") %>
+            <%= image_tag('ontraport.png', :id => "brands-img-06", :alt => "OntraPort") %>
+            <%= image_tag('duct-tape.png', :id => "brands-img-07", :alt => "Duct Tape Marketing") %>
+        </div>
+    </div>
+</section>
+
+	<!-- <div class="jumbotron">
 	  <h1>Gold is Real Money!</h1>
 	  <p>Throughout history no paper currency has survived in its original form. Paper currencies are normally inflated away until they are worthless.</p>
 	  <p><a class="btn btn-primary btn-lg" role="button">Learn more</a></p>
@@ -207,7 +328,7 @@ $(function visitorData (data) {
 	  <p class="lead">
 	    <center>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum gravida nisl. Etiam nisi lacus, dignissim eget pretium in, dictum vel nisl. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vivamus justo eros, tincidunt id consectetur ut, dignissim non purus. Fusce eu dapibus massa</center>
 	  </p>
-	</div>
+	</div> -->
 
 <% end %>
 
