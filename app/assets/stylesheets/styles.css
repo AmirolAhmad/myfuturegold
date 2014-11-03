@@ -429,6 +429,7 @@ thead {
     text-transform: uppercase;
 }
 #stats p {
+  color: #ffffff;
     font-size: 24px;
     font-weight: 300;
 }
