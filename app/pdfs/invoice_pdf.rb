@@ -121,12 +121,13 @@ class InvoicePdf < Prawn::Document
 
   def address
     move_down 10
-    text "MyFuture Gold Resources", :size => 10, :style => :bold
+    text "MyFuture Gold Resources (002357358-K)", :size => 10, :style => :bold
     move_down 5
-    text "H5-20 Flora Damansara, Jalan PJU 8/9", :size => 9, :color => "cccccc"
-    text "Bandar Damansara Perdana", :size => 9, :color => "cccccc"
-    text "47820 Petaling Jaya", :size => 9, :color => "cccccc"
-    text "Selangor, MALAYSIA", :size => 9, :color => "cccccc"
+    text "No 117, Jalan Raja Abdullah", :size => 9, :color => "cccccc"
+    text "50300 Wilayah Persekutuan", :size => 9, :color => "cccccc"
+    text "Kuala Lumpur, MALAYSIA", :size => 9, :color => "cccccc"
+    text "Tel: 03-8988 9909 | H/P: 012-2873632", :size => 9, :color => "cccccc"
+    text "Email: order@myfuturegold.my", :size => 9, :color => "cccccc"
   end
 
 end
