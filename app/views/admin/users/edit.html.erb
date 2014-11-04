@@ -75,13 +75,13 @@
           <div class="col-md-6">
             <div class="form-group">
               <%= profile.label :state, "State" %>
-              <%= profile.select(:state, options_for_select([['Selangor', 'Selangor'], ['Kuala Lumpur', 'Kuala Lumpur'], ['Sarawak', 'Sarawak'], ['Johor', 'Johor'], ['P. Pinang', 'P. Pinang'], ['Sabah', 'Sabah'], ['Perak', 'Perak'], ['Pahang', 'Pahang'], ['N. Sembilan', 'N. Sembilan'], ['Kedah', 'Kedah'], ['Melaka', 'Melaka'], ['Terengganu', 'Terengganu'], ['Kelantan', 'Kelantan'], ['Perlis', 'Perlis'], ['W.P. Labuan', 'W.P. Labuan']], @user.profile.state), {}, {:class => "form-control"}) %>
+              <%= profile.select(:state, options_for_select([['Selangor', 'Selangor'], ['Kuala Lumpur', 'Kuala Lumpur'], ['Sarawak', 'Sarawak'], ['Johor', 'Johor'], ['P. Pinang', 'P. Pinang'], ['Sabah', 'Sabah'], ['Perak', 'Perak'], ['Pahang', 'Pahang'], ['N. Sembilan', 'N. Sembilan'], ['Kedah', 'Kedah'], ['Melaka', 'Melaka'], ['Terengganu', 'Terengganu'], ['Kelantan', 'Kelantan'], ['Perlis', 'Perlis'], ['W.P. Labuan', 'W.P. Labuan']], @user.profile.try(:state)), {}, {:class => "form-control"}) %>
             </div>
           </div>
           <div class="col-md-6">
             <div class="form-group">
               <%= profile.label :country, "Country" %>
-              <%= profile.select(:country, options_for_select([['Malaysia', 'Malaysia']], @user.profile.country), {}, {:class => "form-control"}) %>
+              <%= profile.select(:country, options_for_select([['Malaysia', 'Malaysia']], @user.profile.try(:country)), {}, {:class => "form-control"}) %>
             </div>
           </div>
         </div>
@@ -155,13 +155,13 @@
           <div class="col-md-6">
             <div class="form-group">
               <%= profile.label :heir1_state, "State" %>
-              <%= profile.select(:heir1_state, options_for_select([['Selangor', 'Selangor'], ['Kuala Lumpur', 'Kuala Lumpur'], ['Sarawak', 'Sarawak'], ['Johor', 'Johor'], ['P. Pinang', 'P. Pinang'], ['Sabah', 'Sabah'], ['Perak', 'Perak'], ['Pahang', 'Pahang'], ['N. Sembilan', 'N. Sembilan'], ['Kedah', 'Kedah'], ['Melaka', 'Melaka'], ['Terengganu', 'Terengganu'], ['Kelantan', 'Kelantan'], ['Perlis', 'Perlis'], ['W.P. Labuan', 'W.P. Labuan']], @user.profile.heir1_state), {}, {:class => "form-control"}) %>
+              <%= profile.select(:heir1_state, options_for_select([['Selangor', 'Selangor'], ['Kuala Lumpur', 'Kuala Lumpur'], ['Sarawak', 'Sarawak'], ['Johor', 'Johor'], ['P. Pinang', 'P. Pinang'], ['Sabah', 'Sabah'], ['Perak', 'Perak'], ['Pahang', 'Pahang'], ['N. Sembilan', 'N. Sembilan'], ['Kedah', 'Kedah'], ['Melaka', 'Melaka'], ['Terengganu', 'Terengganu'], ['Kelantan', 'Kelantan'], ['Perlis', 'Perlis'], ['W.P. Labuan', 'W.P. Labuan']], @user.profile.try(:heir1_state)), {}, {:class => "form-control"}) %>
             </div>
           </div>
           <div class="col-md-6">
             <div class="form-group">
               <%= profile.label :heir1_country, "Country" %>
-              <%= profile.select(:heir1_country, options_for_select([['Malaysia', 'Malaysia']], @user.profile.heir1_country), {}, {:class => "form-control"}) %>
+              <%= profile.select(:heir1_country, options_for_select([['Malaysia', 'Malaysia']], @user.profile.try(:heir1_country)), {}, {:class => "form-control"}) %>
             </div>
           </div>
         </div>
@@ -240,13 +240,13 @@
           <div class="col-md-6">
             <div class="form-group">
               <%= profile.label :heir2_state, "State" %>
-              <%= profile.select(:heir2_state, options_for_select([['Selangor', 'Selangor'], ['Kuala Lumpur', 'Kuala Lumpur'], ['Sarawak', 'Sarawak'], ['Johor', 'Johor'], ['P. Pinang', 'P. Pinang'], ['Sabah', 'Sabah'], ['Perak', 'Perak'], ['Pahang', 'Pahang'], ['N. Sembilan', 'N. Sembilan'], ['Kedah', 'Kedah'], ['Melaka', 'Melaka'], ['Terengganu', 'Terengganu'], ['Kelantan', 'Kelantan'], ['Perlis', 'Perlis'], ['W.P. Labuan', 'W.P. Labuan']], @user.profile.heir2_state), {}, {:class => "form-control"}) %>
+              <%= profile.select(:heir2_state, options_for_select([['Selangor', 'Selangor'], ['Kuala Lumpur', 'Kuala Lumpur'], ['Sarawak', 'Sarawak'], ['Johor', 'Johor'], ['P. Pinang', 'P. Pinang'], ['Sabah', 'Sabah'], ['Perak', 'Perak'], ['Pahang', 'Pahang'], ['N. Sembilan', 'N. Sembilan'], ['Kedah', 'Kedah'], ['Melaka', 'Melaka'], ['Terengganu', 'Terengganu'], ['Kelantan', 'Kelantan'], ['Perlis', 'Perlis'], ['W.P. Labuan', 'W.P. Labuan']], @user.profile.try(:heir2_state)), {}, {:class => "form-control"}) %>
             </div>
           </div>
           <div class="col-md-6">
             <div class="form-group">
               <%= profile.label :heir2_country, "Country" %>
-              <%= profile.select(:heir2_country, options_for_select([['Malaysia', 'Malaysia']], @user.profile.heir2_country), {}, {:class => "form-control"}) %>
+              <%= profile.select(:heir2_country, options_for_select([['Malaysia', 'Malaysia']], @user.profile.try(:heir2_country)), {}, {:class => "form-control"}) %>
             </div>
           </div>
         </div>
