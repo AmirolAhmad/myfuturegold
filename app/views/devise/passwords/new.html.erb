@@ -7,11 +7,13 @@
 	<%= devise_error_messages! %>
 
 	<div class="form-group">
-    <%= f.label :login, "Username/Email Address" %>
-    <%= f.text_field :login, :class => 'form-control', autofocus: true %>
-  </div>
+      <div class="input-group">
+        <div class="input-group-addon"><span class="glyphicon glyphicon-user"></span></div>
+        <%= f.email_field :login, autofocus: true, :class => "form-control", :placeholder => "Username" %>
+      </div>
+    </div>
 
-  <%= f.submit "Send me reset password instructions", :class => 'btn btn-primary' %>
+  <%= f.submit "Send me reset password instructions", :class => 'btn btn-primary btn-block' %>
 	<% end %>
 
 	<%= render "devise/shared/links" %>
