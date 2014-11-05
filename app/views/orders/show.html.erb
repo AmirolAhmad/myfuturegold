@@ -57,7 +57,7 @@
           <div class="col-md-6">
             <div class="form-group">
             	<label>Programme</label>
-              <p><%= @order.package.package_name %> <%= @order.try(:restock).blank? ? "" : "(Restock: " + @order.try(:restock).to_s + "month)" %></p>
+              <p><%= @order.package.package_name %> <%= @order.package_id == 7 ? "(Term: 4month)" : "" %> <%= @order.try(:restock).blank? ? "" : "(Restock: " + @order.try(:restock).to_s + "month)" %></p>
             </div>
           </div>
         </div>
