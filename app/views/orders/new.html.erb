@@ -34,6 +34,7 @@
             <div class="form-group">
               <%= f.label :gram_quantity, "Total Weight (gram)" %>
               <%= f.text_field :gram_quantity, :class => "form-control" %>
+              <p class="help-block small">Just a number. For example: 500</p>
             </div>
           </div>
           <div class="col-md-6">
@@ -53,6 +54,7 @@
           <div class="col-md-6">
             <%= f.label :restock, "Restock (month)" %>
             <%= f.text_field :restock, :class => "form-control" %>
+              <p class="help-block small">Just a number and between 1 - 36. For example: 12</p>
           </div>
         </div>
 
