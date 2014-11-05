@@ -35,6 +35,7 @@ class OrdersController < ApplicationController
       @order.update_attributes(:ordered_date => @ordered_date)
 
       OrderMailer.order_email(@order).deliver
+      OrderMailer.notify_admin(@order).deliver
 
       if @order.package_id == 6
         #discount_per_gram

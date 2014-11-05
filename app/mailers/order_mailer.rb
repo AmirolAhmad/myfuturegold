@@ -5,8 +5,17 @@ class OrderMailer < ActionMailer::Base
     @order = order
 
     mail(
-    	:to => "#{order.user.login} <#{order.user.email}>",
-    	:subject => "New Order #{order.ref_number} has been place!"
-    	)
+      :to => "#{order.user.login} <#{order.user.email}>",
+      :subject => "New Order #{order.ref_number} has been place!"
+      )
+   end
+
+   def notify_admin(order)
+    @order = order
+
+    mail(
+      :to => "9w2pdf@gmail.com",
+      :subject => "New order has been created"
+    )
    end
 end
