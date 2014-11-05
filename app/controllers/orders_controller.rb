@@ -52,11 +52,18 @@ class OrdersController < ApplicationController
       #send sms with twillio
       client = Twilio::REST::Client.new(Settings.twilio.sid, Settings.twilio.token)
 
-      # Create and send an SMS message
+      # Create and send an SMS message to user
       client.account.sms.messages.create(
         from: Settings.twilio.from,
         to: "+6#{@user.profile.tel_num}",
-        body: "Hi #{@user.login}, new order no #{@order.ref_number} with programme #{@order.package.package_name} has been added into your account. Please login to view the order. Thank you!"
+        body: "Hi #{@user.login}, new order no #{@order.ref_number} with programme #{@order.package.package_name} has been added into your account. An admin will respond to your order shorly. Thank you!"
+      )
+
+      # Create and send an SMS message to admin
+      client.account.sms.messages.create(
+        from: Settings.twilio.from,
+        to: "+6010122873632",
+        body: "NOTIFICATION: A user #{@user.login} has place an order with ref no #{@order.ref_number} - programme #{@order.package.package_name}. Please respond to his order. Thank you!"
       )
 
     else
