@@ -62,7 +62,7 @@ class OrdersController < ApplicationController
       # Create and send an SMS message to admin
       client.account.sms.messages.create(
         from: Settings.twilio.from,
-        to: "+6010122873632",
+        to: "+60122873632",
         body: "NOTIFICATION: A user #{@user.login} has place an order with ref no #{@order.ref_number} - programme #{@order.package.package_name}. Please respond to his order. Thank you!"
       )
 
