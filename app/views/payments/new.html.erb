@@ -39,17 +39,25 @@
           <div class="col-md-6">
             <div class="form-group">
               <%= f.label :payment_date, "Date of Payment" %>
-              <%= f.text_field :payment_date, :class => "form-control", 'data-provide' => "datepicker" %>
+              <%= f.text_field :payment_date, :class => "form-control", :placeholder => "dd/mm/yyyy", 'data-provide' => "datepicker" %>
             </div>
           </div>
         </div>
         <div class="row">
           <div class="col-md-6">
             <div class="form-group">
+              <%= f.label :payment_time, "Time of Payment" %>
+              <%= f.text_field :payment_time, :class => "form-control" %>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
               <%= f.label :ref_number, "Payment For (Order Number)" %>
               <%= f.collection_select(:order_id, Order.where(user_id: @order, user_id: @user), :id, :ref_number, {}, {:class => "form-control"}) %>
             </div>
           </div>
+        </div>
+        <div class="row">
           <div class="col-md-6">
             <div class="form-group">
               <%= f.label :total_payment, "Total Payment (RM)" %>

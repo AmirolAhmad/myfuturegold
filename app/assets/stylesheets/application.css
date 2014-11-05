@@ -15,5 +15,6 @@
  *= require dataTables.bootstrap
  *= require bootstrap
  *= require datepicker3
+ *= require bootstrap-timepicker.min
  *= require styles
  */

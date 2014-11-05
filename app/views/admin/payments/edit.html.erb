@@ -46,24 +46,32 @@
         <div class="row">
           <div class="col-md-6">
             <div class="form-group">
-              <%= f.label :method, "Payment Method" %>
-              <%= f.text_field :method, :class => "form-control", :placeholder => "Online Bankin (CIMB, Maybank), ATM Machine" %>
+              <%= f.label :payment_time, "Time of Payment" %>
+              <%= f.text_field :payment_time, :class => "form-control" %>
             </div>
           </div>
           <div class="col-md-6">
             <div class="form-group">
-              <%= f.label :total_payment, "Total Payment (RM)" %>
-              <%= f.text_field :total_payment, :class => "form-control" %>
+              <%= f.label :method, "Payment Method" %>
+              <%= f.text_field :method, :class => "form-control", :placeholder => "Online Bankin (CIMB, Maybank), ATM Machine" %>
             </div>
           </div>
         </div>
         <div class="row">
           <div class="col-md-6">
             <div class="form-group">
+              <%= f.label :total_payment, "Total Payment (RM)" %>
+              <%= f.text_field :total_payment, :class => "form-control" %>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
               <%= f.label :ref_number, "Payment For (Order Number)" %>
               <%= f.collection_select(:order_id, Order.where(user_id: @order, user_id: @user), :id, :ref_number, {}, {:class => "form-control"}) %>
             </div>
           </div>
+        </div>
+        <div class="row">
           <div class="col-md-6">
             <div class="form-group">
               <%= f.label :status, "Payment Status" %>

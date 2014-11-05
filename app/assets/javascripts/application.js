@@ -20,6 +20,7 @@
 //= require jquery.dataTables
 //= require dataTables.bootstrap
 //= require bootstrap-datepicker
+//= require bootstrap-timepicker.min
 //= require d3
 //= require highcharts
 //= require_tree .
@@ -40,13 +41,26 @@ function myFunction() {
 $(document).ready( function () {
 	$('#payment_payment_date').datepicker({
 	    format: 'dd/mm/yyyy',
+	    todayBtn: "linked",
+	    weekStart: 1,
+	    todayHighlight: true,
+	    autoclose: true,
 	    startDate: '-3d'
+	});
+	$('#payment_payment_time').timepicker({
+		minuteStep: 5,
+		showInputs: false,
+		disableFocus: true
 	});
 });
 
 $(document).ready( function () {
 	$('#voucher_voucher_date').datepicker({
 	    format: 'dd/mm/yyyy',
+	    todayBtn: "linked",
+	    weekStart: 1,
+	    todayHighlight: true,
+	    autoclose: true,
 	    startDate: '-3d'
 	});
 });
