@@ -35,6 +35,13 @@ class PaymentsController < ApplicationController
         body: "Hi #{@user.login}, thank you for submitting a payment RM #{@payment.total_payment} with receipt number #{@payment.receipt_number} . An admin will respond to you shortly. Thank you!"
       )
 
+      # Create and send an SMS message to admin
+      client.account.sms.messages.create(
+        from: Settings.twilio.from,
+        to: "+60122873632",
+        body: "NOTIFICATION: A user #{@user.login} has make a payment with receipt number #{@payment.receipt_number} - RM #{@payment.total_payment} just now. Please respond to his/her payment. Thank you!"
+      )
+
     else
       render 'new'
     end
