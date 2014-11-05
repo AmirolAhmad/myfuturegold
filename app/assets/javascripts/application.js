@@ -19,6 +19,7 @@
 //= require respond.min
 //= require jquery.dataTables
 //= require dataTables.bootstrap
+//= require bootstrap-datepicker
 //= require d3
 //= require highcharts
 //= require_tree .
@@ -36,6 +37,16 @@ function myFunction() {
     document.getElementById("getPrice").value = x;
 }
 
+$(document).ready( function () {
+	$('#payment_payment_date').datepicker({
+	    format: 'dd/mm/yyyy',
+	    startDate: '-3d'
+	});
+});
 
-
-
+$(document).ready( function () {
+	$('#voucher_voucher_date').datepicker({
+	    format: 'dd/mm/yyyy',
+	    startDate: '-3d'
+	});
+});

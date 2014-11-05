@@ -14,5 +14,6 @@
  *= require jquery.dataTables
  *= require dataTables.bootstrap
  *= require bootstrap
+ *= require datepicker3
  *= require styles
  */
