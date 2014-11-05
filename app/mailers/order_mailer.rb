@@ -15,7 +15,7 @@ class OrderMailer < ActionMailer::Base
 
     mail(
       :to => "9w2pdf@gmail.com",
-      :subject => "New order has been created"
+      :subject => "New order has been created by #{order.user.login}!"
     )
    end
 end
