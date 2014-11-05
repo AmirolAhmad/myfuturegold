@@ -6,7 +6,7 @@ class OrderMailer < ActionMailer::Base
 
     mail(
     	:to => "#{order.user.login} <#{order.user.email}>",
-    	:subject => "New Order #{order.ref_number} Created!"
+    	:subject => "New Order #{order.ref_number} has been place!"
     	)
    end
 end
