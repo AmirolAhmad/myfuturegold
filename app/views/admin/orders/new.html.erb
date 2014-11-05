@@ -123,9 +123,13 @@
 
 <script type="text/javascript">
   $('#order_package_id').change(function() {
-      if($(this).val() == 6)
-          $('#restock').show();
-      else
-          $('#restock').hide();
+    if($(this).val() == 6)
+      $('#restock').show();
+    else
+      $('#restock').hide();
   }); 
+
+  $('#order_package_id').change(function() {
+    $('#order_discount_id').val( this.value == 7 ? "1" : "2" );
+  });
 </script>
