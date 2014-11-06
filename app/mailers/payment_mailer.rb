@@ -14,7 +14,7 @@ class PaymentMailer < ActionMailer::Base
     @payment = payment
 
     mail(
-      :to => "hisyamnasir@gmail.com",
+      :to => "order@myfuturegold.my",
       :subject => "New payment has been created by #{payment.user.login}!"
     )
    end
