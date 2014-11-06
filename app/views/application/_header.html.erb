@@ -25,8 +25,17 @@
             <li><a href="#">One more separated link</a></li>
           </ul>
         </li>
+        <li>
+          <%= link_to root_path do %>
+            <span class="glyphicon glyphicon-tasks"></span> Dashboard
+          <% end %>
+        </li>
         <% if current_user.try(:admin) %>
-        <li><%= link_to "Admin Section", admin_master_path %></li>
+        <li>
+          <%= link_to admin_master_path do %>
+            <span class="glyphicon glyphicon-briefcase"></span> Admin Section
+          <% end %>
+        </li>
         <% end %>
       </ul>
       <% if user_signed_in? %>
