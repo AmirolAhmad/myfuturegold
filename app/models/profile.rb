@@ -21,8 +21,8 @@ class Profile < ActiveRecord::Base
 	validates 			:ic_number, length: { is: 12 }, format: { with: /\A[0-9\-\+ \/]*\z/ }, allow_blank: true
 	validates 			:ic_num_heir1, length: { is: 12 }, format: { with: /\A[0-9\-\+ \/]*\z/ }, allow_blank: true
 	validates 			:ic_num_heir2, length: { is: 12 }, format: { with: /\A[0-9\-\+ \/]*\z/ }, allow_blank: true
-	validates           :tel_num, length: { in: 8..15 }, format: { with: /\A[0-9\-\+ \/]*\z/ }, allow_blank: true
-	validates           :tel_num_waris, length: { in: 8..15 }, format: { with: /\A[0-9\-\+ \/]*\z/ }, allow_blank: true
-	validates           :heir2_phone_num, length: { in: 8..15 }, format: { with: /\A[0-9\-\+ \/]*\z/ }, allow_blank: true
+	validates           :tel_num, length: { in: 8..15 }, format: { with: /\A0[0-9\-\+ \/]*\z/ }, allow_blank: true
+	validates           :tel_num_waris, length: { in: 8..15 }, format: { with: /\A0[0-9\-\+ \/]*\z/ }, allow_blank: true
+	validates           :heir2_phone_num, length: { in: 8..15 }, format: { with: /\A0[0-9\-\+ \/]*\z/ }, allow_blank: true
 	
 end
