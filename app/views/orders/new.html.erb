@@ -121,10 +121,16 @@
   });
 
   $('#order_package_id').change(function() {
-    $('#order_discount_id').val( this.value == 6 ? "3" : "2" );
+    // $('#order_discount_id').val( this.value == 6 ? "3" : "2" );
+    if($(this).val() == 6) {
+      $('#order_discount_id').val(3);
+    } else if($(this).val() == 7) {
+      $('#order_discount_id').val(1);
+    } else {
+      $('#order_discount_id').val(2);
+    }
   });
 
-  $('#order_package_id').change(function() {
-    $('#order_discount_id').val( this.value == 7 ? "1" : "2" );
-  });
+  // $('#order_package_id').change(function() {
+  // });
 </script>
