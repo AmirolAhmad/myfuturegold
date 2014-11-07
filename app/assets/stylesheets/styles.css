@@ -140,6 +140,10 @@ h1, .h1, h2, .h2, h3, .h3, h4 , .h4, h5, .h5, h6, .h6 {
     text-transform: uppercase;
 }
 
+.navbar-default .canvas-slid .navbar-nav .open .dropdown-menu > li > a {
+    color: #ffffff;
+}
+
 .navbar-default {
     background-color: #25364c;
 }

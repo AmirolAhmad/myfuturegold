@@ -15,6 +15,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap
+//= require jasny-bootstrap
 //= require html5shiv
 //= require respond.min
 //= require jquery.dataTables
@@ -28,6 +29,10 @@
 
 $(document).ready( function () {
     $(".btn").tooltip({
+    	placement : 'bottom',
+    	container: 'body'
+    });
+    $(".inboxPop").tooltip({
     	placement : 'bottom',
     	container: 'body'
     });
