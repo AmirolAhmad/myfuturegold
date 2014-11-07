@@ -64,8 +64,3 @@ $(document).ready( function () {
 	    startDate: '-3d'
 	});
 });
-
-$('#AccountDetails a').click(function (e) {
-  e.preventDefault()
-  $(this).tab('show')
-})
