@@ -1,5 +1,5 @@
 <div class="page-header">
-  <h1>My Details <small>Manage your account details here.</small></h1>
+  <h1>My Details <small>Manage your account details here. <%= link_to 'Edit', edit_account_path, :class => "btn btn-primary btn-xs", :style => "color:#ffffff;" %></small></h1>
 </div>
 
 <div class="row">
@@ -7,303 +7,302 @@
     <%= render partial: "sidebar" %>
   </div>
   <div class="col-md-8">
-    <!-- Client Details -->
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Profile Details <%= link_to 'Edit', edit_account_path, :class => "pull-right btn btn-primary btn-xs", :style => "color:#ffffff;" %></h3>
-      </div>
-      <div class="panel-body">
+    <ul id="AccountDetails" class="nav nav-tabs nav-justified" role="tablist">
+      <li class="active" role="presentation">
+        <a data-toggle="tab" data-target="#profile">Profile Details</a>
+      </li>
+      <li role="presentation">
+        <a data-toggle="tab" data-target="#heir">Heir Details</a>
+      </li>
+      <li role="presentation">
+        <a data-toggle="tab" data-target="#bank">Bank Details</a>
+      </li>
+    </ul>
 
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-              <label>Email address</label>
-              <p><%= @users.email %></p>
+    <div class="tab-content">
+      <div id="profile" class="tab-pane fade in active">
+        <p>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Email address</label>
+                <p><%= @users.email %></p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Full Name</label>
+                <p><%= @users.profile.try(:nama_penuh).blank? ? "N/A" : @users.profile.try(:nama_penuh) %></p>
+              </div>
             </div>
           </div>
-          <div class="col-md-6">
-            <div class="form-group">
-              <label>Full Name</label>
-              <p><%= @users.profile.try(:nama_penuh).blank? ? "N/A" : @users.profile.try(:nama_penuh) %></p>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Address 1</label>
+                <p><%= @users.profile.try(:address1).blank? ? "N/A" : @users.profile.try(:address1) %></p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Address 2</label>
+                <p><%= @users.profile.try(:address2).blank? ? "N/A" : @users.profile.try(:address2) %></p>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-              <label>Address 1</label>
-              <p><%= @users.profile.try(:address1).blank? ? "N/A" : @users.profile.try(:address1) %></p>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>City</label>
+                <p><%= @users.profile.try(:city).blank? ? "N/A" : @users.profile.try(:city) %></p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>State</label>
+                <p><%= @users.profile.try(:state).blank? ? "N/A" : @users.profile.try(:state) %></p>
+              </div>
             </div>
           </div>
-          <div class="col-md-6">
-            <div class="form-group">
-              <label>Address 2</label>
-              <p><%= @users.profile.try(:address2).blank? ? "N/A" : @users.profile.try(:address2) %></p>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Postcode</label>
+                <p><%= @users.profile.try(:postcode).blank? ? "N/A" : @users.profile.try(:postcode) %></p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Country</label>
+                <p><%= @users.profile.try(:country).blank? ? "N/A" : @users.profile.try(:country) %></p>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-              <label>City</label>
-              <p><%= @users.profile.try(:city).blank? ? "N/A" : @users.profile.try(:city) %></p>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>IC Number</label>
+                <p><%= @users.profile.try(:ic_number).blank? ? "N/A" : @users.profile.try(:ic_number) %></p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Phone Number</label>
+                <p><%= @users.profile.try(:tel_num).blank? ? "N/A" : @users.profile.try(:tel_num) %></p>
+              </div>
             </div>
           </div>
-          <div class="col-md-6">
-            <div class="form-group">
-              <label>State</label>
-              <p><%= @users.profile.try(:state).blank? ? "N/A" : @users.profile.try(:state) %></p>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Facebook ID</label>
+                <p><%= @users.profile.try(:facebook_id).blank? ? "N/A" : @users.profile.try(:facebook_id) %> <%= link_to "Open", "https://www.facebook.com/" + @users.profile.try(:facebook_id).to_s, :target => "_blank" %></p>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-              <label>Postcode</label>
-              <p><%= @users.profile.try(:postcode).blank? ? "N/A" : @users.profile.try(:postcode) %></p>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="form-group">
-              <label>Country</label>
-              <p><%= @users.profile.try(:country).blank? ? "N/A" : @users.profile.try(:country) %></p>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-              <label>IC Number</label>
-              <p><%= @users.profile.try(:ic_number).blank? ? "N/A" : @users.profile.try(:ic_number) %></p>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="form-group">
-              <label>Phone Number</label>
-              <p><%= @users.profile.try(:tel_num).blank? ? "N/A" : @users.profile.try(:tel_num) %></p>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-              <label>Facebook ID</label>
-              <p><%= @users.profile.try(:facebook_id).blank? ? "N/A" : @users.profile.try(:facebook_id) %> <%= link_to "Open", "https://www.facebook.com/" + @users.profile.try(:facebook_id).to_s, :target => "_blank" %></p>
-            </div>
-          </div>
-        </div>
-
+        </p>
       </div>
-    </div>
-    <!-- Parent Details -->
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Parents Details</h3>
+      <div id="heir" class="tab-pane fade">
+        <p>
+          <h4>FIRST HEIR</h4>
+          <hr>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Nama Waris</label>
+                <p><%= @users.profile.try(:nama_waris).blank? ? "N/A" : @users.profile.try(:nama_waris) %></p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Hubungan Waris</label>
+                <p><%= @users.profile.try(:hub_waris).blank? ? "N/A" : @users.profile.try(:hub_waris) %></p>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Address 1</label>
+                <p><%= @users.profile.try(:heir1_address1).blank? ? "N/A" : @users.profile.try(:heir1_address1) %></p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Address 2</label>
+                <p><%= @users.profile.try(:heir1_address2).blank? ? "N/A" : @users.profile.try(:heir1_address2) %></p>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>City</label>
+                <p><%= @users.profile.try(:heir1_city).blank? ? "N/A" : @users.profile.try(:heir1_city) %></p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>State</label>
+                <p><%= @users.profile.try(:heir1_state).blank? ? "N/A" : @users.profile.try(:heir1_state) %></p>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Postcode</label>
+                <p><%= @users.profile.try(:heir1_postcode).blank? ? "N/A" : @users.profile.try(:heir1_postcode) %></p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Country</label>
+                <p><%= @users.profile.try(:heir1_country).blank? ? "N/A" : @users.profile.try(:heir1_country) %></p>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Phone Number</label>
+                <p><%= @users.profile.try(:tel_num_waris).blank? ? "N/A" : @users.profile.try(:tel_num_waris) %></p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>IC Number</label>
+                <p><%= @users.profile.try(:ic_num_heir1).blank? ? "N/A" : @users.profile.try(:ic_num_heir1) %></p>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Email Address</label>
+                <p><%= @users.profile.try(:heir1_email).blank? ? "N/A" : @users.profile.try(:heir1_email) %></p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Facebook ID</label>
+                <p><%= @users.profile.try(:heir1_fb_id).blank? ? "N/A" : @users.profile.try(:heir1_fb_id) %> <%= link_to "Open", "https://www.facebook.com/" + @users.profile.try(:heir1_fb_id).to_s, :target => "_blank" %></p>
+              </div>
+            </div>
+          </div>
+          <h4>SECOND HEIR</h4>
+          <hr>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Nama Waris</label>
+                <p><%= @users.profile.try(:heir2_name).blank? ? "N/A" : @users.profile.try(:heir2_name) %></p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Hubungan Waris</label>
+                <p><%= @users.profile.try(:heir2_rel).blank? ? "N/A" : @users.profile.try(:heir2_rel) %></p>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Address 1</label>
+                <p><%= @users.profile.try(:heir2_address1).blank? ? "N/A" : @users.profile.try(:heir2_address1) %></p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Address 2</label>
+                <p><%= @users.profile.try(:heir2_address2).blank? ? "N/A" : @users.profile.try(:heir2_address2) %></p>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>City</label>
+                <p><%= @users.profile.try(:heir2_city).blank? ? "N/A" : @users.profile.try(:heir2_city) %></p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>State</label>
+                <p><%= @users.profile.try(:heir2_state).blank? ? "N/A" : @users.profile.try(:heir2_state) %></p>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Postcode</label>
+                <p><%= @users.profile.try(:heir2_postcode).blank? ? "N/A" : @users.profile.try(:heir2_postcode) %></p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Country</label>
+                <p><%= @users.profile.try(:heir2_country).blank? ? "N/A" : @users.profile.try(:heir2_country) %></p>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Phone Number</label>
+                <p><%= @users.profile.try(:heir2_phone_num).blank? ? "N/A" : @users.profile.try(:heir2_phone_num) %></p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>IC Number</label>
+                <p><%= @users.profile.try(:ic_num_heir2).blank? ? "N/A" : @users.profile.try(:ic_num_heir2) %></p>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Email Address</label>
+                <p><%= @users.profile.try(:heir2_email).blank? ? "N/A" : @users.profile.try(:heir2_email) %></p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Facebook ID</label>
+                <p><%= @users.profile.try(:heir2_fb_id).blank? ? "N/A" : @users.profile.try(:heir2_fb_id) %> <%= link_to "Open", "https://www.facebook.com/" + @users.profile.try(:heir2_fb_id).to_s, :target => "_blank" %></p>
+              </div>
+            </div>
+          </div>
+        </p>
       </div>
-      <div class="panel-body">
-        <h4>FIRST HEIR</h4>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-              <label>Nama Waris</label>
-              <p><%= @users.profile.try(:nama_waris).blank? ? "N/A" : @users.profile.try(:nama_waris) %></p>
+      <div id="bank" class="tab-pane fade">
+        <p>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Bank Name</label>
+                <p><%= @users.profile.try(:nama_bank).blank? ? "N/A" : @users.profile.try(:nama_bank) %></p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Account Name</label>
+                <p><%= @users.profile.try(:nama_akaun).blank? ? "N/A" : @users.profile.try(:nama_akaun) %></p>
+              </div>
             </div>
           </div>
-          <div class="col-md-6">
-            <div class="form-group">
-              <label>Hubungan Waris</label>
-              <p><%= @users.profile.try(:hub_waris).blank? ? "N/A" : @users.profile.try(:hub_waris) %></p>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Account Number</label>
+                <p><%= @users.profile.try(:no_akaun).blank? ? "N/A" : @users.profile.try(:no_akaun) %></p>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-              <label>Address 1</label>
-              <p><%= @users.profile.try(:heir1_address1).blank? ? "N/A" : @users.profile.try(:heir1_address1) %></p>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="form-group">
-              <label>Address 2</label>
-              <p><%= @users.profile.try(:heir1_address2).blank? ? "N/A" : @users.profile.try(:heir1_address2) %></p>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-              <label>City</label>
-              <p><%= @users.profile.try(:heir1_city).blank? ? "N/A" : @users.profile.try(:heir1_city) %></p>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="form-group">
-              <label>State</label>
-              <p><%= @users.profile.try(:heir1_state).blank? ? "N/A" : @users.profile.try(:heir1_state) %></p>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-              <label>Postcode</label>
-              <p><%= @users.profile.try(:heir1_postcode).blank? ? "N/A" : @users.profile.try(:heir1_postcode) %></p>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="form-group">
-              <label>Country</label>
-              <p><%= @users.profile.try(:heir1_country).blank? ? "N/A" : @users.profile.try(:heir1_country) %></p>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-              <label>Phone Number</label>
-              <p><%= @users.profile.try(:tel_num_waris).blank? ? "N/A" : @users.profile.try(:tel_num_waris) %></p>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="form-group">
-              <label>IC Number</label>
-              <p><%= @users.profile.try(:ic_num_heir1).blank? ? "N/A" : @users.profile.try(:ic_num_heir1) %></p>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-              <label>Email Address</label>
-              <p><%= @users.profile.try(:heir1_email).blank? ? "N/A" : @users.profile.try(:heir1_email) %></p>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="form-group">
-              <label>Facebook ID</label>
-              <p><%= @users.profile.try(:heir1_fb_id).blank? ? "N/A" : @users.profile.try(:heir1_fb_id) %> <%= link_to "Open", "https://www.facebook.com/" + @users.profile.try(:heir1_fb_id).to_s, :target => "_blank" %></p>
-            </div>
-          </div>
-        </div>
-        <h4>SECOND HEIR</h4>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-              <label>Nama Waris</label>
-              <p><%= @users.profile.try(:heir2_name).blank? ? "N/A" : @users.profile.try(:heir2_name) %></p>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="form-group">
-              <label>Hubungan Waris</label>
-              <p><%= @users.profile.try(:heir2_rel).blank? ? "N/A" : @users.profile.try(:heir2_rel) %></p>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-              <label>Address 1</label>
-              <p><%= @users.profile.try(:heir2_address1).blank? ? "N/A" : @users.profile.try(:heir2_address1) %></p>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="form-group">
-              <label>Address 2</label>
-              <p><%= @users.profile.try(:heir2_address2).blank? ? "N/A" : @users.profile.try(:heir2_address2) %></p>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-              <label>City</label>
-              <p><%= @users.profile.try(:heir2_city).blank? ? "N/A" : @users.profile.try(:heir2_city) %></p>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="form-group">
-              <label>State</label>
-              <p><%= @users.profile.try(:heir2_state).blank? ? "N/A" : @users.profile.try(:heir2_state) %></p>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-              <label>Postcode</label>
-              <p><%= @users.profile.try(:heir2_postcode).blank? ? "N/A" : @users.profile.try(:heir2_postcode) %></p>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="form-group">
-              <label>Country</label>
-              <p><%= @users.profile.try(:heir2_country).blank? ? "N/A" : @users.profile.try(:heir2_country) %></p>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-              <label>Phone Number</label>
-              <p><%= @users.profile.try(:heir2_phone_num).blank? ? "N/A" : @users.profile.try(:heir2_phone_num) %></p>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="form-group">
-              <label>IC Number</label>
-              <p><%= @users.profile.try(:ic_num_heir2).blank? ? "N/A" : @users.profile.try(:ic_num_heir2) %></p>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-              <label>Email Address</label>
-              <p><%= @users.profile.try(:heir2_email).blank? ? "N/A" : @users.profile.try(:heir2_email) %></p>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="form-group">
-              <label>Facebook ID</label>
-              <p><%= @users.profile.try(:heir2_fb_id).blank? ? "N/A" : @users.profile.try(:heir2_fb_id) %> <%= link_to "Open", "https://www.facebook.com/" + @users.profile.try(:heir2_fb_id).to_s, :target => "_blank" %></p>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-    <!-- Bank Details -->
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Bank Details</h3>
-      </div>
-      <div class="panel-body">
-    
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-              <label>Bank Name</label>
-              <p><%= @users.profile.try(:nama_bank).blank? ? "N/A" : @users.profile.try(:nama_bank) %></p>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="form-group">
-              <label>Account Name</label>
-              <p><%= @users.profile.try(:nama_akaun).blank? ? "N/A" : @users.profile.try(:nama_akaun) %></p>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-              <label>Account Number</label>
-              <p><%= @users.profile.try(:no_akaun).blank? ? "N/A" : @users.profile.try(:no_akaun) %></p>
-            </div>
-          </div>
-        </div>
-
+        </p>
       </div>
     </div>
   </div>
