@@ -103,8 +103,8 @@
           <tr>
             <th class="col-md-2">Programme</th>
             <th class="col-md-2">Total Weight</th>
-            <th class="col-md-2">Price</th>
-            <th class="col-md-2">Total Price</th>
+            <th class="col-md-2">Total Discount</th>
+            <th class="col-md-2">Discount Date</th>
             <th class="col-md-1">Status</th>
           </tr>
         </thead>
@@ -114,8 +114,8 @@
           <tr>
             <td><%= order.package.package_name %></td>
             <td><%= order.gram_quantity %> gram</td>
-            <td>RM <%= order.price %></td>
-            <td>RM <%= order.total_price %></td>
+            <td>RM <%= order.total_discount %></td>
+            <td><%= order.discount.discount_date %></td>
             <td>
               <% if order.status.status_name == "Active" %>
                 <span class="label label-primary">
