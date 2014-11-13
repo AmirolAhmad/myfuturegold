@@ -210,10 +210,10 @@ $(function visitorData (data) {
 
 <!-- banner -->
 <section id="my-banner">
-  <%= image_tag('bg.png', :id => "my-banner-img", :alt => "Background") %>
+  <%= image_tag('bg.png', :id => "my-banner-img", :alt => "Background", :class => "img-responsive") %>
     <div class="content-wrapper">
         <%= image_tag('logo-mfg.png', :alt => "MyFutureGold Resources") %>
-        <h1 id="my-banner-h1">Gold is a Real Money! <span id="accent">100%</span> Real Money for Future.</h1>
+        <h1 id="my-banner-h1">Buy gold as your asset, as the <span id="accent">gold</span> is acceptable by the whole world.</h1>
         <div class="row">
           <div class="col-md-4 col-md-offset-4">
             <div class="btn-group btn-group-justified">
@@ -222,116 +222,7 @@ $(function visitorData (data) {
             </div>
           </div>
         </div>
-        <p id="my-banner-p">We're Not Kidding.</p>
-    </div>
-</section>
-<!-- sub-heading -->
-<section id="sub-heading">
-    <div class="content-wrapper">
-        <p id="sub-heading-primary">
-          <strong>Throughout history no paper currency has survived in its original form.</strong>
-        </p>
-        <p id="sub-heading-secondary">
-          Paper currencies are normally inflated away until they are worthless.
-        </p>
-    </div>
-</section>
-<!-- stats -->
-<section id="stats">
-    <div id="stats-container">
-        <div class="stat" id="stats-01">
-            <h3 id="stats-01-h3">Huge Market</h3>
-            <h2 id="stats-01-h2">25,000</h2>
-            <p id="stats-01-p">Customers</p>
-        </div>
-        <%= image_tag('math1.png', :id => "stats-img-02", :alt => "math symbols") %>
-        <div class="stat" id="stats-02">
-            <h3 id="stats-02-h3">Great Visibility</h3>
-            <h2 id="stats-02-h2">23,000,000</h2>
-            <p id="stats-02-p">Pageviews</p>
-        </div>
-        <%= image_tag('math2.png', :id => "stats-img-03", :alt => "math symbols") %>
-        <div class="stat" id="stats-03">
-            <h3 id="stats-03-h3">Be First</h3>
-            <h2 id="stats-03-h2">ONLY 20+</h2>
-            <p id="stats-03-p">Sellers</p>
-        </div>
-        <%= image_tag('math3.png', :id => "stats-img-04", :alt => "math symbols") %>
-        <div class="stat" id="stats-04">
-            <h3 id="stats-04-h3">Big Potential</h3>
-            <h2 id="stats-04-h2">100%</h2>
-            <p id="stats-04-p">Goes to You</p>
-        </div>
-    </div>
-</section>
-<!-- testimonial -->
-<section id="testimonial">
-    <div class="content-wrapper">
-        <%= image_tag('testimonial.png', :id => "testimonial-img", :alt => "antonio rillera") %>
-        <p id="testimonial-copy">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum gravida nisl. Etiam nisi lacus, dignissim eget pretium in, dictum vel nisl. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vivamus justo eros, tincidunt id consectetur ut, dignissim non purus. Fusce eu dapibus massa.</p>
-        <h4 id="testimonial-author">Evalisa Andria</h4>
-        <span id="testimonial-title">Fulltime Housewife</span>
-    </div>
-</section>
-
-<!-- How does it work -->
-<section id="how-works">
-    <div class="content-wrapper">
-        <h2 id="how-works-header">How Does It Work</h2>
-        <div class="step" id="step1">
-            <div class="left">
-                <p class="num" id="num1">1</p>
-                <h3 id="how-works-01-header">Simply click <%= link_to "here", register_path %> to become a member of the MyFutureGold Resources.</h3>
-                <p id="how-works-01-copy">You will be asked to signup with your Email Address to begin creating order & receiving payments. Don’t have an account yet? Don’t worry, signup is free and takes less than 2 minutes</p>
-            </div>
-            <%= link_to register_path, :id => "how-works-01-image-link" do %>
-              <div class="image" id="register-btn">
-                <%= image_tag('register-btn.png', :id => "register-button", :alt => "register") %>
-              </div>
-            <% end %>
-        </div>
-        <div class="step" id="step2">
-            <div class="right">
-                <p class="num" id="num2">2</p><h3 id="how-works-02-header">Begin ordering your gold programme.</h3>
-                <p id="how-works-02-copy">We’ve included loads of programme and support materials to help you along the way.</p>
-            </div>
-            <div class="left" id="templates">
-              <%= image_tag('templates.png', :id => "how-works-02-img", :alt => "templates") %>
-            </div>
-        </div>
-        <div class="step" id="step3">
-            <div class="left">
-                <p class="num" id="num3">3</p><h3 id="how-works-03-header">Submit your order for approval and voila!</h3>
-                <p id="how-works-03-copy">Once approved, you will receive the physical gold right into your hand and will notify you via SMS and Email.</p>
-            </div>
-            <div class="image submit">
-              <%= image_tag('submit.png', :id => "how-works-03-img", :alt => "submit") %>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- start-today -->
-<section id="start-today">
-    <div class="content-wrapper">
-        <h2 id="start-today-header">Start Today!</h2>
-        <%= link_to register_path, :id => "start-today-link", :class => 'click-btn' do %>
-        <u>Click Here</u> to Register as Customer <span>»</span>
-        <% end %>
-    </div>
-</section>
-<!-- brands -->
-<section id="brands">
-    <div class="content-wrapper">
-        <h3 id="brands-header">Brands That Trust MyFutureGold Resources</h3>
-        <div id="logos">
-            <%= image_tag('macrumors.png', :id => "brands-img-01", :alt => "MacRumors") %>
-            <%= image_tag('product-launch-formula.png', :id => "brands-img-02", :alt => "Product Launch Formula") %>
-            <%= image_tag('book-solid.png', :id => "brands-img-03", :alt => "Book Yourself Solid") %>
-            <%= image_tag('digital-marketer.png', :id => "brands-img-04", :alt => "Digital Marketer Lab") %>
-            <%= image_tag('greenpeace.png', :id => "brands-img-05", :alt => "GreenPeace") %>
-            <%= image_tag('ontraport.png', :id => "brands-img-06", :alt => "OntraPort") %>
-            <%= image_tag('duct-tape.png', :id => "brands-img-07", :alt => "Duct Tape Marketing") %>
-        </div>
+        <p id="my-banner-p">Be part of us and enjoy the benefits you wont regret it!</p>
     </div>
 </section>
 
