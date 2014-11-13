@@ -16,6 +16,10 @@ html {
   min-height: 100%;
 }
 
+.navbar-brand > img {
+    margin-top: -10px;
+}
+
 body {
   /* Margin bottom by footer height */
   /*margin-bottom: 60px;*/
