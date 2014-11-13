@@ -58,6 +58,11 @@ class Admin::OrdersController < ApplicationController
         @order.update_attributes(:total_discount => @total_discount)
       end
 
+      if @order.package_id == 7
+        @total_discount = 30 * @order.gram_quantity.to_i
+        @order.update_attributes(:total_discount => @total_discount)
+      end
+
       redirect_to admin_user_order_path(id:@order), notice: "New order has been created."
 
       #send sms with twillio
