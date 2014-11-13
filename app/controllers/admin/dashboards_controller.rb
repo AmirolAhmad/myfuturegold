@@ -4,6 +4,8 @@ class Admin::DashboardsController < ApplicationController
 
   def index
     @users = User.all.order("created_at DESC")
+    @pending = Order.all.where(:status_id =>  3)
+    @active = Order.all.where(:status_id =>  1)
   end
   
 end

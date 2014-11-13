@@ -16,18 +16,78 @@
     <p><%= link_to "Manage Message", admin_inboxes_path, :class => "btn btn-primary" %></p>
   </div>
   <div class="col-md-4">
-    <%= image_tag('support@2x.png', :alt => "View Message", :style => 'width: 140px; height: 140px;') %>
-    <h2>Feedback</h2>
-    <p class="small">Manage your feedback that has been sent to you from user side.</p>
-    <p><%= link_to "Manage Feedback", '', :class => "btn btn-primary" %></p>
-  </div>
-</div>
-<div class="marketing row">
-  <div class="col-md-4">
     <%= image_tag('Mail@2x.png', :alt => "Announcement", :style => 'width: 140px; height: 140px;') %>
     <h2>Announcement</h2>
     <p class="small">Send broadcast message to all client.</p>
     <p><%= link_to "Manage Announcement", admin_announcements_path, :class => "btn btn-primary" %></p>
+  </div>
+</div>
+
+<hr>
+
+<h3>Client Order Details</h3>
+
+<ul id="OrderDetails" class="nav nav-tabs nav-justified" role="tablist">
+  <li class="active" role="presentation">
+    <a data-toggle="tab" data-target="#active">View Active Order</a>
+  </li>
+  <li role="presentation">
+    <a data-toggle="tab" data-target="#pending">View Pending Order</a>
+  </li>
+</ul>
+
+<div class="tab-content">
+  <div id="active" class="tab-pane fade in active">
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover" id="ActiveOrder">
+        <thead>
+          <tr>
+            <th class="col-md-1">Date</th>
+            <th class="col-md-2">Reference Number</th>
+            <th class="col-md-4">Client Name</th>
+            <th class="col-md-1">Programme</th>
+            <th class="col-md-1">Total Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @active.each do |order| %>
+          <tr>
+            <td><%= order.ordered_date.strftime("%d %B %Y") %></td>
+            <td><%= order.ref_number %></td>
+            <td><%= order.user.profile.nama_penuh %></td>
+            <td><%= order.package.package_name %></td>
+            <td>RM <%= order.total_price %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div id="pending" class="tab-pane fade in">
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover" id="PendingOrder">
+        <thead>
+          <tr>
+            <th class="col-md-1">Date</th>
+            <th class="col-md-2">Reference Number</th>
+            <th class="col-md-4">Client Name</th>
+            <th class="col-md-1">Programme</th>
+            <th class="col-md-1">Total Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @pending.each do |order| %>
+          <tr>
+            <td><%= order.ordered_date.strftime("%d %B %Y") %></td>
+            <td><%= order.ref_number %></td>
+            <td><%= order.user.profile.nama_penuh %></td>
+            <td><%= order.package.package_name %></td>
+            <td>RM <%= order.total_price %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
 
@@ -82,4 +142,11 @@ $(function visitorData (data) {
         }]
     });
 });
+</script>
+
+<script type="text/javascript">
+$(document).ready( function () {
+    $('#PendingOrder').DataTable();
+    $('#ActiveOrder').DataTable();
+} );
 </script>
