@@ -42,11 +42,12 @@
       <table class="table table-bordered table-hover" id="ActiveOrder">
         <thead>
           <tr>
-            <th class="col-md-1">Date</th>
+            <th class="col-md-2">Date</th>
             <th class="col-md-2">Reference Number</th>
             <th class="col-md-4">Client Name</th>
             <th class="col-md-1">Programme</th>
-            <th class="col-md-1">Total Price</th>
+            <th class="col-md-2">Total Price</th>
+            <th class="col-md-1">Status</th>
           </tr>
         </thead>
         <tbody>
@@ -54,9 +55,10 @@
           <tr>
             <td><%= order.ordered_date.strftime("%d %B %Y") %></td>
             <td><%= order.ref_number %></td>
-            <td><%= order.user.profile.nama_penuh %></td>
+            <td><%= order.user.profile.try(:nama_penuh) %></td>
             <td><%= order.package.package_name %></td>
             <td>RM <%= order.total_price %></td>
+            <td><span class="label label-primary"><%= order.status.status_name %></span></td>
           </tr>
           <% end %>
         </tbody>
@@ -68,11 +70,12 @@
       <table class="table table-bordered table-hover" id="PendingOrder">
         <thead>
           <tr>
-            <th class="col-md-1">Date</th>
+            <th class="col-md-2">Date</th>
             <th class="col-md-2">Reference Number</th>
             <th class="col-md-4">Client Name</th>
             <th class="col-md-1">Programme</th>
-            <th class="col-md-1">Total Price</th>
+            <th class="col-md-2">Total Price</th>
+            <th class="col-md-1">Status</th>
           </tr>
         </thead>
         <tbody>
@@ -80,9 +83,10 @@
           <tr>
             <td><%= order.ordered_date.strftime("%d %B %Y") %></td>
             <td><%= order.ref_number %></td>
-            <td><%= order.user.profile.nama_penuh %></td>
+            <td><%= order.user.profile.try(:nama_penuh) %></td>
             <td><%= order.package.package_name %></td>
             <td>RM <%= order.total_price %></td>
+            <td><span class="label label-warning"><%= order.status.status_name %></span></td>
           </tr>
           <% end %>
         </tbody>
