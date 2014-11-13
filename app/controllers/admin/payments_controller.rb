@@ -34,7 +34,7 @@ class Admin::PaymentsController < ApplicationController
 
       random = ['1'..'9'].map { |i| i.to_a }.flatten
       receipt_number = (0...4).map { random[rand(random.length)] }.join
-      @payment.update_attributes(:receipt_number => "#MGR-P" + receipt_number)
+      @payment.update_attributes(:receipt_number => "#MFG-P" + receipt_number)
 
       redirect_to admin_user_payment_path(id:@payment), notice: "New payment has been created."
 

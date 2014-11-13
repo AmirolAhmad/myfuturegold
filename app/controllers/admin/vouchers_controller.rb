@@ -34,7 +34,7 @@ class Admin::VouchersController < ApplicationController
 
       random = ['1'..'9'].map { |i| i.to_a }.flatten
       receipt_number = (0...4).map { random[rand(random.length)] }.join
-      @voucher.update_attributes(:receipt_number => "#MGR-V" + receipt_number)
+      @voucher.update_attributes(:receipt_number => "#MFG-V" + receipt_number)
 
       redirect_to admin_user_voucher_path(id:@voucher), notice: "New voucher has been created."
 
