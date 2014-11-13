@@ -86,7 +86,7 @@
               <p><%= @order.discount.discount_date %></p>
             </div>
           </div>
-        <% if @order.package_id == 7 %>
+        <% if @order.package_id == 7 || @order.package_id == 4 %>
           <div class="col-md-6">
             <div class="form-group">
               <label>Total Discount</label>

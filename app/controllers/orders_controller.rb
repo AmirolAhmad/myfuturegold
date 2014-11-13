@@ -37,6 +37,11 @@ class OrdersController < ApplicationController
       OrderMailer.order_email(@order).deliver
       OrderMailer.notify_admin(@order).deliver
 
+      if @order.package_id == 4
+        @total_discount = 54 * @order.gram_quantity.to_i
+        @order.update_attributes(:total_discount => @total_discount)
+      end
+
       if @order.package_id == 6
         #discount_per_gram
         @discount_per_gram = @order.package.buying_price - @order.package.selling_price
