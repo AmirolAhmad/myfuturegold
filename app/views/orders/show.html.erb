@@ -37,7 +37,7 @@
               <p><%= @order.gram_quantity %>gram</p>
             </div>
           </div>
-          <% if @order.package_id != 7 %>
+          <% if @order.package_id != 7 && @order.package_id != 4 %>
           <div class="col-md-6">
             <div class="form-group">
             	<label>Price per gram</label>
@@ -57,7 +57,7 @@
           <div class="col-md-6">
             <div class="form-group">
             	<label>Programme</label>
-              <p><%= @order.package.package_name %> <%= @order.package_id == 7 ? "(Term: 4month)" : "" %> <%= @order.try(:restock).blank? ? "" : "(Restock: " + @order.try(:restock).to_s + "month)" %></p>
+              <p><%= @order.package.package_name %> <%= @order.package_id == 7 ? "(Term: 4month)" : "" %> <%= @order.package_id == 4 ? "(Term: 5month)" : "" %> <%= @order.try(:restock).blank? ? "" : "(Restock: " + @order.try(:restock).to_s + "month)" %></p>
             </div>
           </div>
         </div>
