@@ -26,11 +26,13 @@
           </ul>
         </li>
         -->
+        <% if user_signed_in? %>
         <li>
           <%= link_to root_path do %>
             <span class="glyphicon glyphicon-tasks"></span> Dashboard
           <% end %>
         </li>
+        <% end %>
         <% if current_user.try(:admin) %>
         <li>
           <%= link_to admin_master_path do %>
