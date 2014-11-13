@@ -24,6 +24,7 @@
             <thead>
               <tr>
                 <th class="col-md-2">Order Number</th>
+                <th class="col-md-2">Order Date</th>
                 <th class="col-md-1">Programme</th>
                 <th class="col-md-1">Status</th>
                 <th class="col-md-1">Action</th>
@@ -33,6 +34,7 @@
               <% @orders.each do |order| %>
               <tr>
                 <td><%= order.ref_number %></td>
+                <td><%= order.ordered_date.strftime("%d %B %Y") %></td>
                 <td><%= order.package.package_name %></td>
                 <td>
                   <% if order.status.status_name == "Active" %>
