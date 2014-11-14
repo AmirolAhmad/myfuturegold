@@ -57,7 +57,7 @@ class OrdersController < ApplicationController
         @order.update_attributes(:total_discount => @total_discount)
       end
 
-      redirect_to order_path(@order), notice: "New order has been created."
+      redirect_to order_path(@order), notice: "New order has been created. Please make a payment to:<br /></br />Bank Name: Maybank Berhad</br />Payee Name: MyFuture Gold Resources</br />Account Number: 563019243857</br />Bank Swift: MBBEMYKL</br />Company Registration Number : 002357358-K"
 
       #send sms with twillio
       client = Twilio::REST::Client.new(Settings.twilio.sid, Settings.twilio.token)
