@@ -89,13 +89,6 @@ class OrdersController < ApplicationController
       respond_to do |format|
         format.html { @order }
         format.json { render json: @order.to_json(include: [:status, :package, :discount]) }
-        format.pdf do
-          pdf = InvoicePdf.new(@order, view_context)
-          send_data pdf.render, filename:
-          "order_#{@order.created_at.strftime("%d/%m/%Y")}.pdf",
-          type: "application/pdf",
-          disposition: "inline"
-        end
       end
     else
       redirect_to orders_path, notice: "Order ID not found for that client."
