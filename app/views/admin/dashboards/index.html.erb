@@ -39,7 +39,7 @@
 <div class="tab-content">
   <div id="active" class="tab-pane fade in active">
     <div class="table-responsive">
-      <table class="table table-bordered table-hover" id="ActiveOrder">
+      <table class="table table-bordered table-hover display" id="ActiveOrder">
         <thead>
           <tr>
             <th class="col-md-2">Date</th>
@@ -67,7 +67,7 @@
   </div>
   <div id="pending" class="tab-pane fade in">
     <div class="table-responsive">
-      <table class="table table-bordered table-hover" id="PendingOrder">
+      <table class="table table-bordered table-hover display" id="PendingOrder">
         <thead>
           <tr>
             <th class="col-md-2">Date</th>
@@ -150,11 +150,11 @@ $(function visitorData (data) {
 
 <script type="text/javascript">
 $(document).ready( function () {
-  $('#ActiveOrder').DataTable({
-    "aaSorting": [[0, 'desc']]
+  $('.display').DataTable({
+    "aaSorting": [[0,'desc']]
   }).api();
-  $('#PendingOrder').DataTable({
-    "aaSorting": [[0, 'desc']]
-  }).api();
+
+  oTable = $('#ActiveOrder').DataTable();
+  oTable2 = $('#PendingOrder').DataTable();
 });
 </script>
