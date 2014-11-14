@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
-	before_filter :set_user, only: [:index, :new, :create, :show, :destroy]
-  before_filter :set_order, only: [:show, :destroy]
+	before_filter :set_user, only: [:index, :new, :create, :show]
+  before_filter :set_order, only: [:show]
 	before_filter :require_user
 
   def index
@@ -100,11 +100,6 @@ class OrdersController < ApplicationController
     else
       redirect_to orders_path, notice: "Order ID not found for that client."
     end
-  end
-
-  def destroy
-  	@order.destroy
-    redirect_to orders_path, notice: "Order has been deleted."
   end
 
   private
