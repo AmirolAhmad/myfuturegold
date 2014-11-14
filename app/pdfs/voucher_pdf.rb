@@ -4,103 +4,65 @@ class VoucherPdf < Prawn::Document
     super()
     @voucher = voucher
     @view = view
-    text "Receipt Number: #{@voucher.receipt_number}", :size => 9, :color => "585858"
     logo
-    thanks_message
-    order_date
-    payment_method
-    client_name
-    order_number
-    package_name
-    voucher_amount
-    message
-    thank_you
     address
+    client_details
+    voucher_details
+    message
   end
 
   def logo
+    text "PAYMENT VOUCHER", :align => :right, size: 16, :color => "585858", :style => :bold
+    text "INVOICE #{@voucher.receipt_number}", :align => :right, size: 7, :color => "585858"
+    text "DATE: #{@voucher.created_at.strftime("%d/%m/%Y")}", :align => :right, size: 7, :color => "585858"
     logopath =  "#{Rails.root}/app/assets/images/pdf-logo.png"
     image logopath, :width => 90, :height => 100, :position => :left
-    move_down 10
-    text "Receipt", :align => :center, size: 22, :style => :italic
     move_down 5
-    text "____________________", :align => :center, size: 9, :color => "999999"
-    move_down 10
-  end
-
-  def thanks_message
-    move_down 10
-    text "Here is your voucher confirmation details that has been credited to your account by MyFuture Gold Resources. Please print and keep this receipt as confirmation of your voucher for your future reference.", :size => 9, :color => "585858"
-  end
-
-  def order_date
-    move_down 30
-    text "<font size=\"9\"><color rgb=\"585858\">Date of Voucher:</color></font> <font size=\"9\"><color rgb=\"585858\"><b>#{@voucher.created_at.strftime("%d/%m/%Y")}</b></color></font>", :inline_format => true, :indent_paragraphs => 20
-    # text "Date of Voucher:", :size => 9, :color => "585858"
-    # move_down 5
-    # text "#{@voucher.created_at.strftime("%d/%m/%Y")} ", :size => 9, :color => "585858", :style => :bold
-    move_down 10
-  end
-
-  def payment_method
-    text "<font size=\"9\"><color rgb=\"585858\">Voucher Method:</color></font> <font size=\"9\"><color rgb=\"585858\"><b>#{@voucher.method}</b></color></font>", :inline_format => true, :indent_paragraphs => 20
-    # text "Voucher Method:", :size => 9, :color => "585858"
-    # move_down 5
-    # text "#{@voucher.method}", :size => 9, :color => "585858", :style => :bold
-    move_down 10
-  end
-
-  def client_name
-    text "<font size=\"9\"><color rgb=\"585858\">Client Name:</color></font> <font size=\"9\"><color rgb=\"585858\"><b>#{@voucher.user.profile.nama_penuh.titleize}</b></color></font>", :inline_format => true, :indent_paragraphs => 20
-    # text "Client Name:", :size => 9, :color => "585858"
-    # move_down 5
-    # text "#{@voucher.user.profile.nama_penuh.titleize} ", :size => 9, :color => "585858", :style => :bold
-    move_down 10
-  end
-
-  def order_number
-    text "<font size=\"9\"><color rgb=\"585858\">Order Number:</color></font> <font size=\"9\"><color rgb=\"585858\"><b>#{@voucher.order.ref_number}</b></color></font>", :inline_format => true, :indent_paragraphs => 20
-    # text "Order Number:", :size => 9, :color => "585858"
-    # move_down 5
-    # text "#{@voucher.order.ref_number} ", :size => 9, :color => "585858", :style => :bold
-    move_down 10
-  end
-
-  def package_name
-    text "<font size=\"9\"><color rgb=\"585858\">Package Name:</color></font> <font size=\"9\"><color rgb=\"585858\"><b>#{@voucher.order.package.package_name}</b></color></font>", :inline_format => true, :indent_paragraphs => 20
-    # text "Package Name:", :size => 9, :color => "585858"
-    # move_down 5
-    # text "#{@voucher.order.package.package_name} ", :size => 9, :color => "585858", :style => :bold
-    move_down 10
-  end
-
-  def voucher_amount
-    text "<font size=\"9\"><color rgb=\"585858\">Voucher Amount:</color></font> <font size=\"9\"><color rgb=\"585858\"><b>RM #{@voucher.total_payment}</b></color></font>", :inline_format => true, :indent_paragraphs => 20
-    # text "Voucher Amount:", :size => 9, :color => "585858"
-    # move_down 5
-    # text "RM #{@voucher.total_payment} ", :size => 9, :color => "585858", :style => :bold
-    move_down 10
-  end
-
-  def message
-    move_down 40
-    text "For questions, contact us anytime at support@myfuturegold.my", :color => "585858", :size => 13, :align => :center, :style => :bold
-  end
-
-  def thank_you
-    move_down 160
-    text "Thank You", :color => "eeeeee", :size => 40, :style => :bold
   end
 
   def address
-    move_down 10
-    text "MyFuture Gold Resources (002357358-K)", :size => 10, :style => :bold
     move_down 5
-    text "No 117, Jalan Raja Abdullah", :size => 9, :color => "cccccc"
-    text "50300 Wilayah Persekutuan", :size => 9, :color => "cccccc"
-    text "Kuala Lumpur, MALAYSIA", :size => 9, :color => "cccccc"
-    text "Tel: 03-8988 9909 | H/P: 012-2873632", :size => 9, :color => "cccccc"
-    text "Email: order@myfuturegold.my", :size => 9, :color => "cccccc"
+    text "MyFuture Gold Resources (002357358-K)", :size => 8, :style => :bold
+    move_down 2
+    text "No 117, Jalan Raja Abdullah", :size => 8, :color => "585858"
+    text "50300 Wilayah Persekutuan", :size => 8, :color => "585858"
+    text "Kuala Lumpur, MALAYSIA", :size => 8, :color => "585858"
+    text "Tel: 03-8988 9909 | H/P: 012-2873632", :size => 8, :color => "585858"
+    text "Email: order@myfuturegold.my", :size => 8, :color => "585858"
+  end
+
+  def client_details
+    move_down 10
+    text "TO:", :size => 8, :style => :bold
+    text "#{@voucher.user.profile.nama_penuh.titleize} (IC Number: #{@voucher.user.profile.ic_number})", :size => 8, :color => "585858"
+    text "#{@voucher.user.profile.address1}", :size => 8, :color => "585858"
+    text "#{@voucher.user.profile.address2}", :size => 8, :color => "585858"
+    text "#{@voucher.user.profile.postcode} #{@voucher.user.profile.city}", :size => 8, :color => "585858"
+    text "#{@voucher.user.profile.state}, #{@voucher.user.profile.country}", :size => 8, :color => "585858"
+    text "Email: #{@voucher.user.email}", :size => 8, :color => "585858"
+    move_down 10
+  end
+
+  def voucher_details
+    move_down 10
+    data = [["Programme", "Total Weight (grams)", "Price per gram", "Total Discount"]]
+    data += [["#{@voucher.order.package.package_name}", "#{@voucher.order.gram_quantity}", "RM #{@voucher.order.price}", "RM #{@voucher.total_payment}"]]
+
+    table(data, :header => true, :cell_style => {:size => 8, :text_color => "585858"}, :width => 530) do
+      cells.padding = 8
+      cells.borders = []
+      row(0).borders = [:bottom, :left, :right, :top]
+      row(0).border_width = 1
+      row(0).font_style = :bold
+
+      columns(0..4).borders = [:bottom, :left, :right, :top]
+      row(0).columns(0..4).borders = [:bottom, :left, :right, :top]
+    end
+  end
+
+  def message
+    move_down 350
+    text '"THIS IS A COMPUTER-GENERATED DOCUMENT AND IT DOES NOT REQUIRE A SIGNATURE. THIS DOCUMENT SHALL NOT BE INVALIDATED SOLELY ON THE GROUND THAT IT IS NOT SIGNED. "', :color => "585858", :size => 7, :align => :center, :style => :bold
   end
 
 end

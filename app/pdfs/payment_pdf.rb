@@ -5,7 +5,6 @@ class PaymentPdf < Prawn::Document
     super()
     @payment = payment
     @view = view
-    # text "Receipt Number: #{@payment.receipt_number}", :size => 9, :color => "585858"
     logo
     address
     client_details
