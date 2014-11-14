@@ -15,7 +15,7 @@ class PaymentPdf < Prawn::Document
 
   def logo
     text "RECEIPT", :align => :right, size: 16, :color => "585858", :style => :bold
-    text "INVOICE #{@payment.receipt_number}", :align => :right, size: 7, :color => "585858"
+    text "RECEIPT NUMBER: #{@payment.receipt_number}", :align => :right, size: 7, :color => "585858"
     text "DATE: #{@payment.created_at.strftime("%d/%m/%Y")}", :align => :right, size: 7, :color => "585858"
     logopath =  "#{Rails.root}/app/assets/images/pdf-logo.png"
     image logopath, :width => 90, :height => 100, :position => :left

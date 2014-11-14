@@ -13,7 +13,7 @@ class VoucherPdf < Prawn::Document
 
   def logo
     text "PAYMENT VOUCHER", :align => :right, size: 16, :color => "585858", :style => :bold
-    text "INVOICE #{@voucher.receipt_number}", :align => :right, size: 7, :color => "585858"
+    text "VOUCHER NUMBER: #{@voucher.receipt_number}", :align => :right, size: 7, :color => "585858"
     text "DATE: #{@voucher.created_at.strftime("%d/%m/%Y")}", :align => :right, size: 7, :color => "585858"
     logopath =  "#{Rails.root}/app/assets/images/pdf-logo.png"
     image logopath, :width => 90, :height => 100, :position => :left
