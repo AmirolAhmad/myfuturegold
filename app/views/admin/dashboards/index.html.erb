@@ -150,7 +150,11 @@ $(function visitorData (data) {
 
 <script type="text/javascript">
 $(document).ready( function () {
-    $('#ActiveOrder').DataTable();
-    $('#PendingOrder').DataTable();
-} );
+  $('#ActiveOrder').DataTable({
+    "aaSorting": [[0, 'desc']]
+  }).api();
+  $('#PendingOrder').DataTable({
+    "aaSorting": [[0, 'desc']]
+  }).api();
+});
 </script>
