@@ -18,6 +18,7 @@ class User < ActiveRecord::Base
 
   validates :login, :uniqueness => { :case_sensitive => false }, format: { with: /\A[-\w.]*\z/ }
 
+  default_scope -> { order('users.created_at DESC') }
   scope :admin, -> { where(admin: true) }
 
   def self.find_first_by_auth_conditions(warden_conditions)

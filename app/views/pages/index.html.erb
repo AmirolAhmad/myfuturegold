@@ -46,7 +46,7 @@
   <hr>
     <h3>Order Overview for KJ06 Programme: </h3>
     <div class="table-responsive">
-      <table class="table table-bordered table-hover" id="overviewkj06Details">
+      <table class="table table-bordered table-hover display" id="overviewkj06Details">
         <thead>
           <tr>
             <th class="col-md-2">Programme</th>
@@ -98,7 +98,7 @@
 
     <h3>Order Overview for Others Programme: </h3>
     <div class="table-responsive">
-      <table class="table table-bordered table-hover" id="overviewDetails">
+      <table class="table table-bordered table-hover display" id="overviewDetails">
         <thead>
           <tr>
             <th class="col-md-2">Programme</th>
@@ -232,7 +232,11 @@ $(function visitorData (data) {
 
 <script type="text/javascript">
 $(document).ready( function () {
-    $('#overviewDetails').DataTable();
-    $('#overviewkj06Details').DataTable();
-} );
+  $('.display').DataTable({
+    "aaSorting": [[0,'desc']]
+  }).api();
+
+  oTable = $('#overviewDetails').DataTable();
+  oTable2 = $('#overviewkj06Details').DataTable();
+});
 </script>

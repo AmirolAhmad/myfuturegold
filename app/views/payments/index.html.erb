@@ -20,7 +20,7 @@
       <div class="panel-body">
 
         <div class="table-responsive">
-          <table class="table table-bordered table-hover" id="paymentList">
+          <table class="table table-bordered table-hover display" id="paymentList">
             <thead>
               <tr>
                 <th class="col-md-3">Receipt Number</th>
@@ -72,6 +72,10 @@
 
 <script type="text/javascript">
 $(document).ready( function () {
-    $('#paymentList').DataTable();
-} );
+  $('.display').DataTable({
+    "aaSorting": []
+  }).api();
+
+  oTable = $('#paymentList').DataTable();
+});
 </script>

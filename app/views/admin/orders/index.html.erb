@@ -20,7 +20,7 @@
       <div class="panel-body">
     
         <div class="table-responsive">
-          <table class="table table-bordered table-hover" id="clientOrders">
+          <table class="table table-bordered table-hover display" id="clientOrders">
             <thead>
               <tr>
                 <th class="col-md-2">Order Number</th>
@@ -91,7 +91,11 @@
 
 <script type="text/javascript">
 $(document).ready( function () {
-    $('#clientOrders').DataTable();
-} );
+  $('.display').DataTable({
+    "aaSorting": []
+  }).api();
+
+  oTable = $('#clientOrders').DataTable();
+});
 </script>
 

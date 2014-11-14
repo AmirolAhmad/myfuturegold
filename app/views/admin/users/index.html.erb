@@ -3,7 +3,7 @@
 </div>
 
 <div class="table-responsive">
-  <table class="table table-bordered table-hover" id="clientDetails" data-no-turbolink>
+  <table class="table table-bordered table-hover display" id="clientDetails" data-no-turbolink>
     <thead>
       <tr>
         <th>Client Name</th>
@@ -39,12 +39,10 @@
 
 <script type="text/javascript">
 $(document).ready( function () {
-  $('#clientDetails').DataTable({
+  $('.display').DataTable({
     "aaSorting": []
-  });
-} );
+  }).api();
+
+  oTable = $('#clientDetails').DataTable();
+});
 </script>
-
-
-
-

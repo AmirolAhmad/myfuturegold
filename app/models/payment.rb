@@ -4,6 +4,8 @@ class Payment < ActiveRecord::Base
 
   validates :total_payment, numericality: { only_integer: true }
 
+  default_scope -> { order('payments.created_at DESC') }
+
   def self.total_on(date)
     where("date(created_at) = ?", date).sum(:total_payment)
   end
