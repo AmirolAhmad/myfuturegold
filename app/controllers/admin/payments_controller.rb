@@ -17,6 +17,13 @@ class Admin::PaymentsController < ApplicationController
       respond_to do |format|
         format.html { @payment }
         format.json { render json: @payment.to_json(include: [:user, :order]) }
+        format.pdf do
+          pdf = PaymentPdf.new(@payment, view_context)
+          send_data pdf.render, filename:
+          "payment_#{@payment.created_at.strftime("%d/%m/%Y")}.pdf",
+          type: "application/pdf",
+          disposition: "inline"
+        end
       end
     else
       redirect_to admin_user_payments_path, notice: "Payment History not found for that order."

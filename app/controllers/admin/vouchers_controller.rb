@@ -17,6 +17,13 @@ class Admin::VouchersController < ApplicationController
       respond_to do |format|
         format.html { @voucher }
         format.json { render json: @voucher.to_json(include: [:user, :order]) }
+        format.pdf do
+          pdf = VoucherPdf.new(@voucher, view_context)
+          send_data pdf.render, filename:
+          "voucher#{@voucher.created_at.strftime("%d/%m/%Y")}.pdf",
+          type: "application/pdf",
+          disposition: "inline"
+        end
       end
     else
       redirect_to admin_user_vouchers_path, notice: "Voucher History not found for that order."

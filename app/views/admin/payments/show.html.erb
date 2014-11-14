@@ -77,6 +77,7 @@
 
       </div>
       <div class="panel-footer">
+        <%= link_to "Download Receipt", admin_user_payment_path(@user, @payment.id, :format => "pdf"), :class => "btn btn-primary", :target => "_blank" %>
         <%= link_to "Back", admin_user_payments_path, :class => "btn btn-default" %>
       </div>
     </div>
