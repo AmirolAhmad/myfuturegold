@@ -1,11 +1,14 @@
 class PaymentPdf < Prawn::Document
+  require 'prawn/table'
 
   def initialize(payment, view)
     super()
     @payment = payment
     @view = view
-    text "Receipt Number: #{@payment.receipt_number}", :size => 9, :color => "585858"
+    # text "Receipt Number: #{@payment.receipt_number}", :size => 9, :color => "585858"
     logo
+    address
+    order_details
     thanks_message
     payment_date
     payment_method
@@ -16,17 +19,29 @@ class PaymentPdf < Prawn::Document
     payment_status
     message
     thank_you
-    address
   end
 
   def logo
-    logopath =  "#{Rails.root}/app/assets/images/logo.png"
-    image logopath, :width => 197, :height => 91, :position => :center
+    text "RECEIPT", :align => :right, size: 16, :color => "585858", :style => :bold
+    logopath =  "#{Rails.root}/app/assets/images/pdf-logo.png"
+    image logopath, :width => 90, :height => 100, :position => :left
     move_down 10
-    text "Receipt", :align => :center, size: 22, :style => :italic
+  end
+
+  def address
     move_down 5
-    text "____________________", :align => :center, size: 9, :color => "999999"
-    move_down 10
+    text "MyFuture Gold Resources (002357358-K)", :size => 8, :style => :bold
+    move_down 5
+    text "No 117, Jalan Raja Abdullah", :size => 8, :color => "585858"
+    text "50300 Wilayah Persekutuan", :size => 8, :color => "585858"
+    text "Kuala Lumpur, MALAYSIA", :size => 8, :color => "585858"
+    text "Tel: 03-8988 9909 | H/P: 012-2873632", :size => 8, :color => "585858"
+    text "Email: order@myfuturegold.my", :size => 8, :color => "585858"
+  end
+
+  def order_details
+    text "INVOICE #{@payment.receipt_number}", :size => 8, :color => "585858"
+    text "DATE: #{@payment.created_at.strftime("%d/%m/%Y")}", :size => 8, :color => "585858"
   end
 
   def thanks_message
@@ -99,17 +114,6 @@ class PaymentPdf < Prawn::Document
   def thank_you
     move_down 160
     text "Thank You", :color => "eeeeee", :size => 40, :style => :bold
-  end
-
-  def address
-    move_down 10
-    text "MyFuture Gold Resources (002357358-K)", :size => 10, :style => :bold
-    move_down 5
-    text "No 117, Jalan Raja Abdullah", :size => 9, :color => "cccccc"
-    text "50300 Wilayah Persekutuan", :size => 9, :color => "cccccc"
-    text "Kuala Lumpur, MALAYSIA", :size => 9, :color => "cccccc"
-    text "Tel: 03-8988 9909 | H/P: 012-2873632", :size => 9, :color => "cccccc"
-    text "Email: order@myfuturegold.my", :size => 9, :color => "cccccc"
   end
 
 end

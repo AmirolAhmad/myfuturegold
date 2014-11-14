@@ -19,8 +19,8 @@ class VoucherPdf < Prawn::Document
   end
 
   def logo
-    logopath =  "#{Rails.root}/app/assets/images/logo.png"
-    image logopath, :width => 197, :height => 91, :position => :center
+    logopath =  "#{Rails.root}/app/assets/images/pdf-logo.png"
+    image logopath, :width => 90, :height => 100, :position => :left
     move_down 10
     text "Receipt", :align => :center, size: 22, :style => :italic
     move_down 5
