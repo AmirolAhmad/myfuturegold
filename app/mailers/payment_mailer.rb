@@ -4,6 +4,9 @@ class PaymentMailer < ActionMailer::Base
   def payment_email(payment)
     @payment = payment
 
+    pdf = PaymentPdf.new(@payment, view_context)
+    attachments["receipt.pdf"] = { :mime_type => 'application/pdf', :content => pdf.render }
+
     mail(
       :to => "#{payment.user.login} <#{payment.user.email}>",
       :subject => "New payment #{payment.receipt_number} has been added!"
