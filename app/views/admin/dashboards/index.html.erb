@@ -43,7 +43,7 @@
         <thead>
           <tr>
             <th class="col-md-2">Date</th>
-            <th class="col-md-2">Reference Number</th>
+            <th class="col-md-2">Order Number</th>
             <th class="col-md-4">Client Name</th>
             <th class="col-md-1">Programme</th>
             <th class="col-md-2">Total Price</th>
@@ -53,7 +53,7 @@
         <tbody>
           <% @active.each do |order| %>
           <tr>
-            <td><%= order.ordered_date.strftime("%d %B %Y") %></td>
+            <td><%= order.ordered_date.strftime("%d %B %Y at %H:%M") %></td>
             <td><%= order.ref_number %></td>
             <td><%= order.user.profile.try(:nama_penuh) %> <small><%= link_to "View", admin_user_path(order.user.slug) %></small></td>
             <td><%= order.package.package_name %></td>
@@ -71,7 +71,7 @@
         <thead>
           <tr>
             <th class="col-md-2">Date</th>
-            <th class="col-md-2">Reference Number</th>
+            <th class="col-md-2">Order Number</th>
             <th class="col-md-4">Client Name</th>
             <th class="col-md-1">Programme</th>
             <th class="col-md-2">Total Price</th>
@@ -81,7 +81,7 @@
         <tbody>
           <% @pending.each do |order| %>
           <tr>
-            <td><%= order.ordered_date.strftime("%d %B %Y") %></td>
+            <td><%= order.ordered_date.strftime("%d %B %Y at %H:%M") %></td>
             <td><%= order.ref_number %></td>
             <td><%= order.user.profile.try(:nama_penuh) %> <small><%= link_to "View", admin_user_path(order.user.slug) %></small></td>
             <td><%= order.package.package_name %></td>
