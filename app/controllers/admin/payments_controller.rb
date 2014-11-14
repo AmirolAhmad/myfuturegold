@@ -36,6 +36,9 @@ class Admin::PaymentsController < ApplicationController
       receipt_number = (0...4).map { random[rand(random.length)] }.join
       @payment.update_attributes(:receipt_number => "#MFG-P" + receipt_number)
 
+      PaymentMailer.payment_email(@payment).deliver
+      PaymentMailer.notify_admin(@payment).deliver
+
       redirect_to admin_user_payment_path(id:@payment), notice: "New payment has been created."
 
       #send sms with twillio

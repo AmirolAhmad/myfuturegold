@@ -47,6 +47,7 @@ class Admin::OrdersController < ApplicationController
       @order.update_attributes(:ordered_date => @ordered_date)
 
       OrderMailer.order_email(@order).deliver
+      OrderMailer.notify_admin(@order).deliver
 
       if @order.package_id == 4
         @total_discount = 54 * @order.gram_quantity.to_i
