@@ -36,6 +36,9 @@ class Admin::VouchersController < ApplicationController
       receipt_number = (0...4).map { random[rand(random.length)] }.join
       @voucher.update_attributes(:receipt_number => "#MFG-V" + receipt_number)
 
+      VoucherMailer.voucher_email(@voucher).deliver
+      VoucherMailer.notify_admin(@voucher).deliver
+
       redirect_to admin_user_voucher_path(id:@voucher), notice: "New voucher has been created."
 
       #send sms with twillio
