@@ -1,0 +1,90 @@
+<div class="page-header">
+  <h1>Item Details <small>View item <%= @item.receipt_number %>.</small></h1>
+</div>
+
+<div class="row">
+  <div class="col-md-4">
+    <%= render partial: "sidebar" %>
+  </div>
+
+  <div class="col-md-8">
+    <!-- Payment Details -->
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Item History</h3>
+      </div>
+      <div class="panel-body">
+    
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Item Type</label>
+              <p><%= @item.item_type %></p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Receipt Number</label>
+              <p><%= @item.receipt_number %></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Date of Received</label>
+              <p><%= @item.date_received %></p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Total Gram Received</label>
+              <p>RM <%= @item.gram_received %></p>
+            </div>
+          </div>
+        </div>
+    
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Item For (Order Number)</label>
+              <p><%= @item.order.ref_number %></p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Programme Name</label>
+              <p><%= @item.order.package.package_name %></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Item Status</label>
+              <p>
+                <% if @item.status == "Received" %>
+                <span class="label label-primary">
+                  <%= @item.status %>
+                </span>
+                <% else %>
+                <span class="label label-warning">
+                  <%= @item.status %>
+                </span>
+                <% end %>
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="panel-footer">
+        <%= link_to "Download Receipt", item_path(@item.id, :format => "pdf"), :class => "btn btn-primary", :target => "_blank" %>
+        <%= link_to 'Back', items_path, :class => "btn btn-default" %>
+      </div>
+    </div>
+
+  </div>
+</div>

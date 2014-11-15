@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141105133621) do
+ActiveRecord::Schema.define(version: 20141115052648) do
 
   create_table "announcements", force: true do |t|
     t.integer  "user_id",     null: false
@@ -51,6 +51,18 @@ ActiveRecord::Schema.define(version: 20141105133621) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "unread",      default: false
+  end
+
+  create_table "items", force: true do |t|
+    t.integer  "user_id",        null: false
+    t.integer  "order_id",       null: false
+    t.string   "gram_received"
+    t.string   "date_received"
+    t.string   "receipt_number"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "status"
+    t.string   "item_type"
   end
 
   create_table "orders", force: true do |t|

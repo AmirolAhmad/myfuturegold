@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
   has_many :vouchers, dependent: :destroy
   has_many :inboxes, dependent: :destroy
   has_many :announcements, dependent: :destroy
+  has_many :items, dependent: :destroy
     
 	accepts_nested_attributes_for :profile, update_only: true, allow_destroy: true
 

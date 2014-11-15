@@ -20,6 +20,7 @@ Rails.application.routes.draw do
       resources :orders
       resources :payments
       resources :vouchers
+      resources :items
     end
     resources :inboxes do
       member do
@@ -33,5 +34,6 @@ Rails.application.routes.draw do
   resources :orders, only: [:index, :new, :create, :show, :destroy]
   resources :payments, only: [:index, :new, :create, :show]
   resources :vouchers, only: [:index, :show]
+  resources :items, only: [:index, :show]
   
 end

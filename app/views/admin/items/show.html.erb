@@ -1,0 +1,85 @@
+<div class="page-header">
+  <h1>Item History <small>Manage <%= @user.login %> item here.</small></h1>
+</div>
+
+<div class="row">
+  <div class="col-md-4">
+    <%= render partial: "sidebar" %>
+  </div>
+  <div class="col-md-8">
+    <!-- Client Details -->
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">
+          Item History
+          <div class="pull-right btn-group btn-group-xs">
+            <%= link_to edit_admin_user_item_path, :class => "btn btn-primary", :style => "color:#ffffff;", "data-toggle" => "tooltip", :title => "Edit item detail" do %>
+              <span class="glyphicon glyphicon-edit"></span>
+            <% end %>
+            <%= link_to admin_user_item_path, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger", :style => "color:#ffffff;", "data-toggle" => "tooltip", :title => "Remove item detail" do %>
+              <span class="glyphicon glyphicon-remove"></span>
+            <% end %>
+          </div>
+        </h3>
+      </div>
+      <div class="panel-body">
+    
+        <div class="row">
+          <div class="col-md-6">
+            <label>Item Type</label>
+            <p><%= @item.item_type %></p>
+          </div>
+          <div class="col-md-6">
+            <label>Item Receipt Number</label>
+            <p><%= @item.receipt_number %></p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <label>Date of Received</label>
+            <p><%= @item.date_received %></p>
+          </div>
+          <div class="col-md-6">
+            <label>Total Gram Received</label>
+            <p><%= @item.gram_received %>gram</p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <label>Item For (Order Number)</label>
+            <p><%= @item.order.ref_number %></p>
+          </div>
+          <div class="col-md-6">
+            <label>Programme Name</label>
+            <p><%= @item.order.package.package_name %></p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <label>Item Status</label>
+            <p>
+              <% if @item.status == "Received" %>
+              <span class="label label-primary">
+                <%= @item.status %>
+              </span>
+              <% else %>
+              <span class="label label-warning">
+                <%= @item.status %>
+              </span>
+              <% end %>
+            </p>
+          </div>
+        </div>
+
+      </div>
+      <div class="panel-footer">
+        <%= link_to "Download Receipt", admin_user_item_path(@user, @item.id, :format => "pdf"), :class => "btn btn-primary", :target => "_blank" %>
+        <%= link_to "Back", admin_user_items_path, :class => "btn btn-default" %>
+      </div>
+    </div>
+
+  </div>
+</div>

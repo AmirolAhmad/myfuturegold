@@ -1,0 +1,72 @@
+<div class="page-header">
+  <h1>Item History <small>Manage your item history here.</small></h1>
+</div>
+
+<div class="row">
+  <div class="col-md-4">
+    <%= render partial: "sidebar" %>
+  </div>
+  <div class="col-md-8">
+    <!-- Client Details -->
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Item History</h3>
+      </div>
+      <div class="panel-body">
+
+        <div class="table-responsive">
+          <table class="table table-bordered table-hover display" id="itemList">
+            <thead>
+              <tr>
+                <th class="col-md-3">Receipt Number</th>
+                <th class="col-md-3">Date Received</th>
+                <th class="col-md-1">Programme</th>
+                <th class="col-md-1">Gram Received</th>
+                <th class="col-md-1">Status</th>
+                <th class="col-md-1">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @items.each do |item| %>
+              <tr>
+                <td><%= item.receipt_number %></td>
+                <td><%= item.date_received %></td>
+                <td><%= item.order.package.package_name %></td>
+                <td>RM <%= item.gram_received %></td>
+                <td>
+                  <% if item.status == "Received" %>
+                  <span class="label label-primary">
+                    <%= item.status %>
+                  </span>
+                  <% else %>
+                  <span class="label label-warning">
+                    <%= item.status %>
+                  </span>
+                  <% end %>
+                </td>
+                <td>
+                  <div class="btn-group btn-group-xs btn-group-justified">
+                  <%= link_to 'View', item_path(item), :class => "btn btn-default" %>
+                  </div>
+                </td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script type="text/javascript">
+$(document).ready( function () {
+  $('.display').DataTable({
+    "aaSorting": []
+  }).api();
+
+  oTable = $('#itemList').DataTable();
+});
+</script>

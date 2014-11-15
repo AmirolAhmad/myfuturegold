@@ -18,4 +18,9 @@
     <h5>Voucher History</h5>
     <p class="list-group-item-text">View/Add/Delete voucher details</p>
   <% end %>
+  <%= link_to admin_user_items_path(@user.login), :class => "list-group-item" do %>
+    <span class="badge"><%= Item.where(user_id: @user).count %></span>
+    <h5>Item History</h5>
+    <p class="list-group-item-text">View/Add/Delete item details</p>
+  <% end %>
 </div>

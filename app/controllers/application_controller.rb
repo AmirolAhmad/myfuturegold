@@ -51,6 +51,10 @@ class ApplicationController < ActionController::Base
     params.require(:announcement).permit(:id, :user_id, :subject, :description)
   end
 
+  def item_params
+    params.require(:item).permit(:id, :user_id, :order_id, :gram_received, :date_received, :receipt_number, :status, :item_type)
+  end
+
   def disable_header
     @disable_header = true
   end
