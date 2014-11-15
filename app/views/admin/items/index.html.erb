@@ -23,10 +23,10 @@
           <table class="table table-bordered table-hover display" id="itemList">
             <thead>
               <tr>
-                <th class="col-md-3">Receipt Number</th>
+                <th class="col-md-2">Receipt Number</th>
                 <th class="col-md-3">Date Received</th>
                 <th class="col-md-1">Programme</th>
-                <th class="col-md-1">Gram Received</th>
+                <th class="col-md-3">Gram Received</th>
                 <th class="col-md-1">Status</th>
                 <th class="col-md-1">Action</th>
               </tr>
@@ -37,7 +37,7 @@
                 <td><%= item.receipt_number %></td>
                 <td><%= item.date_received %></td>
                 <td><%= item.order.package.package_name %></td>
-                <td>RM <%= item.gram_received %></td>
+                <td><%= item.gram_received %>gram</td>
                 <td>
                   <% if item.status == "Received" %>
                   <span class="label label-primary">
