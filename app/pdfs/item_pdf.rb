@@ -46,7 +46,7 @@ class ItemPdf < Prawn::Document
 
   def order_details
     move_down 10
-    data = [["Item","Programme", "Date Received", "Total Gram Received"]]
+    data = [["Item","Programme", "Date Received Item", "Total Gram Received"]]
     data += [["#{@item.item_type}","#{@item.order.package.package_name}", "#{@item.date_received}", "#{@item.gram_received}gram"]]
 
     table(data, :header => true, :cell_style => {:size => 8, :text_color => "585858"}, :width => 530) do

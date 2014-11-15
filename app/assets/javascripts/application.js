@@ -69,3 +69,14 @@ $(document).ready( function () {
 	    startDate: '-3d'
 	});
 });
+
+$(document).ready( function () {
+	$('#item_date_received').datepicker({
+	    format: 'dd/mm/yyyy',
+	    todayBtn: "linked",
+	    weekStart: 1,
+	    todayHighlight: true,
+	    autoclose: true,
+	    startDate: '-3d'
+	});
+});
