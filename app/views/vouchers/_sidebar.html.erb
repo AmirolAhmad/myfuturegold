@@ -9,12 +9,12 @@
   <span class="badge"><%= Payment.where(user_id: current_user).count %></span>
   Payment History
   <% end %>
-  <%= link_to vouchers_path, :class => 'list-group-item active' do %>
-  <span class="badge"><%= Voucher.where(user_id: current_user).count %></span>
-  Voucher History
-  <% end %>
   <%= link_to items_path, :class => 'list-group-item' do %>
   <span class="badge"><%= Item.where(user_id: current_user).count %></span>
   Item History
+  <% end %>
+  <%= link_to vouchers_path, :class => 'list-group-item active' do %>
+  <span class="badge"><%= Voucher.where(user_id: current_user).count %></span>
+  Voucher History
   <% end %>
 </div>

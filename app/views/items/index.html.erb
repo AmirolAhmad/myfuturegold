@@ -32,7 +32,7 @@
                 <td><%= item.receipt_number %></td>
                 <td><%= item.date_received %></td>
                 <td><%= item.order.package.package_name %></td>
-                <td>RM <%= item.gram_received %></td>
+                <td><%= item.gram_received %>gram</td>
                 <td>
                   <% if item.status == "Received" %>
                   <span class="label label-primary">
