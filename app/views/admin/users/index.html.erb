@@ -9,6 +9,7 @@
         <th>Client Name</th>
         <th>IC Number</th>
         <th>Client Email</th>
+        <th>Created</th>
         <th class="col-md-2">Action</th>
       </tr>
     </thead>
@@ -18,6 +19,7 @@
         <td><%= image_tag avatar_url(user), :class => "img-rounded" %> <%= user.profile.try(:nama_penuh) %> (<%= user.login %>)</td>
         <td><%= user.profile.try(:ic_number) %></td>
         <td><%= user.email %></td>
+        <td><%= user.created_at.strftime("%d/%m/%Y") %></td>
         <td>
           <div class="btn-group btn-group-xs btn-group-justified">
           <%= link_to admin_user_path(user), :class => "btn btn-default", "data-toggle" => "tooltip", :title => "View more details" do %>
