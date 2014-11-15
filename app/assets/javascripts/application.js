@@ -49,8 +49,7 @@ $(document).ready( function () {
 	    todayBtn: "linked",
 	    weekStart: 1,
 	    todayHighlight: true,
-	    autoclose: true,
-	    startDate: '-3d'
+	    autoclose: true
 	});
 	$('#payment_payment_time').timepicker({
 		minuteStep: 5,
@@ -65,8 +64,7 @@ $(document).ready( function () {
 	    todayBtn: "linked",
 	    weekStart: 1,
 	    todayHighlight: true,
-	    autoclose: true,
-	    startDate: '-3d'
+	    autoclose: true
 	});
 });
 
@@ -76,7 +74,6 @@ $(document).ready( function () {
 	    todayBtn: "linked",
 	    weekStart: 1,
 	    todayHighlight: true,
-	    autoclose: true,
-	    startDate: '-3d'
+	    autoclose: true
 	});
 });
