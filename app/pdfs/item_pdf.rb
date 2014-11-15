@@ -9,6 +9,7 @@ class ItemPdf < Prawn::Document
     address
     client_details
     order_details
+    akad_wakalah
     message
   end
 
@@ -61,8 +62,14 @@ class ItemPdf < Prawn::Document
     end
   end
 
+  def akad_wakalah
+    move_down 20
+    text "AKAD WAKALAH :", :size => 8, :style => :bold
+    text "Dengan ini saya bersetuju untuk melantik MyFuture Gold Resources sebagai wakalah atas urus niaga emas bagi pihak saya mengikut prinsip mudharabah di mana untung dan rugi ditanggung bersama.", :size => 9, :color => "585858", :style => :italic
+  end
+
   def message
-    move_down 350
+    move_down 300
     text '"THIS IS A COMPUTER-GENERATED DOCUMENT AND IT DOES NOT REQUIRE A SIGNATURE. THIS DOCUMENT SHALL NOT BE INVALIDATED SOLELY ON THE GROUND THAT IT IS NOT SIGNED. "', :color => "585858", :size => 7, :align => :center, :style => :bold
   end
 
