@@ -1,7 +1,7 @@
 site_domain: myfuturegold.my
 google_analytics_tracker: #UA-53563177-2
 s3:
-  bucket: myfuturegold-prod
+  bucket: mfg-prod
   region: ap-southeast-1
-image_host: https://myfuturegold-prod.s3.amazonaws.com
+image_host: https://mfg-prod.s3.amazonaws.com
 fb_app_id: #253501611440663
