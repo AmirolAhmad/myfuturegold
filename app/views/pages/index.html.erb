@@ -45,6 +45,20 @@
 
   <hr>
     <h3>Order Overview for KJ06 Programme: </h3>
+    <div class="text-bg-classes">
+      <div class="row">
+        <div class="col-md-6">
+          <p class="bg-primary">
+            <strong>Grand Total Weight:</strong> <%= @tw %> grams <span class="pull-right">since <%= current_user.created_at.strftime("%d/%m/%Y") %></span>
+          </p>
+        </div>
+        <div class="col-md-6">
+          <p class="bg-primary">
+            <strong>Grand Total Discount:</strong> RM <%= @td %> <span class="pull-right">since <%= current_user.created_at.strftime("%d/%m/%Y") %>
+          </p>
+        </div>
+      </div>
+    </div>
     <div class="table-responsive">
       <table class="table table-bordered table-hover display" id="overviewkj06Details">
         <thead>
