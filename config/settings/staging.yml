@@ -3,5 +3,5 @@ google_analytics_tracker: #UA-53563177-1
 s3:
   bucket: mfg-staging
   region: ap-southeast-1
-image_host: mfg-staging.s3.amazonaws.com
+image_host: https://mfg-staging.s3.amazonaws.com
 fb_app_id: #727607077287608
