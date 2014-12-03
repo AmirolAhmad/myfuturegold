@@ -173,12 +173,12 @@ $(function visitorData (data) {
       type: 'column'
     },
     title: {
-      text: 'Performance Report (per week)'
+      text: 'Performance Report (per month)'
     },
     xAxis: {
       type: "datetime",
       title: {
-          text: "Date for 1 week"
+          text: "Date for 1 month"
       }
     },
     yAxis: {
@@ -193,27 +193,27 @@ $(function visitorData (data) {
     },
     series: [{
       name: 'Total Order',
-      pointInterval: <%= 1.1.day * 1000 %>,
-      pointStart: <%= 1.weeks.ago.to_i * 1000 %>,
+      pointInterval: <%= 1.day * 1000 %>,
+      pointStart: <%= 1.months.ago.to_i * 1000 %>,
       data: 
       	<% @orders = Order.where("user_id = ?", current_user.id) %>
-      	<%= (1.weeks.ago.to_date..Date.today ).map { |date| @orders.total_on(date).to_f }.inspect %>
+      	<%= (1.months.ago.to_date..Date.today ).map { |date| @orders.total_on(date).to_f }.inspect %>
 
     }, {
       name: 'Payment Send',
-      pointInterval: <%= 1.1.day * 1000 %>,
-      pointStart: <%= 1.weeks.ago.to_i * 1000 %>,
+      pointInterval: <%= 1.day * 1000 %>,
+      pointStart: <%= 1.months.ago.to_i * 1000 %>,
       data:
       	<% @payments = Payment.where("user_id = ?", current_user.id) %> 
-      	<%= (1.weeks.ago.to_date..Date.today).map { |date| @payments.total_on(date).to_f }.inspect %>
+      	<%= (1.months.ago.to_date..Date.today).map { |date| @payments.total_on(date).to_f }.inspect %>
 
     }, {
       name: 'Voucher Received',
-      pointInterval: <%= 1.1.day * 1000 %>,
-      pointStart: <%= 1.weeks.ago.to_i * 1000 %>,
+      pointInterval: <%= 1.day * 1000 %>,
+      pointStart: <%= 1.months.ago.to_i * 1000 %>,
       data:
       	<% @vouchers = Voucher.where("user_id = ?", current_user.id) %>
-      	<%= (1.weeks.ago.to_date..Date.today).map { |date| @vouchers.total_on(date).to_f }.inspect %>
+      	<%= (1.months.ago.to_date..Date.today).map { |date| @vouchers.total_on(date).to_f }.inspect %>
 
     }]
   });
