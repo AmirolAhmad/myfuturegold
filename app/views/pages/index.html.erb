@@ -49,12 +49,12 @@
       <div class="row">
         <div class="col-md-6">
           <p class="bg-primary">
-            <strong>Grand Total Weight: <%= @tw.blank? ? "N/A" : @tw %> grams </strong><span class="pull-right small">since <%= current_user.created_at.strftime("%d/%m/%Y") %></span>
+            Grand Total Weight: <strong><%= @tw.blank? ? "N/A" : @tw %> grams </strong><span class="pull-right small">since <%= current_user.created_at.strftime("%d/%m/%Y") %></span>
           </p>
         </div>
         <div class="col-md-6">
           <p class="bg-primary">
-            <strong>Grand Total Discount: RM <%= @td.blank? ? "N/A" : @td %> </strong><span class="pull-right small">since <%= current_user.created_at.strftime("%d/%m/%Y") %>
+            Grand Total Discount: <strong>RM <%= @td.blank? ? "N/A" : @td %> </strong><span class="pull-right small">since <%= current_user.created_at.strftime("%d/%m/%Y") %>
           </p>
         </div>
       </div>
