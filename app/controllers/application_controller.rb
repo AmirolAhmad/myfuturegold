@@ -36,7 +36,7 @@ class ApplicationController < ActionController::Base
   end
 
   def payment_params
-    params.require(:payment).permit(:id, :user_id, :order_id, :payment_date, :payment_time, :method, :status, :total_payment, :receipt_number)
+    params.require(:payment).permit(:id, :user_id, :order_id, :payment_date, :payment_time, :method, :status, :total_payment, :receipt_number, :attachment)
   end
 
   def voucher_params

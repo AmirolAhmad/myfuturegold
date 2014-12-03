@@ -38,6 +38,10 @@ gem 'intercom-rails'
 gem 'prawn'
 gem 'prawn-table'
 gem 'twilio-ruby', '~> 3.12'
+gem 'carrierwave'
+gem 'fog'
+gem 'mini_magick'
+gem 'fastimage'
 
 group :doc do
   gem 'sdoc', require: false

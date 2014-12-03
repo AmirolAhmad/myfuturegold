@@ -1,6 +1,6 @@
 s3:
-  access_key_id: 
-  secret_access_key: 
+  access_key_id: AKIAIQQPTVIO3EKT2N4Q
+  secret_access_key: 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 
 twilio:
   from: +19892441544
   sid: ACfb4b7b5ce08c49e9813824d0925ce9b1

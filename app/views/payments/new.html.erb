@@ -6,7 +6,7 @@
   <div class="col-md-4">
     <%= render partial: "sidebar" %>
   </div>
-  <%= form_for :payment, url: payments_path, method: :post do |f| %>
+  <%= form_for :payment, url: payments_path, :html => {:multipart => true}, method: :post do |f| %>
 
   <div class="col-md-8">
     <!-- Client Details -->
@@ -65,6 +65,12 @@
               <%= f.text_field :status, :value => 'Unpaid', :class => "form-control", :type => 'hidden' %>
               <p class="help-block small">Must be a number only. For example: 2250</p>
             </div>
+          </div>
+          <div class="col-md-6">
+            <%= f.label :attachment, "Upload Proof Document" %>
+            <%= f.file_field :attachment %>
+            <%= f.hidden_field :attachment_cache %>
+            <p class="help-block small">Must be pdf, png, jpg or jpeg.</p>
           </div>
         </div>
 
