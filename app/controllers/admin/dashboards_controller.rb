@@ -4,13 +4,13 @@ class Admin::DashboardsController < ApplicationController
 
   def index
     @users = User.all.order("created_at DESC")
+    @orders = Order.all
     @pending = Order.all.where(:status_id =>  3)
     @active = Order.all.where(:status_id =>  1)
 
     respond_to do |format|
     	format.html
-    	format.csv { send_data @active.to_csv }
-    	format.xls
+    	format.csv #{ send_data @active.to_csv }
     end
   end
   

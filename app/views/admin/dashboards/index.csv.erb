@@ -1,0 +1,4 @@
+Date, Order Number, Client Name, Programme, Total Price, Status
+<% @orders.each do |order| %>
+	<%= order.ordered_date.strftime("%d %B %Y") %>, <%= order.ref_number %>, <%= order.user.profile.try(:nama_penuh) %>, <%= order.package.package_name %>, RM <%= order.total_price %>, <%= order.status.status_name %>
+<% end %>
