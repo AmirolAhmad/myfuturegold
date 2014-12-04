@@ -1,13 +1,10 @@
 # config valid only for Capistrano 3.1
 #lock '3.2.1'
 
-require 'capistrano/ext/multistage'
-require 'capistrano/gitflow'
-
 set :application, 'myfuturegold'
 set :repo_url, 'git@github.com:AmirolAhmad/myfuturegold.git'
 
-server '119.81.109.221', user: 'deploy', roles: %w{web app}
+server '119.81.109.221', user: 'deploy', roles: %w{web app db}
 
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
