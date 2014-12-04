@@ -4,6 +4,7 @@ require 'capistrano/setup'
 # Includes default deployment tasks
 require 'capistrano/deploy'
 
+require 'capistrano/rails'
 require 'capistrano/gitflow'
 require 'capistrano/faster_assets'
 
@@ -23,7 +24,6 @@ set :rbenv_type, :user
 set :rbenv_ruby, '2.1.3'
 # require 'capistrano/chruby'
 require 'capistrano/bundler'
-require 'capistrano/rails'
 # require 'capistrano/rails/assets'
 # require 'capistrano/rails/migrations'
 
