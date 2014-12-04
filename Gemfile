@@ -55,4 +55,5 @@ group :development do
   gem 'capistrano-rbenv', github: "capistrano/rbenv", require: false
   gem 'capistrano-bundler', github: "capistrano/bundler", require: false
   gem 'capistrano-rails', require: false
+  gem 'capistrano-gitflow', git: 'git@github.com:YotpoLtd/capistrano-gitflow.git'
 end
