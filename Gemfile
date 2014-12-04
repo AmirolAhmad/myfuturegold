@@ -56,4 +56,5 @@ group :development do
   gem 'capistrano-bundler', github: "capistrano/bundler", require: false
   gem 'capistrano-rails', require: false
   gem 'capistrano-gitflow', git: 'git@github.com:YotpoLtd/capistrano-gitflow.git'
+  gem 'capistrano-faster-assets', '~> 1.0'
 end
