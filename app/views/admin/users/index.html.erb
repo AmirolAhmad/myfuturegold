@@ -40,11 +40,16 @@
 </div>
 
 <script type="text/javascript">
-$(document).ready( function () {
+
+var ready;
+ready = function() {
   $('.display').DataTable({
     "aaSorting": []
   }).api();
 
   oTable = $('#clientDetails').DataTable();
-});
+}
+$(document).ready(ready);
+$(document).on('page:load', ready);
+
 </script>

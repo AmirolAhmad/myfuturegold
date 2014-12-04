@@ -149,12 +149,17 @@ $(function visitorData (data) {
 </script>
 
 <script type="text/javascript">
-$(document).ready( function () {
+
+var ready;
+ready = function() {
   $('.display').DataTable({
     "aaSorting": [[0,'desc']]
   }).api();
 
   oTable = $('#ActiveOrder').DataTable();
   oTable2 = $('#PendingOrder').DataTable();
-});
+}
+$(document).ready(ready);
+$(document).on('page:load', ready);
+
 </script>
