@@ -32,4 +32,13 @@ class Order < ActiveRecord::Base
   def self.total_on(date)
     where(["date(ordered_date) = ?", date]).sum(:total_price)
   end
+
+  def self.to_csv(options = {})
+    CSV.generate(options) do |csv|
+      csv << column_names
+      all.each do |order|
+        csv << order.attributes.values_at(*column_names)
+      end
+    end
+  end
 end

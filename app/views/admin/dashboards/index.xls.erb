@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Sheet1">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">Date</Data></Cell>
+        <Cell><Data ss:Type="String">Order Number</Data></Cell>
+        <Cell><Data ss:Type="String">Client Name</Data></Cell>
+        <Cell><Data ss:Type="String">Programme</Data></Cell>
+        <Cell><Data ss:Type="String">Total Price</Data></Cell>
+        <Cell><Data ss:Type="String">Status</Data></Cell>
+      </Row>
+    <% @active.each do |order| %>
+      <Row>
+        <Cell><Data ss:Type="DateTime"><%= order.ordered_date.strftime("%d %B %Y at %H:%M") %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= order.ref_number %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= order.user.profile.try(:nama_penuh) %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= order.package.package_name %></Data></Cell>
+        <Cell><Data ss:Type="Number">RM <%= order.total_price %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= order.status.status_name %></Data></Cell>
+      </Row>
+    <% end %>
+    </Table>
+  </Worksheet>
+</Workbook>
