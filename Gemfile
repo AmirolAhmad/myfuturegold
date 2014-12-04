@@ -42,6 +42,7 @@ gem 'carrierwave'
 gem 'fog'
 gem 'mini_magick'
 gem 'fastimage'
+gem "sentry-raven", :git => "https://github.com/getsentry/raven-ruby.git"
 
 group :doc do
   gem 'sdoc', require: false
