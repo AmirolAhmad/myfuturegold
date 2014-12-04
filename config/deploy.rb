@@ -1,6 +1,9 @@
 # config valid only for Capistrano 3.1
 #lock '3.2.1'
 
+# require 'capistrano/ext/multistage'
+require 'capistrano/gitflow'
+
 set :application, 'myfuturegold'
 set :repo_url, 'git@github.com:AmirolAhmad/myfuturegold.git'
 
