@@ -73,6 +73,8 @@ GEM
     arel (5.0.1.20140414130214)
     bcrypt (3.1.9)
     builder (3.2.2)
+    capistrano-faster-assets (1.0.2)
+      capistrano (>= 3.1)
     capistrano-rails (1.1.2)
       capistrano (~> 3.1)
       capistrano-bundler (~> 1.1)
@@ -295,6 +297,7 @@ PLATFORMS
 DEPENDENCIES
   capistrano!
   capistrano-bundler!
+  capistrano-faster-assets (~> 1.0)
   capistrano-gitflow!
   capistrano-rails
   capistrano-rbenv!
