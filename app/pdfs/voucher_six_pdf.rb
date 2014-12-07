@@ -64,7 +64,7 @@ class VoucherSixPdf < Prawn::Document
   def akad_wakalah
     move_down 20
     text "AKAD JUAL :", :size => 8, :style => :bold
-    text "Dengan ini saya bersetuju untuk melantik Name: #{@voucher.user.profile.nama_penuh.titleize} dan Kad Pengenalan bernombor: #{@voucher.user.profile.ic_number} sebagai wakalah atas urus niaga emas bagi pihak saya untuk menjual Emas 999.9 seberat #{@voucher.order.gram_quantity}gram kepada KJ Gold dengan harga RM 210/gram.", :size => 9, :color => "585858", :style => :italic
+    text "Dengan ini saya bersetuju untuk melantik Nama: #{@voucher.user.profile.nama_penuh.titleize} dan Kad Pengenalan bernombor: #{@voucher.user.profile.ic_number} sebagai wakalah atas urus niaga emas bagi pihak saya untuk menjual Emas 999.9 seberat #{@voucher.order.gram_quantity}gram kepada KJ Gold dengan harga RM 210/gram.", :size => 9, :color => "585858", :style => :italic
   end
 
   def message
