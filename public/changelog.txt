@@ -1,0 +1,7 @@
+Date: 07 Disember 2014
+Version: Master 2.1.0-production
+
+Changelog:
+* Change Akad Wakalah text statement only for KJ06 (Payment & Voucher) - AmirolAhmad
+* Grand Total Weight & Grant Total Price for KJ06 now scope only for active order - AmirolAhmad
+* Receipt Payment attachment are now optional - AmirolAhmad
