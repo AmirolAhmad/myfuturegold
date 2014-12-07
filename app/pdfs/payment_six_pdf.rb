@@ -72,7 +72,7 @@ class PaymentSixPdf < Prawn::Document
   def akad_wakalah
     move_down 20
     text "AKAD WAKALAH :", :size => 8, :style => :bold
-    text "Kami, MyFuture Gold Resources mewakilkan #{@payment.user.profile.nama_penuh.titleize} untuk membeli emas 999.9 sebanyak #{@payment.order.gram_quantity}gram daripada KiraJadi Gold dengan harga RM #{@payment.order.price}/gram secara tangguh selama sebulan.", :size => 9, :color => "585858", :style => :italic
+    text "Dengan ini, saya bersetuju melantik Name: #{@payment.user.profile.nama_penuh.titleize} dan Kad Pengenalan bernombor: #{@payment.user.profile.ic_number} sebagai wakalah atas urus niaga emas bagi pihak saya untuk membeli Emas 999.9 seberat #{@payment.order.gram_quantity}gram daripada KiraJadi Gold dengan harga RM #{@payment.order.price}/gram secara tangguh selama sebulan.", :size => 9, :color => "585858", :style => :italic
   end
 
   def message

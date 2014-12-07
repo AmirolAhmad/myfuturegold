@@ -64,7 +64,7 @@ class VoucherSixPdf < Prawn::Document
   def akad_wakalah
     move_down 20
     text "AKAD WAKALAH :", :size => 8, :style => :bold
-    text "Kami, MyFuture Gold Resources mewakilkan #{@voucher.user.profile.nama_penuh.titleize} untuk menjual emas 999.9 sebanyak #{@voucher.order.gram_quantity}gram daripada KiraJadi Gold dengan harga RM #{@voucher.order.price}/gram secara tangguh selama sebulan.", :size => 9, :color => "585858", :style => :italic
+    text "Dengan ini saya bersetuju untuk melantik Name: #{@voucher.user.profile.nama_penuh.titleize} dan Kad Pengenalan bernombor: #{@voucher.user.profile.ic_number} sebagai wakalah atas urus niaga emas bagi pihak saya untuk menjual Emas 999.9 seberat #{@voucher.order.gram_quantity}gram kepada KJ Gold dengan harga RM #{@voucher.order.price}/gram.", :size => 9, :color => "585858", :style => :italic
   end
 
   def message
