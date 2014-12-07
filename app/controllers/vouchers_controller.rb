@@ -17,11 +17,19 @@ class VouchersController < ApplicationController
         format.html { @voucher }
         format.json { render json: @voucher.to_json(include: [:user, :order]) }
         format.pdf do
-          pdf = VoucherPdf.new(@voucher, view_context)
-          send_data pdf.render, filename:
-          "voucher#{@voucher.created_at.strftime("%d/%m/%Y")}.pdf",
-          type: "application/pdf",
-          disposition: "inline"
+          if @voucher.order.package_id != 6
+            pdf = VoucherPdf.new(@voucher, view_context)
+            send_data pdf.render, filename:
+            "voucher#{@voucher.created_at.strftime("%d/%m/%Y")}.pdf",
+            type: "application/pdf",
+            disposition: "inline"
+          else
+            pdf = VoucherSixPdf.new(@voucher, view_context)
+            send_data pdf.render, filename:
+            "voucher#{@voucher.created_at.strftime("%d/%m/%Y")}.pdf",
+            type: "application/pdf",
+            disposition: "inline"
+          end
         end
       end
     else
