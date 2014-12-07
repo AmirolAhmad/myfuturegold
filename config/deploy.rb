@@ -45,6 +45,9 @@ namespace :deploy do
 
   after :publishing, :restart
 
+  after :finishing, 'deploy:cleanup'
+  after :finishing, 'deploy:restart'
+
   task :upload_symlink do
     on roles(:web) do
       execute :ln, "-nfs #{shared_path}/uploads #{release_path}/public/uploads"
@@ -52,8 +55,5 @@ namespace :deploy do
   end
 
   after :updated, :upload_symlink
-
-  after :finishing, 'deploy:cleanup'
-  after :finishing, 'deploy:restart'
 
 end
