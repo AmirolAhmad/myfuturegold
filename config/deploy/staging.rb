@@ -1,6 +1,6 @@
 set :application, 'myfuturegold_staging'
 set :stage, :staging
-set :release_note_url, 'http://staging.myfuturegold.my/release_note.txt'
+set :release_note_url, 'http://staging.myfuturegold.my/changelog.txt'
 set :rails_env, :staging
 
 # Simple Role Syntax
