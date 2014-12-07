@@ -6,7 +6,7 @@ class Payment < ActiveRecord::Base
 
   validates :total_payment, numericality: { only_integer: true }
   validates_presence_of :method
-  validates_presence_of :attachment
+  # validates_presence_of :attachment
   validates_presence_of :payment_date
   validates_presence_of :payment_time
   validates_presence_of :total_payment

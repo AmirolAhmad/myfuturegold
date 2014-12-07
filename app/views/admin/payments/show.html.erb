@@ -73,12 +73,14 @@
               <% end %>
             </p>
           </div>
+          <% if @payment.attachment.present? %>
           <div class="col-md-6">
             <div class="form-group">
               <label>Proof Document</label>
               <p><%= link_to "Receipt", @payment.attachment_url, target: "_blank" %> <span class="small glyphicon glyphicon-share" aria-hidden="true"></span></p>
             </div>
           </div>
+          <% end %>
         </div>
 
       </div>
