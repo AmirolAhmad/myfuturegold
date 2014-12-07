@@ -4,7 +4,7 @@
 set :application, 'myfuturegold'
 set :repo_url, 'git@github.com:AmirolAhmad/myfuturegold.git'
 
-server '119.81.109.221', user: 'deploy', roles: %w{web app db}
+server '119.81.109.221', user: 'deploy', roles: %w{web app db job}
 
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call

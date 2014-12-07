@@ -1,7 +1,7 @@
 set :application, 'myfuturegold_production'
 set :stage, :production
-set :rails_env, :production
 set :release_note_url, 'https://www.myfuturegold.my/release_note.txt'
+set :rails_env, :production
 
 # Simple Role Syntax
 # ==================
