@@ -37,19 +37,19 @@
                 <td><%= order.ordered_date.strftime("%d %B %Y") %></td>
                 <td><%= order.package.package_name %></td>
                 <td>
-                  <% if order.status.status_name == "Active" %>
+                  <% if order_active(order) %>
                     <span class="label label-primary">
                       <%= order.status.status_name %>
                     </span>
-                  <% elsif order.status.status_name == "Inactive" %>
+                  <% elsif order_inactive(order) %>
                     <span class="label label-danger">
                       <%= order.status.status_name %>
                     </span>
-                  <% elsif order.status.status_name == "Pending" %>
+                  <% elsif order_pending(order) %>
                     <span class="label label-warning">
                       <%= order.status.status_name %>
                     </span>
-                  <% elsif order.status.status_name == "Buyback" %>
+                  <% elsif order_buyback(order) %>
                     <span class="label label-info">
                       <%= order.status.status_name %>
                     </span>
