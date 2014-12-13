@@ -41,15 +41,12 @@
 
 <script type="text/javascript">
 
-var ready;
-ready = function() {
+$(document).ready( function () {
   $('.display').DataTable({
     "aaSorting": []
   }).api();
 
   oTable = $('#clientDetails').DataTable();
-}
-$(document).ready(ready);
-$(document).on('page:load', ready);
+});
 
 </script>

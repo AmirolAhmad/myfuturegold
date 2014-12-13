@@ -151,16 +151,13 @@ $(function visitorData (data) {
 
 <script type="text/javascript">
 
-var ready;
-ready = function() {
+$(document).ready( function () {
   $('.display').DataTable({
-    "aaSorting": [[0,'desc']]
+    "aaSorting": []
   }).api();
 
   oTable = $('#ActiveOrder').DataTable();
   oTable2 = $('#PendingOrder').DataTable();
-}
-$(document).ready(ready);
-$(document).on('page:load', ready);
+});
 
 </script>
